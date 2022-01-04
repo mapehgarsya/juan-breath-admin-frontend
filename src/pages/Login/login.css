@@ -1,0 +1,61 @@
+html, body {
+    margin:0;
+    height:100%;
+    width: 100%;
+  }
+
+.logincontainer {
+    width:100%;
+    height:100vh; 
+    box-sizing:border-box;
+    background: url(../../media/loginBG.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.loginNav {
+    display: flex;
+    flex-direction: row;
+    height: 90px;
+    padding: 20px 10%;
+    background-color: #2a749f;
+}
+.loginNavTitleCont {
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    padding-left: 10px;
+}
+.loginNavTitle1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.loginNavTitle2 {
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+}
+.loginForm {
+    display: flex;
+    flex-direction: column;
+
+    height: 250px;
+    width: 400px;
+    padding: 30px;
+    margin: 5% 0;
+
+    background-color: #ffffff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+}
+.loginFormTitle {
+    color: #2a749f;
+    margin-bottom: 15px;
+}
