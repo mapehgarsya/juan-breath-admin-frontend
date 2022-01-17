@@ -1,0 +1,43 @@
+.reportDiv {
+    width: 400px;
+    min-width: 200px;
+    height: auto;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    margin: auto;
+    border-radius: 5px;
+
+}
+.reportDiv h2 {
+    color: var(--primary);
+}
+
+.reportDiv p {
+    font-size: 12px;
+    text-align: justify;
+}
+
+.flex-grow1 {
+    display: flex;
+    flex-grow: 1;
+}
+.justify-spaceBetween {
+    justify-content: space-between;
+}
+
+label {
+    font-size: 13px;
+}
+
+/* Checkbox Style */
+.checkboxDiv {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+.checkboxDiv input {
+    margin-right: 10px;
+}

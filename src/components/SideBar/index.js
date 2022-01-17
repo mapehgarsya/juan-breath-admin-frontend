@@ -15,15 +15,15 @@ const Sidebar = () => {
                     <span class="dot"></span>
                     Dashboard
                 </a>
-                <a  href='#' className='sideBarItem'>
+                <a  href='/locations' className='sideBarItem'>
                     <span class="dot"></span>
-                    Location
+                    Locations
                 </a>
-                <a  href='#' className='sideBarItem'>
+                <a  href='/contact-tracing-logs' className='sideBarItem'>
                     <span class="dot"></span>
                     Contact Tracing Logs
                 </a>
-                <a  href='#' className='sideBarItem'>
+                <a  href='/admin-management' className='sideBarItem'>
                     <span class="dot"></span>
                     Admin Management
                 </a>

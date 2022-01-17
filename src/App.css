@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+/* Variable colors */
+:root {
+  --primary: #2a749f;
+  --secondary: #edf5fa;
+  --accent: #30b8a6;
+  --blackTextColor: #2b2b2b;
+  --inputBG: #dadada;
+  --placeholderText: #707070;
+  --white: #ffffff;
+
+  --red: #ad2828;
+}
+
 /* Home Common Parts Custom Style */
 .container {
   width:100vw;
@@ -17,31 +30,94 @@
   display: flex;
   flex-direction: row;
 }
+.navAndContentDiv {
+  width: 100%;
+  height: 100%;
+  /* when content overflows */
+  overflow: auto;
+}
+.contentWrapper {
+  width: 100%;
+  padding: 30px;
+  padding-right: 10%;
+}
+/* Titles in pages with a button in the same div */
+.titleAndButtonDiv {
+  display: flex;
+  justify-content: space-between;
+  min-width: 500px;  /*to match the min-width of the table*/
+}
+/* Content Title per page in the pages*/
+.contentTitle {
+  color: var(--primary);
+  min-width: 500px;  /*to match the min-width of the table*/
+}
+.contentDiv {
+  width: 100%;
+}
 
-/* Input Custom Style */
+/* CUSTOM STYLES CSS */
+/* INPUT Custom Style */
 .inputStyle {
   height: 30px;
   width: 100%;
 
-  padding-left: 8px;
+  padding: 0 8px;
   margin: 5px 0;
-  background-color: #dadada;
+  background-color: var(--inputBG);
 
   border: none;
   border-radius: 5px;
 }
-.inputStyle:focus {
-  outline: none !important;
-  border: 1px solid rgb(42, 115, 157);
+.inputStyle2 {
+  height: 30px;
+  width: fit-content;
+  min-width: 100px;
+  padding: 0 8px;
+  margin: 5px 0;
+  background-color: var(--inputBG);
+
+  border: none;
+  border-radius: 5px;
 }
-/* Button Custom Style */
+.inputStyle:focus, .inputStyle2:focus {
+  outline: none !important;
+  border: 1px solid var(--primary);
+}
+.inputErrorMessage {
+  font-size: 10px;
+  color: var(--red);
+  text-align: right;
+}
+
+.checkboxStyle {
+  background-color: var(--inputBG);
+}
+
+/* BUTTON Custom Style */
+/* Block Buttons Style */
 .primaryBlockBtn {
   height: 35px;
   width: 100%;
 
   margin: 10px 0;
-  background-color: #2a749f;
-  color: #ffffff;
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: 600;
+
+  border: none;
+  border-radius: 5px;
+}
+/* Buttons Style */
+.primaryBtn {
+  height: 35px;
+  width: fit-content;
+
+  margin: 10px 0;
+  background-color: var(--primary);
+  color: var(--white);
+  padding-left: 10px;
+  padding-right: 10px;
   font-weight: 600;
 
   border: none;
@@ -52,12 +128,70 @@
   width: fit-content;
 
   margin: 10px 0;
-  background-color: #edf5fa;
-  color: #2a749f;
+  background-color: var(--secondary);
+  color: var(--primary);
   padding-left: 10px;
   padding-right: 10px;
   font-weight: 600;
 
   border: none;
   border-radius: 5px;
+}
+/* ICON Buttons Style */
+.iconBtnWrapper {
+  display: flex;
+}
+.iconBtn {
+  padding: 3px 0;
+  color: var(--blackTextColor);
+  background-color: var(--white);
+  padding: 4px 4px 2px 4px;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* TABLE Custom Style */
+.tableStyle {
+  width: 100%;
+  min-width: 500px; /* so that data UI won't clash with each other*/
+  margin: 10px 0;
+  padding: 10px;
+  
+
+  background-color: var(--white);
+  font-size: 13px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.tableStyle caption, .tableCaption {
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+.tableStyle thead tr th {
+  color: var(--primary);
+  text-align: left;
+  padding-bottom: 5px;
+}
+.tableStyle tbody tr td {
+  color: var(--blackTextColor);
+  padding: 5px 0;
+}
+
+/* Spacing Classes*/
+.mt-10 {
+  margin-top: 10px;
+} 
+.mr-10 {
+  margin-right: 10px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.pr-5 {
+  padding-right: 5px;
+}
+.pb-10 {
+  padding-bottom: 10px;
 }

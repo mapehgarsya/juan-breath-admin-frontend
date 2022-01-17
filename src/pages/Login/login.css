@@ -46,7 +46,7 @@ html, body {
     display: flex;
     flex-direction: column;
 
-    height: 250px;
+    height: auto;
     width: 400px;
     padding: 30px;
     margin: 5% 0;

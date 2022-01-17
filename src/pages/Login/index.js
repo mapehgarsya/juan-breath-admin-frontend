@@ -1,8 +1,12 @@
 import React from 'react'
 import './login.css'
 import logo from '../../media/logo-White.png'
+import { useForm } from 'react-hook-form'
 
 const Login = () => {
+    const { register, handleSubmit, formState: {errors} } = useForm();
+    const onSubmit = (data) => console.log(data)
+
     return (
         <div className='logincontainer'>
             <div className='loginNav'>
@@ -15,9 +19,30 @@ const Login = () => {
             <div className='wrapper'>
                 <div className='loginForm'>
                     <h2 className='loginFormTitle'>SIGN IN</h2>
-                    <input type='text' placeholder='username' className='inputStyle'/>
-                    <input type='password' placeholder='password' className='inputStyle'/>
-                    <button className='primaryBlockBtn'>Sign In</button>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div>
+                            <label>Username</label>
+                            <input 
+                                type='text' 
+                                placeholder='usename'
+                                className='inputStyle'
+                                autoFocus
+                                {...register('username', {required: true})}
+                            />
+                            <p className='inputErrorMessage'>{errors.username?.type === 'required' && "Username is required."}</p>
+                        </div>
+                        <div>
+                            <label>Password</label>
+                            <input 
+                                type='password' 
+                                placeholder='password'
+                                className='inputStyle'
+                                {...register('password', {required: true})}
+                            />
+                            <p className='inputErrorMessage'>{errors.password?.type === 'required' && "Password is required."}</p>
+                        </div>
+                        <button type='submit' className='primaryBlockBtn'>Sign In</button>
+                    </form>
                 </div>
             </div>
         </div>
