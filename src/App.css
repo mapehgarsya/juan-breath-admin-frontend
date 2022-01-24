@@ -38,6 +38,7 @@
 }
 .contentWrapper {
   width: 100%;
+  min-width: 500px; /* so that data UI in tables won't clash with each other*/
   padding: 30px;
   padding-right: 10%;
 }
@@ -45,12 +46,12 @@
 .titleAndButtonDiv {
   display: flex;
   justify-content: space-between;
-  min-width: 500px;  /*to match the min-width of the table*/
+  width: auto; /*to match the min-width of the table*/
 }
 /* Content Title per page in the pages*/
 .contentTitle {
   color: var(--primary);
-  min-width: 500px;  /*to match the min-width of the table*/
+  width: auto;  /*to match the min-width of the table*/
 }
 .contentDiv {
   width: 100%;
@@ -154,16 +155,19 @@
 /* TABLE Custom Style */
 .tableStyle {
   width: 100%;
-  min-width: 500px; /* so that data UI won't clash with each other*/
   margin: 10px 0;
   padding: 10px;
   
-
   background-color: var(--white);
   font-size: 13px;
   box-sizing: border-box;
   border-radius: 5px;
 }
+
+.tableStyle, .tableStyle tr th, .tableStyle tr td {
+  border: 1px solid rgb(255, 255, 255);
+}
+
 .tableStyle caption, .tableCaption {
   text-align: left;
   margin-bottom: 10px;
@@ -178,6 +182,7 @@
   color: var(--blackTextColor);
   padding: 5px 0;
 }
+
 
 /* Spacing Classes*/
 .mt-10 {

@@ -6,6 +6,8 @@ import HomeNav from '../../components/HomeNav'
 import Helmet from 'react-helmet'
 // mock data 
 import data from '../../json/contact-tracing-logs-mockup-data.json'
+// import table
+import BasicTable from '../../components/BasicTable'
 
 const ContactTracingLogs = () => {
 
@@ -77,8 +79,9 @@ const ContactTracingLogs = () => {
                                     <option>11:00 PM</option>
                                 </select>
                             </div>
+                            <BasicTable />
                             {/* Tutorial Link Continuation: https://youtu.be/dYjdzpZv5yc?t=463 */}
-                            <table className='tableStyle'>
+                            {/* <table className='tableStyle'>
                                 <thead>
                                     <tr>
                                         <th className='pr-5'>No.</th>
@@ -102,7 +105,7 @@ const ContactTracingLogs = () => {
                                     ))}
                                     
                                 </tbody>
-                            </table>
+                            </table> */}
                             {/* Generate Report Button */}
                             <button className='primaryBtn'>Generate Report</button>
                         </div>
