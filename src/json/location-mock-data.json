@@ -1,0 +1,32 @@
+[
+    {
+        "no": 1,
+        "name": "Polytechnic University of the Philippines - Main",
+        "address": "1016 Anonas, Santa Mesa, Maynila, Kalakhang Maynila",
+        "officer": "Juan Dela Cruz"
+    },
+    {
+        "no": 2,
+        "name": "College of Engineering and Architecture",
+        "address": "Anonas, Sta. Mesa, Maynila, 1015 Kalakhang Maynila",
+        "officer": "Juan Dela Cruz"
+    },
+    {
+        "no": 3,
+        "name": "College of Engineering and Architecture",
+        "address": "Anonas, Sta. Mesa, Maynila, 1015 Kalakhang Maynila",
+        "officer": "Juan Dela Cruz"
+    },
+    {
+        "no": 4,
+        "name": "College of Engineering and Architecture",
+        "address": "Anonas, Sta. Mesa, Maynila, 1015 Kalakhang Maynila",
+        "officer": "Juan Dela Cruz"
+    },
+    {
+        "no": 5,
+        "name": "College of Engineering and Architecture",
+        "address": "Anonas, Sta. Mesa, Maynila, 1015 Kalakhang Maynila",
+        "officer": "Juan Dela Cruz"
+    }
+]
