@@ -3,26 +3,32 @@ import './login.css'
 import logo from '../../media/logo-White.png'
 import { useForm } from 'react-hook-form'
 import { loginAdmin } from "../../services/auth/login";
-import { useLocation, Navigate } from 'react-router-dom';
 
 const Login = () => {
     
     const { register, handleSubmit, formState: {errors} } = useForm();    
     const [validationError, setErrors] = useState('');
     // this will provide the users current page location
-    let location = useLocation();
-
     const onSubmit = async (usersCredentials) => {
         try {
             const { data } = await loginAdmin(usersCredentials);
-            console.log(data)
+            
             // check if ther are response from the data
             if(data.success) {
+                console.log('passing')
                 // set the generated token to the local storage
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('refreshToken', data.refreshToken);
                 // navigate inside the application
-                return <Navigate to="/dashboard" state={{ from: location }}  replace />
+                
+                /**
+                 *  Developer's Note: Temporary fix for redirecting current path,
+                 *  Reasons: React router dom version 6
+                 *  This fix only uses the browsers native redirecting method
+                 */
+
+                window.location.href = "/dashboard"
+
             }
 
         } catch (error) {

@@ -23,9 +23,9 @@ setupInterceptorsTo(axios);
 
 function RequireAuth({ children }) {
   // decode token from the api
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('accessToken');
   const decodedToken = token ? jwt_decode(token) : null;
-  
+  console.log(decodedToken)
   let location = useLocation();
  
   if (!decodedToken || null) {
