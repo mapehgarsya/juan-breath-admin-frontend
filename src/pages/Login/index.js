@@ -1,11 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './login.css'
 import logo from '../../media/logo-White.png'
 import { useForm } from 'react-hook-form'
+import { loginAdmin } from "../../services/auth/login";
+import { useLocation, Navigate } from 'react-router-dom';
 
 const Login = () => {
-    const { register, handleSubmit, formState: {errors} } = useForm();
-    const onSubmit = (data) => console.log(data)
+    
+    const { register, handleSubmit, formState: {errors} } = useForm();    
+    const [validationError, setErrors] = useState('');
+    // this will provide the users current page location
+    let location = useLocation();
+
+    const onSubmit = async (usersCredentials) => {
+        try {
+            const { data } = await loginAdmin(usersCredentials);
+            console.log(data)
+            // check if ther are response from the data
+            if(data.success) {
+                // set the generated token to the local storage
+                localStorage.setItem('accessToken', data.accessToken);
+                localStorage.setItem('refreshToken', data.refreshToken);
+                // navigate inside the application
+                return <Navigate to="/dashboard" state={{ from: location }}  replace />
+            }
+
+        } catch (error) {
+            if(error.response.status === 400) {
+                setErrors(error.response.data?.message)
+            }
+        }
+    }
 
     return (
         <div className='logincontainer'>
@@ -39,7 +64,7 @@ const Login = () => {
                                 className='inputStyle'
                                 {...register('password', {required: true})}
                             />
-                            <p className='inputErrorMessage'>{errors.password?.type === 'required' && "Password is required."}</p>
+                            <p className='inputErrorMessage'>{(errors.password?.type === 'required' && "Password is required.") || validationError}</p>
                         </div>
                         <button type='submit' className='primaryBlockBtn'>Sign In</button>
                     </form>

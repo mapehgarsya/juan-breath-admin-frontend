@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import './App.css';
 // Login Page
@@ -27,8 +27,8 @@ function RequireAuth({ children }) {
   const decodedToken = token ? jwt_decode(token) : null;
   
   let location = useLocation();
-
-  if (decodedToken || null) {
+ 
+  if (!decodedToken || null) {
     // Redirect them to the /login page, but save the current location they were
     // trying to go to when they were redirected. This allows us to send them
     // along to that page after they login, which is a nicer user experience
