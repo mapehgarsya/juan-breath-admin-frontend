@@ -1,34 +1,40 @@
 import React from 'react'
 import logo from '../../media/logo-Blue.png'
 import './sideBar.css'
+// import icon/s
+import { FaChartBar, FaMapMarkerAlt, FaAlignJustify, FaUserFriends } from "react-icons/fa";
+import { MdPhonelinkSetup } from "react-icons/md"
+import {BsPhoneFill} from "react-icons/bs"
 
 const Sidebar = () => {
     // figure out how to change color of the link of an active page
     return (
         <div className='sideBarContainer'>
             <div className='companyGrp'>
-                <img src={logo} alt='logo' height={50} className='companyLogo'/>
-                <h2 className='companyName'>JuanBreath</h2>
+                <img src={logo} alt='logo' height={45} className='companyLogo'/>
+                <h4 className='companyName'>JuanBreath</h4>
             </div>
             <li className='sideBarItems'>
                 <a href='/dashboard' className='sideBarItem'>
-                    <span class="dot"></span>
+                    
+                    <FaChartBar className='mr-10' height={50}/>
                     Dashboard
                 </a>
                 <a  href='/locations' className='sideBarItem'>
-                    <span class="dot"></span>
+                    <FaMapMarkerAlt className='mr-10'/>
                     Locations
                 </a>
                 <a  href='/contact-tracing-logs' className='sideBarItem'>
-                    <span class="dot"></span>
+                    <FaAlignJustify className='mr-10'/>
                     Contact Tracing Logs
                 </a>
                 <a  href='/admin-management' className='sideBarItem'>
-                    <span class="dot"></span>
+                    <FaUserFriends className='mr-10'/>
                     Admin Management
                 </a>
                 <a  href='#' className='sideBarItem'>
-                    <span class="dot"></span>
+                    {/* <MdPhonelinkSetup className='mr-10'/> */}
+                    <BsPhoneFill className='mr-10'/>
                     Admin App
                 </a>
             </li>

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Helmet from 'react-helmet';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 // Login Page
 import Login from './pages/Login';
