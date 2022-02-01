@@ -22,7 +22,6 @@ const Login = () => {
             
             // check if ther are response from the data
             if(data.success) {
-                console.log('passing')
                 // set the generated token to the local storage
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('refreshToken', data.refreshToken);

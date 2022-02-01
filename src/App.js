@@ -13,7 +13,7 @@ import AdminManagement from './pages/AdminManagement';
 //utilities
 import jwt_decode from 'jwt-decode';
 import ReportGenerator from './pages/ContactTracingLogs/utilities/ReportGenerator';
-import AddLocation from './pages/Locations/utilities/AddLocation';
+import AddLocation from './pages/Locations/utilities/AddLoc';
 
 // axios interceptors
 import axios from 'axios';

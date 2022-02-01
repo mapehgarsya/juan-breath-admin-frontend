@@ -8,6 +8,7 @@ import { FaPen, FaTrash, FaQrcode } from "react-icons/fa";
 import HomeContainer from '../../components/HomeContainer/index.js';
 // apis
 import { getAllLocations } from '../../services/locations/get.js';
+import { postOneLocation } from '../../services/locations/post.js';
 
 const Locations = () => {
 
@@ -17,11 +18,21 @@ const Locations = () => {
     const _getAllLocation = async () => {
         try {
             const locations = await getAllLocations();
-            console.log(locations)
             setLocations(locations.data?.data);
         } catch (error) {
             setHasErrors(true);
             setLocations([]);
+        }
+    }
+
+    const _postOneLocation = async (data) => {
+        try {
+            const result = await postOneLocation(data);
+            if(result.data.success) {
+                setLocations([...locations, result.data.data])
+            }
+        } catch (error) {
+            console.log(error.response.data)
         }
     }
 
@@ -37,7 +48,9 @@ const Locations = () => {
             </Helmet>
             <div className='titleAndButtonDiv'>
                 <h1 className='contentTitle'>Locations</h1>
-                <AddLoc />
+                <AddLoc 
+                    method={_postOneLocation}
+                />
             </div>
             <div className='contentDiv'>
                 {/* Tutorial Link Continuation: https://youtu.be/dYjdzpZv5yc?t=463 */}
