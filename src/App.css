@@ -43,7 +43,7 @@
   width: 100%;
   min-width: 500px; /* so that data UI in tables won't clash with each other*/
   padding: 30px;
-  padding-right: 10%;
+  padding-right: 5%;
 }
 /* Titles in pages with a button in the same div */
 .titleAndButtonDiv {
@@ -145,7 +145,7 @@ input:focus {
 /* ICON Buttons Style */
 .iconBtnWrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 .iconBtn {
   padding: 3px 0;
@@ -195,12 +195,16 @@ input:focus {
 
 
 /* Spacing Classes*/
+.mt-15 {
+  margin-top: 15px;
+}
 .mt-10 {
   margin-top: 10px;
 } 
 .mr-10 {
   margin-right: 10px;
 }
+
 .mb-10 {
   margin-bottom: 10px;
 }

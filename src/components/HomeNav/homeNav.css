@@ -6,7 +6,7 @@
     height: 70px;
     width: 100%;
     min-width: 500px; /*to match the min-width of the table*/
-    padding: 10px 10%;
+    padding: 10px 5%;
     background-color: var(--primary);
     box-shadow: 0 10px 10px rgba(42, 116, 159, 0.2);
     position: sticky;

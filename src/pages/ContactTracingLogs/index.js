@@ -4,11 +4,13 @@ import Sidebar from '../../components/SideBar'
 import HomeNav from '../../components/HomeNav'
 // import package/s
 import Helmet from 'react-helmet'
-// mock data 
+// import table Data
 import data from '../../json/contact-tracing-logs-mockup-data.json'
+import { LogsCOLUMN } from '../../components/FilteringTable/columns'
 // component/s
 import BasicTable from '../../components/BasicTable'
 import HomeContainer from '../../components/HomeContainer'
+
 
 const ContactTracingLogs = () => {
 
@@ -24,7 +26,7 @@ const ContactTracingLogs = () => {
             <h1 className='contentTitle pb-10'>Contact Tracing Logs</h1>
             <div className='contentDiv'>
                 <p className='tableCaption'>This table contains visitation logs within 31 days that will be used for contact tracing purposes. No contact information from the users will be collected on the system unless they are stated as positive of COVID-19.</p>
-                <div className='filterInputWrapper'>
+                <div className='filterInputWrapper mb-10'>
                     <select className='inputStyle2 mr-10'>
                         <option>Anywhere</option>
                         <option>College of Engineering and Architecture</option>
@@ -76,35 +78,13 @@ const ContactTracingLogs = () => {
                         <option>11:00 PM</option>
                     </select>
                 </div>
-                <BasicTable />
-                {/* Tutorial Link Continuation: https://youtu.be/dYjdzpZv5yc?t=463 */}
-                {/* <table className='tableStyle'>
-                    <thead>
-                        <tr>
-                            <th className='pr-5'>No.</th>
-                            <th>User Id</th>
-                            <th>Location</th>
-                            <th>Officer in Charge</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {contactLogs.map((contactLog)=>(
-                            <tr>
-                                <td>{contactLog.no}</td>
-                                <td>{contactLog.userId}</td>
-                                <td>{contactLog.location}</td>
-                                <td>{contactLog.officer}</td>
-                                <td>{contactLog.date}</td>
-                                <td>{contactLog.time}</td>
-                            </tr>
-                        ))}
-                        
-                    </tbody>
-                </table> */}
+                <BasicTable 
+                    columnHeads = {LogsCOLUMN}
+                    tableData = {data}
+                />
+                
                 {/* Generate Report Button */}
-                <button className='primaryBtn'>Generate Report</button>
+                <button className='primaryBtn mt-15'>Generate Report</button>
             </div>
         </HomeContainer>
         

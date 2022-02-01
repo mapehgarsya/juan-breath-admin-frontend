@@ -30,7 +30,7 @@ const AdminManagement = () => {
                         <thead>
                             <tr>
                                 <th className='pr-5'>No.</th>
-                                <th>Name</th>
+                                <th>Username</th>
                                 <th>Location Assigned</th>
                                 <th>Faculty in Charge</th>
                                 <th></th>
@@ -40,7 +40,7 @@ const AdminManagement = () => {
                             {admins.map((admin)=>(
                                 <tr>
                                     <td>{admin.no}</td>
-                                    <td>{admin.name}</td>
+                                    <td>{admin.name}</td> {/* will be replaced by username property as per Ryan*/}
                                     <td>{admin.locationAssigned}</td>
                                     <td>{admin.faculty}</td>
                                     <td className='iconBtnWrapper'>
