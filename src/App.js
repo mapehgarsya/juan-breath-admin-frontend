@@ -12,7 +12,7 @@ import AdminManagement from './pages/AdminManagement';
 
 //utilities
 import jwt_decode from 'jwt-decode';
-import ReportGenerator from './pages/ContactTracingLogs/utilities/ReportGenerator';
+
 import AddLocation from './pages/Locations/utilities/AddLocation';
 
 // axios interceptors
@@ -88,14 +88,6 @@ function App() {
             } 
           />
           {/* utilities */}
-          <Route 
-            path="/contact-tracing-logs/generate-report" 
-            element={
-              <RequireAuth>
-                <ReportGenerator/>
-              </RequireAuth>
-            } 
-          />
           <Route 
             path="/locations/add-location" 
             element={

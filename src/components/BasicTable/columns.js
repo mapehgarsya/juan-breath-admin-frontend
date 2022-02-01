@@ -22,10 +22,6 @@ export const LogsCOLUMN = [
     {
         Header: 'Time',
         accessor: 'time'
-    },
-    {
-        Header: 'Actions',
-        accessor: 'none'
     }
 ]
 
@@ -45,6 +41,14 @@ export const LocationsCOLUMN = [
     {
         Header: 'Officer in Charge',
         accessor: 'officer'
+    },
+    {
+        Header: 'Date Created',
+        accessor: 'dateCreated'
+    },
+    {
+        Header: 'Actions',
+        accessor: 'none'
     }
 
 ]
@@ -66,4 +70,8 @@ export const AdminsCOLUMN = [
         Header: 'Faculty in Charge',
         accessor: 'faculty'
     },
+    {
+        Header: 'Actions',
+        accessor: 'none'
+    }
 ]

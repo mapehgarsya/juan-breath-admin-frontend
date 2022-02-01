@@ -31,7 +31,6 @@ const ReportGenerator = () => {
                                     and time you want to generate.
                                 </p>
                                 {/* Location */}
-                                <form>
                                     <select className='inputStyle mr-10'>
                                         <option>Anywhere</option>
                                         <option>College of Engineering and Architecture</option>
@@ -67,7 +66,6 @@ const ReportGenerator = () => {
                                         <input type='checkbox' className='checkboxStyle'/>
                                         <label>Whole Day</label>
                                     </div>
-                                </form>
                                 <button className='primaryBlockBtn'>Generate Report</button>
                             </div>
                         </div>
