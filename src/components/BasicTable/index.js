@@ -1,15 +1,12 @@
 import React, { useMemo } from 'react'
 // import package/s
 import { useTable } from 'react-table'
-// import data
-import DATA from '../../json/contact-tracing-logs-mockup-data.json'
-// import columns
-import { COLUMNS } from '../FilteringTable/columns'
+import { FaPen, FaTrash } from "react-icons/fa";
 
-const BasicTable = () => {
+function BasicTable ({columnHeads, tableData }) {
 
-    const columns = useMemo(() => COLUMNS, [])
-    const data = useMemo(() => DATA, [])
+    const columns = useMemo(() => columnHeads, [])
+    const data = useMemo(() => tableData, [])
 
     const tableInstance = useTable({
         columns,
@@ -25,34 +22,48 @@ const BasicTable = () => {
     } = tableInstance
 
     return (
-        <table className='tableStyle' {...getTableProps()}>
-            <thead>
-                {headerGroups.map((headerGroup) => (
-                    <tr {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map((column) => (
-                            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                        ))}
-                    </tr>
-                ))}
-            </thead>
-            <tbody {...getTableBodyProps()}>
-                {
-                    rows.map(row => {
-                        prepareRow(row)
-                        return (
-                            <tr {...row.getRowProps()}>
-                                {row.cells.map((cell) => {
-                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                                })
-
-                                }
-                                
-                            </tr>
-                        )
-                    })
-                }
-            </tbody>
-        </table>
+        <div className='customTableDiv'>
+            <table className='tableStyle' {...getTableProps()}>
+                <thead>
+                    {headerGroups.map((headerGroup) => (
+                        <tr {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map((column) => (
+                                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                            ))}
+                        </tr>
+                    ))}
+                </thead>
+                <tbody {...getTableBodyProps()}>
+                    {
+                        rows.map(row => {
+                            prepareRow(row)
+                            return (
+                                <tr {...row.getRowProps()}>
+                                    {row.cells.map((cell) => {
+                                        console.log(cell.column.Header)
+                                        if (cell.column.Header==='Actions') {
+                                            return <td className='iconBtnWrapper'>
+                                                <button className='iconBtn mr-10'>
+                                                    <FaPen />
+                                                </button>
+                                                <button className='iconBtn'>
+                                                    <FaTrash />
+                                                </button>
+                                            </td>
+                                        }
+                                        return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                    })
+                                        
+                                    }
+                                    
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
+            </table>
+        </div>
+        
     )
 }
 
