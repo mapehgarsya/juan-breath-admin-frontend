@@ -28,7 +28,7 @@ const refresher = async (refreshToken) => {
 const onRequest = (config) => {
   /** modify headers for axios request */
 
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('accessToken');
 
   if (token) {
     config.headers.common['Authorization'] = token;
@@ -55,7 +55,7 @@ const onResponseError = async (error) => {
         const newToken = await refresher(refreshToken);
 
         if (newToken) {
-          localStorage.setItem('token', newToken);
+          localStorage.setItem('accessToken', newToken);
         }
       }
     }
