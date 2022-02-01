@@ -13,7 +13,7 @@ const AddLocation = () => {
 
 
     return (
-        <div className='container'>
+        <div className='customContainer '>
             {/* Helmet for page's title*/}
             <Helmet>
                 <title>JuanBreath | Add Location</title>

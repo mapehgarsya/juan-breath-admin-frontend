@@ -11,7 +11,7 @@ const ReportGenerator = () => {
     const onSubmit = (data) => console.log(data)
 
     return (
-        <div className='container'>
+        <div className='customContainer '>
             {/* Helmet for page's title*/}
             <Helmet>
                 <title>JuanBreath | Generate Report</title>

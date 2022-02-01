@@ -12,7 +12,7 @@ const logout = () => {
 const HomeNav = () => {
     return (
         <div className='homeNav'>
-            <h4 className='homeNavGreeting'>Hello Main Admin!</h4>
+            <h5 className='homeNavGreeting'>Hello Main Admin!</h5>
             <button onClick={e => logout()} className='secondaryBtn'>Sign Out</button>
         </div>
     )

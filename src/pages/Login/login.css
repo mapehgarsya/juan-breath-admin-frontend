@@ -30,6 +30,7 @@ html, body {
 .loginNavTitle1 {
     font-size: 1.5rem;
     font-weight: 600;
+    margin-bottom: 0;
 }
 .loginNavTitle2 {
     font-size: .8rem;
@@ -58,4 +59,30 @@ html, body {
 .loginFormTitle {
     color: #2a749f;
     margin-bottom: 15px;
+}
+
+.passwordInputGrp {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--inputBG);
+    border-radius: 5px;
+    margin: 5px 0;
+}
+.inputPasswordStyle {
+    height: 30px;
+    width: 100%;
+
+    padding: 0 8px;
+    background-color: var(--inputBG);
+    border: none;
+    border-radius: 5px;
+}
+.eyeIconBtn {
+    color: var(--placeholderText);
+    background-color: transparent;
+    padding: 2px 10px 2px 8px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
