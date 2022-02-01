@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
-import './login.css'
-import logo from '../../media/logo-White.png'
-import { useForm } from 'react-hook-form'
+// import from backend
 import { loginAdmin } from "../../services/auth/login";
+// import css
+import './login.css'
+// import logo
+import logo from '../../media/logo-White.png'
+// import package/s
+import { useForm } from 'react-hook-form'
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
+
 
 const Login = () => {
     
-    const { register, handleSubmit, formState: {errors} } = useForm();    
+    const { register, handleSubmit, formState: {errors} } = useForm(); 
+    const [viewPassword, setViewPassword] = useState(false)   
     const [validationError, setErrors] = useState('');
     // this will provide the users current page location
     const onSubmit = async (usersCredentials) => {
@@ -38,6 +45,10 @@ const Login = () => {
         }
     }
 
+    const passwordToggleBtn = () => {
+        setViewPassword(prevState => !prevState)
+    }
+
     return (
         <div className='logincontainer'>
             <div className='loginNav'>
@@ -49,13 +60,12 @@ const Login = () => {
             </div>
             <div className='wrapper'>
                 <div className='loginForm'>
-                    <h2 className='loginFormTitle'>SIGN IN</h2>
+                    <h3 className='loginFormTitle'>SIGN IN</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
                             <label>Username</label>
                             <input 
                                 type='text' 
-                                placeholder='usename'
                                 className='inputStyle'
                                 autoFocus
                                 {...register('username', {required: true})}
@@ -64,12 +74,16 @@ const Login = () => {
                         </div>
                         <div>
                             <label>Password</label>
-                            <input 
-                                type='password' 
-                                placeholder='password'
-                                className='inputStyle'
-                                {...register('password', {required: true})}
-                            />
+                            <div className='passwordInputGrp'>
+                                <input 
+                                    type={viewPassword ? 'text' : 'password'}
+                                    className='inputPasswordStyle'
+                                    {...register('password', {required: true})}
+                                />
+                                <a className='eyeIconBtn' onClick={passwordToggleBtn}>
+                                    {viewPassword ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+                                </a>
+                            </div>
                             <p className='inputErrorMessage'>{(errors.password?.type === 'required' && "Password is required.") || validationError}</p>
                         </div>
                         <button type='submit' className='primaryBlockBtn'>Sign In</button>
