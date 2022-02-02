@@ -221,3 +221,9 @@ input:focus {
 a:hover {
   color: var(--primary);
 }
+
+/* toast custom spacing */
+.toast-custom-spacing {
+  margin-bottom: 20px;
+  right: 1.2em !important;
+}

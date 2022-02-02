@@ -6,6 +6,7 @@ import Helmet from 'react-helmet';
 import { FaPen, FaTrash, FaQrcode } from "react-icons/fa";
 // component/s
 import HomeContainer from '../../components/HomeContainer/index.js';
+import ToastNotification from '../../components/Toast/index.js';
 // apis
 import { getAllLocations } from '../../services/locations/get.js';
 import { postOneLocation } from '../../services/locations/post.js';
@@ -14,6 +15,9 @@ const Locations = () => {
 
     const [locations, setLocations] = useState([]);
     const [hasErrors, setHasErrors] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const [toastStatue, setToastStatus] = useState('');
+    const [toastMessage, setToastMessage] = useState('');
 
     const _getAllLocation = async () => {
         try {
@@ -29,10 +33,15 @@ const Locations = () => {
         try {
             const result = await postOneLocation(data);
             if(result.data.success) {
-                setLocations([...locations, result.data.data])
+                setLocations([...locations, result.data.data]);
+                setShowToast(!showToast);
+                setToastMessage("Location has been created successfully.");
+                setToastStatus('Success');
             }
         } catch (error) {
-            console.log(error.response.data)
+            setShowToast(!showToast);
+            setToastMessage("Something went wrong.");
+            setToastStatus('Danger');
         }
     }
 
@@ -104,7 +113,12 @@ const Locations = () => {
                     hasErrors && <div>Something went wrong</div>
                 }
             </div>
-
+            <ToastNotification
+                showToast={showToast}
+                setShowToast={setShowToast}
+                message={toastMessage}
+                status={toastStatue}
+            />
         </HomeContainer>
         
     )
