@@ -5,8 +5,8 @@ import { FaPen, FaTrash, FaQrcode, FaArrowDown, FaArrowUp } from "react-icons/fa
 
 function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR }) {
 
-    const columns = useMemo(() => columnHeads, [])
-    const data = useMemo(() => tableData, [])
+    const columns = useMemo(() => columnHeads, [columnHeads])
+    const data = useMemo(() => tableData, [tableData])
 
     const [hasErrors, setHasErrors] = useState(false);
 
@@ -44,11 +44,24 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR }) {
                     <tbody {...getTableBodyProps()}>
                         {
                             // this section renders the data inside an array
-                            tableData.length > 0 && rows.map(row => {
+                            tableData && rows.map((row, i) => {
                                 prepareRow(row)
                                 return (
                                     <tr {...row.getRowProps()}>
                                         {row.cells.map((cell) => {
+                                            console.log(cell)
+                                            if(cell.column.Header === "No.") {
+                                                return <tr>
+                                                    <td>{i + 1}</td>
+                                                </tr>
+                                            }
+
+                                            if(cell.column.Header === "Faculty in Charge") {
+                                                return <tr>
+                                                    <td>{cell.row.original.firstName + " " + cell.row.original.middleName?.toUpperCase() + ". " + cell.row.original.lastName}</td>
+                                                </tr>
+                                            }
+
                                             if (cell.column.Header==='Actions' && hasEdit && hasDelete) {
                                                 return <td className='iconBtnWrapper'>
                                                     <button className='iconBtn mr-10'>
@@ -82,8 +95,8 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR }) {
                             })
                         }
                         {
-                                tableData.length === 0 && <tr><td>No data to be displayed at the moment</td></tr>
-                            }
+                            tableData.length === 0 && <tr><td>No data to be displayed at the moment</td></tr>
+                        }
                     </tbody>
                 </table>
             }

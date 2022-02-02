@@ -56,19 +56,19 @@ export const LocationsCOLUMN = [
 export const AdminsCOLUMN = [
     {
         Header: 'No.',
-        accessor: 'no'
+        accessor: ''
     },
     {
         Header: 'Username',
         accessor: 'username'
     },
     {
-        Header: 'Location Assigned',
-        accessor: 'locationAssigned'
+        Header: 'Faculty in Charge',
+        accessor: ''
     },
     {
-        Header: 'Faculty in Charge',
-        accessor: 'faculty'
+        Header: 'Location Assigned',
+        accessor: 'locationAssigned'
     },
     {
         Header: 'Actions',
