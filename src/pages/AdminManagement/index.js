@@ -1,16 +1,37 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 // import package/s
 import Helmet from 'react-helmet';
 // mock table data 
-import data from '../../json/admin-mock-data.json'
 import { AdminsCOLUMN } from '../../components/BasicTable/columns';
 // component/s
 import HomeContainer from '../../components/HomeContainer';
 import BasicTable from '../../components/BasicTable';
+// apis
+import { getAllAdmins } from "../../services/admins/get";
 
 const AdminManagement = () => {
 
-    const [admins, setAdmins] = useState(data)
+    const [admins, setAdmins] = useState([])
+    const [hasErrors, setHasErrors] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const [toastStatue, setToastStatus] = useState('');
+    const [toastMessage, setToastMessage] = useState('');
+
+    // get all admin accounts
+    const _getAllLocation = async () => {
+        try {
+            const admins = await getAllAdmins();
+            setAdmins(admins.data?.data);
+        } catch (error) {
+            setHasErrors(true);
+            setAdmins([]);
+        }
+    }
+
+    // this function will auto run on mount
+    useEffect(() => {
+        _getAllLocation();
+    }, []);
 
     return (
         <HomeContainer >
@@ -18,7 +39,6 @@ const AdminManagement = () => {
             <Helmet>
                 <title>JuanBreath | Admin Management</title>
             </Helmet>
-
             <div className='titleAndButtonDiv'>
                 <h1 className='contentTitle'>Admin Management</h1>
                 <button className='primaryBtn'>Add Admin</button>
@@ -27,7 +47,7 @@ const AdminManagement = () => {
                 <p className='tableCaption'>This table shows the list of other admins assigned in the system.</p>
                 <BasicTable 
                     columnHeads = {AdminsCOLUMN}
-                    tableData = {data}
+                    tableData = {admins}
                     hasDelete={true}
                     hasEdit={true}
                     hasQR={false}
