@@ -12,8 +12,7 @@ import AdminManagement from './pages/AdminManagement';
 
 //utilities
 import jwt_decode from 'jwt-decode';
-
-import AddLocation from './pages/Locations/utilities/AddLocation';
+import AddLocation from './pages/Locations/utilities/AddLoc';
 
 // axios interceptors
 import axios from 'axios';
@@ -26,7 +25,6 @@ function RequireAuth({ children }) {
   // decode token from the api
   const token = localStorage.getItem('accessToken');
   const decodedToken = token ? jwt_decode(token) : null;
-  console.log(decodedToken)
   let location = useLocation();
  
   if (!decodedToken || null) {

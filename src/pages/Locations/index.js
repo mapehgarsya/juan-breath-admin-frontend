@@ -9,23 +9,43 @@ import HomeContainer from '../../components/HomeContainer/index.js';
 import BasicTable from '../../components/BasicTable'
 // import table data
 import { LocationsCOLUMN } from '../../components/BasicTable/columns';
+import ToastNotification from '../../components/Toast/index.js';
 // apis
 import { getAllLocations } from '../../services/locations/get.js';
+import { postOneLocation } from '../../services/locations/post.js';
 
 
 const Locations = () => {
 
     const [locations, setLocations] = useState([]);
     const [hasErrors, setHasErrors] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const [toastStatue, setToastStatus] = useState('');
+    const [toastMessage, setToastMessage] = useState('');
 
     const _getAllLocation = async () => {
         try {
             const locations = await getAllLocations();
-            console.log(locations)
             setLocations(locations.data?.data);
         } catch (error) {
             setHasErrors(true);
             setLocations([]);
+        }
+    }
+
+    const _postOneLocation = async (data) => {
+        try {
+            const result = await postOneLocation(data);
+            if(result.data.success) {
+                setLocations([...locations, result.data.data]);
+                setShowToast(!showToast);
+                setToastMessage("Location has been created successfully.");
+                setToastStatus('Success');
+            }
+        } catch (error) {
+            setShowToast(!showToast);
+            setToastMessage("Something went wrong.");
+            setToastStatus('Danger');
         }
     }
 
@@ -41,7 +61,9 @@ const Locations = () => {
             </Helmet>
             <div className='titleAndButtonDiv'>
                 <h1 className='contentTitle'>Locations</h1>
-                <AddLoc />
+                <AddLoc 
+                    method={_postOneLocation}
+                />
             </div>
             <div className='contentDiv'>
                 <p className='tableCaption'>This table shows the list of locations stored in the system.</p>
@@ -97,7 +119,12 @@ const Locations = () => {
                     hasErrors && <div>Something went wrong</div>
                 }
             </div>
-
+            <ToastNotification
+                showToast={showToast}
+                setShowToast={setShowToast}
+                message={toastMessage}
+                status={toastStatue}
+            />
         </HomeContainer>
         
     )

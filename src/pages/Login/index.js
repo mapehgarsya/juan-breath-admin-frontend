@@ -22,7 +22,6 @@ const Login = () => {
             
             // check if ther are response from the data
             if(data.success) {
-                console.log('passing')
                 // set the generated token to the local storage
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('refreshToken', data.refreshToken);
@@ -39,7 +38,7 @@ const Login = () => {
             }
 
         } catch (error) {
-            if(error.response.status === 400) {
+            if(error.response?.status === 400) {
                 setErrors(error.response.data?.message)
             }
         }
@@ -80,9 +79,9 @@ const Login = () => {
                                     className='inputPasswordStyle'
                                     {...register('password', {required: true})}
                                 />
-                                <a className='eyeIconBtn' onClick={passwordToggleBtn}>
+                                <div className='eyeIconBtn' onClick={passwordToggleBtn}>
                                     {viewPassword ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
-                                </a>
+                                </div>
                             </div>
                             <p className='inputErrorMessage'>{(errors.password?.type === 'required' && "Password is required.") || validationError}</p>
                         </div>

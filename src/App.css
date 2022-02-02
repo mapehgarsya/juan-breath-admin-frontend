@@ -17,7 +17,6 @@
   --white: #ffffff;
   --red: #ad2828;
 }
-
 /* Home Common Parts Custom Style */
 .customContainer {
   width:100%;
@@ -223,4 +222,10 @@ input:focus {
 /* hovering over links override */
 a:hover {
   color: var(--primary);
+}
+
+/* toast custom spacing */
+.toast-custom-spacing {
+  margin-bottom: 20px;
+  right: 1.2em !important;
 }
