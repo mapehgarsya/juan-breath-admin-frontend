@@ -12,7 +12,7 @@ import AdminManagement from './pages/AdminManagement';
 
 //utilities
 import jwt_decode from 'jwt-decode';
-import AddLocation from './pages/Locations/utilities/AddLoc';
+import AddLocationModal from './pages/Locations/utilities/AddLocationModal';
 
 // axios interceptors
 import axios from 'axios';
@@ -90,7 +90,7 @@ function App() {
             path="/locations/add-location" 
             element={
               <RequireAuth>
-                <AddLocation/>
+                <AddLocationModal/>
               </RequireAuth>
             } 
           />

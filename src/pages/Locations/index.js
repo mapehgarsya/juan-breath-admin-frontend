@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import AddLoc from './utilities/AddLoc.js';
+import AddLocationModal from './utilities/AddLocationModal.js';
 // import package/s
 import Helmet from 'react-helmet';
-// import icon/s
-import { FaPen, FaTrash, FaQrcode } from "react-icons/fa";
 // component/s
 import HomeContainer from '../../components/HomeContainer/index.js';
 import BasicTable from '../../components/BasicTable'
@@ -13,6 +11,9 @@ import ToastNotification from '../../components/Toast/index.js';
 // apis
 import { getAllLocations } from '../../services/locations/get.js';
 import { postOneLocation } from '../../services/locations/post.js';
+// modals
+import EditLocationModal from './utilities/EditLocationModal.js';
+
 
 
 const Locations = () => {
@@ -22,6 +23,13 @@ const Locations = () => {
     const [showToast, setShowToast] = useState(false);
     const [toastStatue, setToastStatus] = useState('');
     const [toastMessage, setToastMessage] = useState('');
+
+    // Edit Modal Declarations
+    const [showEditModal, setShowEditModal] = useState(false);
+    const handleCloseShowEditModal = () => setShowEditModal(false);
+    const handleShowEditModal = () => setShowEditModal(true);
+
+    
 
     const _getAllLocation = async () => {
         try {
@@ -53,6 +61,11 @@ const Locations = () => {
         _getAllLocation();
     }, []);
 
+    // Edit Modal Functions ---- not working
+    const EditLocation = (_id, editedLocation) => {
+        setLocations(locations.map((location) => location._id === _id ? editedLocation : location))
+    }
+
     return (
         <HomeContainer>
             {/* Helmet for page's title*/}
@@ -61,66 +74,32 @@ const Locations = () => {
             </Helmet>
             <div className='titleAndButtonDiv'>
                 <h1 className='contentTitle'>Locations</h1>
-                <AddLoc 
+                <AddLocationModal 
                     method={_postOneLocation}
                 />
             </div>
             <div className='contentDiv'>
                 <p className='tableCaption'>This table shows the list of locations stored in the system.</p>
-                {/* 
-                    Frontend Dev Note: Adding the Date Created info on table if not yet added.
-                */}
-                {
-                    
-                    !hasErrors && <div className='customTableDiv'>
-                    <table className='tableStyle'>
-                        
-                        <thead>
-                            <tr>
-                                <th className='pr-5'>No.</th>
-                                <th>Name</th>
-                                <th>Location Address</th>
-                                <th>Officer in Charge</th>
-                                <th>Date Created</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                // this section renders the data inside an array
-                                locations.length > 0 && locations.map((location, i)=>(
-                                    <tr>
-                                        <td>{i + 1}</td>
-                                        <td>{location.name}</td>
-                                        <td>{location.address}</td>
-                                        <td>{location.officerInCharge}</td>
-                                        <td>{location.createdAt?.split('T')[0]}</td>
-                                        <td className='iconBtnWrapper'>
-                                            <button className='iconBtn mr-10' title="QR Code">
-                                                <FaQrcode />
-                                            </button>
-                                            <button className='iconBtn mr-10' title="Edit">
-                                                <FaPen />
-                                            </button>
-                                            <button className='iconBtn' title="Delete">
-                                                <FaTrash />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-                            {
-                                locations.length === 0 && <tr><td>No Locations to be displared at the moment</td></tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                }
+                
+                <BasicTable
+                    columnHeads = {LocationsCOLUMN}
+                    tableData = {locations}
+                    hasDelete={true}
+                    hasEdit={true}
+                    hasQR={true}
+                    editModalFunction={handleShowEditModal}
+                />
+                
                 {/* error cather ui */}
                 {
                     hasErrors && <div>Something went wrong</div>
                 }
             </div>
+            <EditLocationModal 
+                    showFunction = {showEditModal}
+                    onHideFunction = {handleCloseShowEditModal}
+                    data = {locations}
+            />
             <ToastNotification
                 showToast={showToast}
                 setShowToast={setShowToast}
