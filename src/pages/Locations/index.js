@@ -81,6 +81,7 @@ const Locations = () => {
                                 <th>Name</th>
                                 <th>Location Address</th>
                                 <th>Officer in Charge</th>
+                                <th>Date Created</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -93,6 +94,7 @@ const Locations = () => {
                                         <td>{location.name}</td>
                                         <td>{location.address}</td>
                                         <td>{location.officerInCharge}</td>
+                                        <td>{location.createdAt?.split('T')[0]}</td>
                                         <td className='iconBtnWrapper'>
                                             <button className='iconBtn mr-10' title="QR Code">
                                                 <FaQrcode />
