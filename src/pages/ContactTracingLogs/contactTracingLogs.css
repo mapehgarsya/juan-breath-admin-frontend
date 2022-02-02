@@ -1,3 +1,10 @@
+.filterandReportGrp {
+    display: flex;
+    justify-content: space-between;
+}
 .filterInputWrapper {
     display: flex;
+}
+.genReportBtn {
+    margin-top: 2.5px;
 }

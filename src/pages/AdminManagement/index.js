@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 // import package/s
 import Helmet from 'react-helmet';
-// import icon/s
-import { FaPen, FaTrash } from "react-icons/fa";
-// mock data 
+// mock table data 
 import data from '../../json/admin-mock-data.json'
+import { AdminsCOLUMN } from '../../components/BasicTable/columns';
 // component/s
 import HomeContainer from '../../components/HomeContainer';
+import BasicTable from '../../components/BasicTable';
 
 const AdminManagement = () => {
 
@@ -24,39 +24,14 @@ const AdminManagement = () => {
                 <button className='primaryBtn'>Add Admin</button>
             </div>
             <div className='contentDiv'>
-            <p>This table shows the list of other admins assigned in the system.</p>
-                <div className='customTableDiv'>
-                    <table className='tableStyle'>
-                        <thead>
-                            <tr>
-                                <th className='pr-5'>No.</th>
-                                <th>Username</th>
-                                <th>Location Assigned</th>
-                                <th>Faculty in Charge</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {admins.map((admin)=>(
-                                <tr>
-                                    <td>{admin.no}</td>
-                                    <td>{admin.name}</td> {/* will be replaced by username property as per Ryan*/}
-                                    <td>{admin.locationAssigned}</td>
-                                    <td>{admin.faculty}</td>
-                                    <td className='iconBtnWrapper'>
-                                        <button className='iconBtn mr-10'>
-                                            <FaPen />
-                                        </button>
-                                        <button className='iconBtn'>
-                                            <FaTrash />
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                            
-                        </tbody>
-                    </table>
-                </div>
+                <p className='tableCaption'>This table shows the list of other admins assigned in the system.</p>
+                <BasicTable 
+                    columnHeads = {AdminsCOLUMN}
+                    tableData = {data}
+                    hasDelete={true}
+                    hasEdit={true}
+                    hasQR={false}
+                />
             </div>
                         
         </HomeContainer>

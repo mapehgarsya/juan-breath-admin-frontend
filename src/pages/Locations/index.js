@@ -6,10 +6,14 @@ import Helmet from 'react-helmet';
 import { FaPen, FaTrash, FaQrcode } from "react-icons/fa";
 // component/s
 import HomeContainer from '../../components/HomeContainer/index.js';
+import BasicTable from '../../components/BasicTable'
+// import table data
+import { LocationsCOLUMN } from '../../components/BasicTable/columns';
 import ToastNotification from '../../components/Toast/index.js';
 // apis
 import { getAllLocations } from '../../services/locations/get.js';
 import { postOneLocation } from '../../services/locations/post.js';
+
 
 const Locations = () => {
 
@@ -62,8 +66,10 @@ const Locations = () => {
                 />
             </div>
             <div className='contentDiv'>
-                {/* Tutorial Link Continuation: https://youtu.be/dYjdzpZv5yc?t=463 */}
-                <p>This table shows the list of locations stored in the system.</p>
+                <p className='tableCaption'>This table shows the list of locations stored in the system.</p>
+                {/* 
+                    Frontend Dev Note: Adding the Date Created info on table if not yet added.
+                */}
                 {
                     
                     !hasErrors && <div className='customTableDiv'>

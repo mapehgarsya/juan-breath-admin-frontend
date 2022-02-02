@@ -203,12 +203,14 @@ input:focus {
 .mr-10 {
   margin-right: 10px;
 }
-
 .mb-10 {
   margin-bottom: 10px;
 }
 .mb-5 {
   margin-bottom: 5px;
+}
+.ml-5 {
+  margin-left: 5px;
 }
 .pr-5 {
   padding-right: 5px;
