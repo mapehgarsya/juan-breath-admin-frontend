@@ -141,6 +141,21 @@ input:focus {
   border: none;
   border-radius: 5px;
 }
+.warningBtn {
+  height: 35px;
+  width: fit-content;
+
+  margin: 10px 0;
+  background-color: var(--red);
+  color: var(--white);
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 5px;
+}
+
 /* ICON Buttons Style */
 .iconBtnWrapper {
   display: flex;
@@ -217,6 +232,11 @@ input:focus {
 }
 .pb-10 {
   padding-bottom: 10px;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* hovering over links override */

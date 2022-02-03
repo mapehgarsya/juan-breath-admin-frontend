@@ -1,4 +1,6 @@
 import React from 'react'
+// import css
+import './CustomModals.css'
 // import package/s
 import { Modal, Form } from 'react-bootstrap'
 
@@ -9,12 +11,12 @@ const EditLocationModal = ({ showFunction, onHideFunction, data, dataEditMethod,
         <>
             <Modal show={showFunction} onHide={onHideFunction}>
                 <Modal.Header closeButton >
-                    <Modal.Title>Edit a Location</Modal.Title>
+                    <Modal.Title className='editModalTitle'>Edit a Location</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <>
                         <Form.Group className="mb-2" controlId="formBasicEmail">
-                            <Form.Label>Name</Form.Label>
+                            <Form.Label>Name <b className='text-danger'>*</b></Form.Label>
                             <Form.Control 
                                 type="text"
                                 value={data?.name}
@@ -24,7 +26,7 @@ const EditLocationModal = ({ showFunction, onHideFunction, data, dataEditMethod,
                         </Form.Group>
 
                         <Form.Group className="mb-2" controlId="formBasicPassword">
-                            <Form.Label>Location Address</Form.Label>
+                            <Form.Label>Location Address <b className='text-danger'>*</b></Form.Label>
                             <Form.Control 
                                 type="text"
                                 value={data?.address}
@@ -33,7 +35,7 @@ const EditLocationModal = ({ showFunction, onHideFunction, data, dataEditMethod,
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicPassword">
-                            <Form.Label>Officer in Charge</Form.Label>
+                            <Form.Label>Officer in Charge <b className='text-danger'>*</b></Form.Label>
                             <Form.Control 
                                 type="text"
                                 value={data?.officerInCharge} 

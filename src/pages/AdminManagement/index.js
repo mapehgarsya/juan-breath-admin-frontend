@@ -11,6 +11,7 @@ import EditAdminModal from './utilities/EditAdminModal';
 // apis
 import { getAllAdmins } from "../../services/admins/get";
 import AddAdminModal from './utilities/AddAdminModal';
+import DeleteAdminModal from './utilities/DeleteAdminModal';
 
 const AdminManagement = () => {
 
@@ -24,6 +25,11 @@ const AdminManagement = () => {
     const [showEditModal, setShowEditModal] = useState(false);
     const handleCloseShowEditModal = () => setShowEditModal(false);
     const handleShowEditModal = () => setShowEditModal(true);
+
+    // Delete modal declarations
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const handleCloseShowDeleteModal = () => setShowDeleteModal(false);
+    const handleShowDeleteModal = () => setShowDeleteModal(true);
 
     // get all admin accounts
     const _getAllLocation = async () => {
@@ -60,6 +66,7 @@ const AdminManagement = () => {
                     hasEdit={true}
                     hasQR={false}
                     editModalFunction={handleShowEditModal}
+                    deleteModalFunction={handleShowDeleteModal}
                 />
             </div>
             <EditAdminModal 
@@ -67,7 +74,11 @@ const AdminManagement = () => {
                 onHideFunction = {handleCloseShowEditModal}
                 data = {admins}
             />
-                        
+            <DeleteAdminModal
+                showFunction = {showDeleteModal}
+                onHideFunction = {handleCloseShowDeleteModal}
+                data = {admins}
+            />            
         </HomeContainer>
         
     )

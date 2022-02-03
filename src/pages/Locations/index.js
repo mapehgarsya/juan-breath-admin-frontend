@@ -14,6 +14,7 @@ import { postOneLocation } from '../../services/locations/post.js';
 import { putOneLocation } from "../../services/locations/put"
 // modals
 import EditLocationModal from './utilities/EditLocationModal.js';
+import DeleteLocationModal from './utilities/DeleteLocationModal.js';
 
 
 
@@ -31,6 +32,12 @@ const Locations = () => {
     const [showEditModal, setShowEditModal] = useState(false);
     const handleCloseShowEditModal = () => setShowEditModal(false);
 
+    //Delete Modal Declarations
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const handleCloseShowDeleteModal = () => setShowDeleteModal(false);
+    const handleShowDeleteModal = () => setShowDeleteModal(true)
+
+    // Edit Modal Functions
     const handleShowEditModal = (id) => {
         setShowEditModal(true);
         setEditId(id);
@@ -83,7 +90,7 @@ const Locations = () => {
                 // removed the edited data from the set
                 const filterdData = locations.filter((location) => { return location._id !== editId })
                 setLocations([...filterdData, result.data.data]);
-                 setShowToast(!showToast);
+                    setShowToast(!showToast);
                 setShowEditModal(!showEditModal);
                 setToastMessage("Location has been updated successfully.");
                 setToastStatus('Success');
@@ -121,6 +128,7 @@ const Locations = () => {
                     hasEdit={true}
                     hasQR={true}
                     editModalFunction={handleShowEditModal}
+                    deleteModalFunction={handleShowDeleteModal}
                 />
                 
                 {/* error cather ui */}
@@ -134,6 +142,11 @@ const Locations = () => {
                 data={dataToBeEdit}
                 dataEditMethod = {handleDataEdit}
                 submitEditMethod={_putOneLocation}
+            />
+            <DeleteLocationModal
+                showFunction = {showDeleteModal}
+                onHideFunction = {handleCloseShowDeleteModal}
+                data = {dataToBeEdit} //replace with data that will be deleted
             />
             <ToastNotification
                 showToast={showToast}

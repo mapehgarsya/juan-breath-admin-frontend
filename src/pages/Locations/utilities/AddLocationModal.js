@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+// import css
+import './CustomModals.css'
 // import package/s
 import { Modal, Form } from 'react-bootstrap'
 
@@ -31,7 +33,7 @@ const AddLocationModal = ({ method }) => {
 
       <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton >
-              <Modal.Title>Add a Location</Modal.Title>
+              <Modal.Title className='addModalTitle'>Add a Location</Modal.Title>
           </Modal.Header>
           <Modal.Body>
               <>
@@ -40,7 +42,7 @@ const AddLocationModal = ({ method }) => {
                       Please fill in the details for the new location.
                   </Form.Text>
                   <Form.Group className="mb-2" controlId="formBasicEmail">
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Name <b className='text-danger'>*</b></Form.Label>
                     <Form.Control 
                       type="text" 
                       placeholder="Enter name of location" 
@@ -50,7 +52,7 @@ const AddLocationModal = ({ method }) => {
                   </Form.Group>
 
                   <Form.Group className="mb-2" controlId="formBasicPassword">
-                    <Form.Label>Location Address</Form.Label>
+                    <Form.Label>Location Address <b className='text-danger'>*</b></Form.Label>
                     <Form.Control 
                       type="text" 
                       placeholder="Enter location's address" 
@@ -59,7 +61,7 @@ const AddLocationModal = ({ method }) => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-2" controlId="formBasicPassword">
-                    <Form.Label>Officer in Charge</Form.Label>
+                    <Form.Label>Officer in Charge <b className='text-danger'>*</b></Form.Label>
                     <Form.Control 
                       type="text" 
                       placeholder="Name of officer in charge" 

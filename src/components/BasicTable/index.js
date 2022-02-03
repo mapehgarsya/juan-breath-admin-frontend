@@ -4,7 +4,7 @@ import { useTable, useSortBy } from 'react-table'
 import { FaPen, FaTrash, FaQrcode, FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 
-function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editModalFunction}) {
+function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editModalFunction, deleteModalFunction}) {
 
     const columns = useMemo(() => columnHeads, [columnHeads])
     const data = useMemo(() => tableData, [tableData])
@@ -65,7 +65,7 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                 
                                             }
                                             // note you can merge this line of code even further
-                                            if (cell.column.Header==='Actions' && hasEdit && hasDelete) {
+                                            if (cell.column.Header==='Actions' && hasEdit && hasDelete && !hasQR) {
                                                 return <td className='iconBtnWrapper'>
                                                     <button className='iconBtn mr-10'>
                                                         <FaPen 
@@ -73,20 +73,28 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                         />
                                                     </button>
                                                     <button className='iconBtn'>
-                                                        <FaTrash />
+                                                        <FaTrash 
+                                                            onClick={() => deleteModalFunction()}
+                                                        />
                                                     </button>
                                                 </td>
                                             }
                                             else if (cell.column.Header==='Actions' && hasEdit && hasDelete && hasQR) {
                                                 return <td className='iconBtnWrapper'>
                                                     <button className='iconBtn mr-10' title="QR Code">
-                                                        <FaQrcode />
+                                                        <FaQrcode 
+                                                            
+                                                        />
                                                     </button>
                                                     <button className='iconBtn mr-10' title="Edit">
-                                                        <FaPen />
+                                                        <FaPen 
+                                                            onClick={() => editModalFunction(cell.row.original?._id)}
+                                                        />
                                                     </button>
                                                     <button className='iconBtn' title="Delete">
-                                                        <FaTrash />
+                                                        <FaTrash 
+                                                            onClick={() => deleteModalFunction()}
+                                                        />
                                                     </button>
                                                 </td>
                                             }
