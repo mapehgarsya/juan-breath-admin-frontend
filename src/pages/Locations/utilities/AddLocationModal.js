@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 // import package/s
 import { Modal, Form } from 'react-bootstrap'
 
-const AddLoc = ({ method }) => {
+const AddLocationModal = ({ method }) => {
     
   const [name, setLocationName] = useState('');
   const [address, setLocationAddress] = useState('');
@@ -14,16 +14,16 @@ const AddLoc = ({ method }) => {
   const onSubmit = () => {
     // create new instance of location for sending
 
-  const locationSchema = {
-      name: name,
-      address: address,
-      officerInCharge: officerInCharge
-    };
-    // pass the data to the method provided
-    method(locationSchema);
+    const locationSchema = {
+        name: name,
+        address: address,
+        officerInCharge: officerInCharge
+      };
+      // pass the data to the method provided
+      method(locationSchema);
 
-    // close the modal
-    setShow(false);
+      // close the modal
+      setShow(false);
   }
   return (
     <>
@@ -76,4 +76,4 @@ const AddLoc = ({ method }) => {
     );
   }
   
-export default AddLoc;
+export default AddLocationModal;

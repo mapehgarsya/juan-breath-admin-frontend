@@ -13,7 +13,7 @@ export const LogsCOLUMN = [
     },
     {
         Header: 'Officer in Charge',
-        accessor: 'officer'
+        accessor: 'officerInCharge'
     },
     {
         Header: 'Date',
@@ -40,7 +40,7 @@ export const LocationsCOLUMN = [
     },
     {
         Header: 'Officer in Charge',
-        accessor: 'officer'
+        accessor: 'officerInCharge'
     },
     {
         Header: 'Date Created',

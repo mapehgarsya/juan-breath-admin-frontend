@@ -3,7 +3,8 @@ import React, {useState, useEffect, useMemo} from 'react'
 import { useTable, useSortBy } from 'react-table'
 import { FaPen, FaTrash, FaQrcode, FaArrowDown, FaArrowUp } from "react-icons/fa";
 
-function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR }) {
+
+function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editModalFunction}) {
 
     const columns = useMemo(() => columnHeads, [columnHeads])
     const data = useMemo(() => tableData, [tableData])
@@ -62,10 +63,17 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR }) {
                                                 </tr>
                                             }
 
+                                            if(cell.column.Header === "Date Created" || cell.column.Header === "Date") {
+                                                return <td>{cell.row.original.createdAt?.split('T')[0]}</td>
+                                                
+                                            }
+
                                             if (cell.column.Header==='Actions' && hasEdit && hasDelete) {
                                                 return <td className='iconBtnWrapper'>
                                                     <button className='iconBtn mr-10'>
-                                                        <FaPen />
+                                                        <FaPen 
+                                                            onClick={editModalFunction}
+                                                        />
                                                     </button>
                                                     <button className='iconBtn'>
                                                         <FaTrash />

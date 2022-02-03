@@ -6,8 +6,11 @@ import { AdminsCOLUMN } from '../../components/BasicTable/columns';
 // component/s
 import HomeContainer from '../../components/HomeContainer';
 import BasicTable from '../../components/BasicTable';
+// utilitiess
+import EditAdminModal from './utilities/EditAdminModal';
 // apis
 import { getAllAdmins } from "../../services/admins/get";
+import AddAdminModal from './utilities/AddAdminModal';
 
 const AdminManagement = () => {
 
@@ -16,6 +19,11 @@ const AdminManagement = () => {
     const [showToast, setShowToast] = useState(false);
     const [toastStatue, setToastStatus] = useState('');
     const [toastMessage, setToastMessage] = useState('');
+
+    // Edit modal declarations
+    const [showEditModal, setShowEditModal] = useState(false);
+    const handleCloseShowEditModal = () => setShowEditModal(false);
+    const handleShowEditModal = () => setShowEditModal(true);
 
     // get all admin accounts
     const _getAllLocation = async () => {
@@ -41,7 +49,7 @@ const AdminManagement = () => {
             </Helmet>
             <div className='titleAndButtonDiv'>
                 <h1 className='contentTitle'>Admin Management</h1>
-                <button className='primaryBtn'>Add Admin</button>
+                <AddAdminModal />
             </div>
             <div className='contentDiv'>
                 <p className='tableCaption'>This table shows the list of other admins assigned in the system.</p>
@@ -51,8 +59,14 @@ const AdminManagement = () => {
                     hasDelete={true}
                     hasEdit={true}
                     hasQR={false}
+                    editModalFunction={handleShowEditModal}
                 />
             </div>
+            <EditAdminModal 
+                showFunction = {showEditModal}
+                onHideFunction = {handleCloseShowEditModal}
+                data = {admins}
+            />
                         
         </HomeContainer>
         
