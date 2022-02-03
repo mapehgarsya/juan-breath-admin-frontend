@@ -1,17 +1,9 @@
-import React, {useState,useContext} from 'react'
+import React from 'react'
 // import package/s
 import { Modal, Form } from 'react-bootstrap'
 
 
-const EditLocationModal = ({showFunction, onHideFunction, data}) => {
-
-    const id = data._id
-
-    const [name, setName] = useState(data.name)
-    const [address, setAddress] = useState(data.name)
-    const [officerInCharge, setOfficerInCharge] = useState(data.name)
-
-    // functions not working
+const EditLocationModal = ({ showFunction, onHideFunction, data, dataEditMethod, submitEditMethod }) => {
 
     return (
         <>
@@ -24,29 +16,32 @@ const EditLocationModal = ({showFunction, onHideFunction, data}) => {
                         <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Name</Form.Label>
                             <Form.Control 
-                            type="text"
-                            value={name}
-                            required
+                                type="text"
+                                value={data?.name}
+                                onChange={e => dataEditMethod(e.target.value, 'name')}
+                                required
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-2" controlId="formBasicPassword">
                             <Form.Label>Location Address</Form.Label>
                             <Form.Control 
-                            type="text"
-                            value={address}
-                            required
+                                type="text"
+                                value={data?.address}
+                                onChange={e => dataEditMethod(e.target.value, 'address')}
+                                required
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicPassword">
                             <Form.Label>Officer in Charge</Form.Label>
                             <Form.Control 
-                            type="text"
-                            value={officerInCharge} 
-                            required
+                                type="text"
+                                value={data?.officerInCharge} 
+                                onChange={e => dataEditMethod(e.target.value, 'officerInCharge')}
+                                required
                             />
                         </Form.Group>
-                        <button className='primaryBlockBtn'>Save Changes</button>
+                        <button className='primaryBlockBtn' onClick={() => submitEditMethod()}>Save Changes</button>
                     </>
                 </Modal.Body>
                 
