@@ -11,6 +11,7 @@ import ToastNotification from '../../components/Toast/index.js';
 // apis
 import { getAllLocations } from '../../services/locations/get.js';
 import { postOneLocation } from '../../services/locations/post.js';
+import { putOneLocation } from "../../services/locations/put"
 // modals
 import EditLocationModal from './utilities/EditLocationModal.js';
 
@@ -21,20 +22,33 @@ const Locations = () => {
     const [locations, setLocations] = useState([]);
     const [hasErrors, setHasErrors] = useState(false);
     const [showToast, setShowToast] = useState(false);
+    const [editId, setEditId] = useState('');
+    const [dataToBeEdit, setDataToBeEdit] = useState({ name: "", address: "", officerInCharge: "" });
     const [toastStatue, setToastStatus] = useState('');
     const [toastMessage, setToastMessage] = useState('');
 
     // Edit Modal Declarations
     const [showEditModal, setShowEditModal] = useState(false);
     const handleCloseShowEditModal = () => setShowEditModal(false);
-    const handleShowEditModal = () => setShowEditModal(true);
 
-    
+    const handleShowEditModal = (id) => {
+        setShowEditModal(true);
+        setEditId(id);
+
+        // filter the data requested for editing
+        const filterdData = locations.filter((location) => { return location._id === id })  
+        setDataToBeEdit(filterdData[0])
+    }
+    // modify the selected item
+    const handleDataEdit = (value, field) => {
+        setDataToBeEdit({...dataToBeEdit, [field]: value })
+    }
 
     const _getAllLocation = async () => {
         try {
             const locations = await getAllLocations();
             setLocations(locations.data?.data);
+            
         } catch (error) {
             setHasErrors(true);
             setLocations([]);
@@ -57,14 +71,33 @@ const Locations = () => {
         }
     }
 
+    const _putOneLocation = async () => {
+        try {
+            const newLocation = {
+                name: dataToBeEdit.name,
+                address: dataToBeEdit.address,
+                officerInCharge: dataToBeEdit.officerInCharge
+            }
+            const result = await putOneLocation(newLocation, editId);
+            if(result.data.success) {
+                // removed the edited data from the set
+                const filterdData = locations.filter((location) => { return location._id !== editId })
+                setLocations([...filterdData, result.data.data]);
+                 setShowToast(!showToast);
+                setShowEditModal(!showEditModal);
+                setToastMessage("Location has been updated successfully.");
+                setToastStatus('Success');
+            }
+        } catch (error) {
+            setShowToast(!showToast);
+            setToastMessage("Something went wrong.");
+            setToastStatus('Danger');
+        }
+    }
+
     useEffect(() => {
         _getAllLocation();
     }, []);
-
-    // Edit Modal Functions ---- not working
-    const EditLocation = (_id, editedLocation) => {
-        setLocations(locations.map((location) => location._id === _id ? editedLocation : location))
-    }
 
     return (
         <HomeContainer>
@@ -96,9 +129,11 @@ const Locations = () => {
                 }
             </div>
             <EditLocationModal 
-                    showFunction = {showEditModal}
-                    onHideFunction = {handleCloseShowEditModal}
-                    data = {locations}
+                showFunction = {showEditModal}
+                onHideFunction = {handleCloseShowEditModal}
+                data={dataToBeEdit}
+                dataEditMethod = {handleDataEdit}
+                submitEditMethod={_putOneLocation}
             />
             <ToastNotification
                 showToast={showToast}
