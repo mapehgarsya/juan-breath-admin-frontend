@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react'
+import React, { useMemo } from 'react'
 // import package/s
 import { useTable, useSortBy } from 'react-table'
 import { FaPen, FaTrash, FaQrcode, FaArrowDown, FaArrowUp } from "react-icons/fa";
@@ -8,8 +8,6 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
 
     const columns = useMemo(() => columnHeads, [columnHeads])
     const data = useMemo(() => tableData, [tableData])
-
-    const [hasErrors, setHasErrors] = useState(false);
 
     const tableInstance = useTable({
         columns,
@@ -27,7 +25,7 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
     return (
         <div className='customTableDiv'>
             {
-                !hasErrors && <table className='tableStyle' {...getTableProps()}>
+                <table className='tableStyle' {...getTableProps()}>
                     <thead>
                         {headerGroups.map((headerGroup) => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -50,7 +48,6 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                 return (
                                     <tr {...row.getRowProps()}>
                                         {row.cells.map((cell) => {
-                                            console.log(cell)
                                             if(cell.column.Header === "No.") {
                                                 return <tr>
                                                     <td>{i + 1}</td>
@@ -67,12 +64,12 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                 return <td>{cell.row.original.createdAt?.split('T')[0]}</td>
                                                 
                                             }
-
+                                            // note you can merge this line of code even further
                                             if (cell.column.Header==='Actions' && hasEdit && hasDelete) {
                                                 return <td className='iconBtnWrapper'>
                                                     <button className='iconBtn mr-10'>
                                                         <FaPen 
-                                                            onClick={editModalFunction}
+                                                            onClick={() => editModalFunction(cell.row.original?._id)}
                                                         />
                                                     </button>
                                                     <button className='iconBtn'>
