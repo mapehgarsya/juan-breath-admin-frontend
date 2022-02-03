@@ -1,0 +1,9 @@
+.deleteModalTitle, .deleteLocationName {
+    color: var(--red);
+    font-weight: 700;
+}
+
+.editModalTitle, .addModalTitle {
+    color: var(--primary);
+    font-weight: 700;
+}
