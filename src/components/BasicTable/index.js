@@ -74,7 +74,7 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                     </button>
                                                     <button className='iconBtn'>
                                                         <FaTrash 
-                                                            onClick={() => deleteModalFunction()}
+                                                            onClick={() => deleteModalFunction(cell.row.original?._id)}
                                                         />
                                                     </button>
                                                 </td>
@@ -93,7 +93,7 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                     </button>
                                                     <button className='iconBtn' title="Delete">
                                                         <FaTrash 
-                                                            onClick={() => deleteModalFunction()}
+                                                            onClick={() => deleteModalFunction(cell.row.original?._id)}
                                                         />
                                                     </button>
                                                 </td>
