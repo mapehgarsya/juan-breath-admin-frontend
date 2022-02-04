@@ -12,6 +12,7 @@ import ToastNotification from '../../components/Toast/index.js';
 import { getAllLocations } from '../../services/locations/get.js';
 import { postOneLocation } from '../../services/locations/post.js';
 import { putOneLocation } from "../../services/locations/put"
+import { deleteOneLocations } from '../../services/locations/delete.js';
 // modals
 import EditLocationModal from './utilities/EditLocationModal.js';
 import DeleteLocationModal from './utilities/DeleteLocationModal.js';
@@ -24,7 +25,9 @@ const Locations = () => {
     const [hasErrors, setHasErrors] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const [editId, setEditId] = useState('');
+    const [deleteId, setDeleteId] = useState('');
     const [dataToBeEdit, setDataToBeEdit] = useState({ name: "", address: "", officerInCharge: "" });
+    const [dataToBeDeleted, setDataToBeDeleted] = useState('');
     const [toastStatue, setToastStatus] = useState('');
     const [toastMessage, setToastMessage] = useState('');
 
@@ -35,7 +38,14 @@ const Locations = () => {
     //Delete Modal Declarations
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const handleCloseShowDeleteModal = () => setShowDeleteModal(false);
-    const handleShowDeleteModal = () => setShowDeleteModal(true)
+
+    const handleShowDeleteModal = (id) => {
+        setShowDeleteModal(true)
+        setDeleteId(id)
+        // filter the data requested for editing
+        const filterdData = locations.filter((location) => { return location._id === id })  
+        setDataToBeDeleted(filterdData[0]?.name)
+    }
 
     // Edit Modal Functions
     const handleShowEditModal = (id) => {
@@ -90,9 +100,29 @@ const Locations = () => {
                 // removed the edited data from the set
                 const filterdData = locations.filter((location) => { return location._id !== editId })
                 setLocations([...filterdData, result.data.data]);
-                    setShowToast(!showToast);
+                setShowToast(!showToast);
                 setShowEditModal(!showEditModal);
                 setToastMessage("Location has been updated successfully.");
+                setToastStatus('Success');
+            }
+        } catch (error) {
+            setShowToast(!showToast);
+            setToastMessage("Something went wrong.");
+            setToastStatus('Danger');
+        }
+    }
+
+    const _deleteOneLocation = async () => {
+        try {
+            const result = await deleteOneLocations(deleteId);
+            console.log(result)
+            if(result.data.success){
+                // filter the data requested for editing
+                const filterdData = locations.filter((location) => { return location._id !== deleteId })  
+                setLocations([...filterdData]);
+                setShowToast(!showToast);
+                 setShowDeleteModal(!showDeleteModal)
+                setToastMessage("Location has been deleted successfully.");
                 setToastStatus('Success');
             }
         } catch (error) {
@@ -146,7 +176,8 @@ const Locations = () => {
             <DeleteLocationModal
                 showFunction = {showDeleteModal}
                 onHideFunction = {handleCloseShowDeleteModal}
-                data = {dataToBeEdit} //replace with data that will be deleted
+                data = {dataToBeDeleted}
+                submitDeleteMethod={_deleteOneLocation}
             />
             <ToastNotification
                 showToast={showToast}
