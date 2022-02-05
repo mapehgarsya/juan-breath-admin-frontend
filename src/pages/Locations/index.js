@@ -116,7 +116,6 @@ const Locations = () => {
     const _deleteOneLocation = async () => {
         try {
             const result = await deleteOneLocations(deleteId);
-            console.log(result)
             if(result.data.success){
                 // filter the data requested for editing
                 const filterdData = locations.filter((location) => { return location._id !== deleteId })  

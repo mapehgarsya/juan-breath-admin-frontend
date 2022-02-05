@@ -8,14 +8,16 @@ import ToastNotification from '../../components/Toast/index.js';
 import HomeContainer from '../../components/HomeContainer';
 import BasicTable from '../../components/BasicTable';
 // utilitiess
+import AddAdminModal from './utilities/AddAdminModal';
+import DeleteAdminModal from './utilities/DeleteAdminModal';
 import EditAdminModal from './utilities/EditAdminModal';
 // apis
 import { getAllAdmins } from "../../services/admins/get";
 import { getAllLocations } from '../../services/locations/get';
 import { getAllRoles } from "../../services/roles/get";
+import { deleteOneAdmin } from "../../services/admins/delete"
 import { postOneAdmin } from "../../services/admins/post";
-import AddAdminModal from './utilities/AddAdminModal';
-import DeleteAdminModal from './utilities/DeleteAdminModal';
+
 
 const AdminManagement = () => {
 
@@ -26,6 +28,8 @@ const AdminManagement = () => {
     const [showToast, setShowToast] = useState(false);
     const [toastStatue, setToastStatus] = useState('');
     const [toastMessage, setToastMessage] = useState('');
+    const [deleteId, setDeleteId] = useState('');
+    const [dataToBeDeleted, setDataToBeDeleted] = useState('');
 
     // add modal declaration
     const [showAddModal, setShowAddModal] = useState(false)
@@ -35,11 +39,18 @@ const AdminManagement = () => {
     const handleCloseShowEditModal = () => setShowEditModal(false);
     const handleShowEditModal = () => setShowEditModal(true);
 
-    // Delete modal declarations
+    //Delete Modal Declarations
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const handleCloseShowDeleteModal = () => setShowDeleteModal(false);
-    const handleShowDeleteModal = () => setShowDeleteModal(true);
 
+    const handleShowDeleteModal = (id) => {
+        setShowDeleteModal(true)
+        setDeleteId(id)
+        // filter the data requested for editing
+        const filterdData = admins.filter((admin) => { return admin._id === id })  
+        setDataToBeDeleted(`${filterdData[0]?.firstName + " " + filterdData[0]?.middleName + " " + filterdData[0]?.lastName}`)
+    }
+    
     // get all admin accounts
     const _getAllAdmins = async () => {
         try {
@@ -87,6 +98,7 @@ const AdminManagement = () => {
             setToastStatus('Danger');
         }
     }
+
     // this function will remove the error messages displayed on the form
     const handleClearError = (field) => {
         for(let i=0; i< errorMsg.length; i++) {
@@ -95,7 +107,28 @@ const AdminManagement = () => {
             }
         }
         setErrorMsg([...errorMsg])
-    }   
+    }
+    
+    // this will handle the deleting section of the admin
+    const _deleteOneAdmin = async () => {    
+        try {
+            const result = await deleteOneAdmin(deleteId);
+            if(result.data.success) {
+                 // filter the data requested for editing
+                const filterdData = admins.filter((admin) => { return admin._id !== deleteId })  
+                setAdmins([...filterdData]);
+                setShowToast(!showToast);
+                setShowDeleteModal(!showDeleteModal)
+                setToastMessage("Admin account has been deleted successfully.");
+                setToastStatus('Success');
+            }
+            console.log(result)
+        } catch (error) {
+            setShowToast(!showToast);
+            setToastMessage("Something went wrong.");
+            setToastStatus('Danger');
+        }
+    }
 
     // this function will auto run on mount
     useEffect(() => {
@@ -143,7 +176,8 @@ const AdminManagement = () => {
             <DeleteAdminModal
                 showFunction = {showDeleteModal}
                 onHideFunction = {handleCloseShowDeleteModal}
-                data = {admins}
+                data = {dataToBeDeleted}
+                submitDeleteMethod={_deleteOneAdmin}
             />          
             <ToastNotification
                 showToast={showToast}
