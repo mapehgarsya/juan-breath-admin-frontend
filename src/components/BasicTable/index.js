@@ -67,12 +67,12 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                             // note you can merge this line of code even further
                                             if (cell.column.Header==='Actions' && hasEdit && hasDelete && !hasQR) {
                                                 return <td className='iconBtnWrapper'>
-                                                    <button className='iconBtn mr-10'>
+                                                    <button className='iconBtn mr-10' title="Edit">
                                                         <FaPen 
                                                             onClick={() => editModalFunction(cell.row.original?._id)}
                                                         />
                                                     </button>
-                                                    <button className='iconBtn'>
+                                                    <button className='iconBtn' title="Delete">
                                                         <FaTrash 
                                                             onClick={() => deleteModalFunction(cell.row.original?._id)}
                                                         />

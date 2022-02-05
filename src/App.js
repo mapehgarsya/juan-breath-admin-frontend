@@ -9,10 +9,10 @@ import Dashboard from './pages/Dashboard';
 import Locations from './pages/Locations';
 import ContactTracingLogs from './pages/ContactTracingLogs';
 import AdminManagement from './pages/AdminManagement';
+import RolesAndPermissions from './pages/RolesAndPermissions';
 
 //utilities
 import jwt_decode from 'jwt-decode';
-import AddLocationModal from './pages/Locations/utilities/AddLocationModal';
 
 // axios interceptors
 import axios from 'axios';
@@ -85,12 +85,11 @@ function App() {
               </RequireAuth>
             } 
           />
-          {/* utilities */}
           <Route 
-            path="/locations/add-location" 
+            path="/roles-and-permissions" 
             element={
               <RequireAuth>
-                <AddLocationModal/>
+                <RolesAndPermissions/>
               </RequireAuth>
             } 
           />

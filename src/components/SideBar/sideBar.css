@@ -24,6 +24,12 @@
     font-weight: 700;
     margin-bottom: 0;
 }
+.companyName2 {
+    color: var(--primary);
+    font-size: .7rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
 
 .sideBarItems {
     display: flex;
