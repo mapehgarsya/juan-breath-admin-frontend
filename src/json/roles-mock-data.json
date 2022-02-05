@@ -1,0 +1,6 @@
+[
+    {
+        "role": "superAdmin",
+        "permissions": "ALL"
+    }
+]

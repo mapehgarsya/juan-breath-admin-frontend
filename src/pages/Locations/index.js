@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import AddLocationModal from './utilities/AddLocationModal.js';
 // import package/s
 import Helmet from 'react-helmet';
 // component/s
@@ -13,6 +12,7 @@ import { getAllLocations } from '../../services/locations/get.js';
 import { postOneLocation } from '../../services/locations/post.js';
 import { putOneLocation } from "../../services/locations/put"
 // modals
+import AddLocationModal from './utilities/AddLocationModal.js';
 import EditLocationModal from './utilities/EditLocationModal.js';
 import DeleteLocationModal from './utilities/DeleteLocationModal.js';
 

@@ -75,3 +75,19 @@ export const AdminsCOLUMN = [
         accessor: 'none'
     }
 ]
+
+export const RolesAndPermissionsCOLUMNS = [
+    {
+        Header: 'No.',
+        accessor: ''
+    },
+    {
+        Header: 'Role',
+        accessor: 'role'
+    },
+    {
+        Header: 'Permissions',
+        accessor: 'permissions'
+    },
+    
+]
