@@ -250,3 +250,10 @@ a:hover {
   margin-bottom: 20px;
   right: 1.2em !important;
 }
+
+/* form error display */
+.form-error-display {
+  margin-bottom: 0!important;
+  font-size: 12px;
+  color: var(--red);
+}
