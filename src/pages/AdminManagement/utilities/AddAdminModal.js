@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 // import package/s
 import { Modal, Form } from 'react-bootstrap'
+import { FormError } from '../../../components/ErrorDisplay/FormError';
 
-const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show }) => {
+const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show, errorMsg, handleClearError }) => {
     
     const [firstName, setFirstName] = useState('');
     const [middleName, setMiddleName] = useState('');
@@ -12,6 +13,45 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
     const [email, setEmail] = useState('');
     const [locationAssigned, setlocationAssigned] = useState('');
     const [role, setRole] = useState('');
+
+    const handleinput = (field, value) => {
+        switch(field) {
+            case 'firstName': 
+                setFirstName(value)
+                handleClearError(field)
+                break;
+            case 'middleName': 
+                setMiddleName(value)
+                handleClearError(field)
+                break;
+            case 'lastName': 
+                setLastName(value)
+                handleClearError(field)
+                break;
+            case 'suffix': 
+                setSuffix(value)
+                handleClearError(field)
+                break;
+            case 'username': 
+                setAdminUsername(value)
+                handleClearError(field)
+                break;
+            case 'email': 
+                setEmail(value)
+                handleClearError(field)
+                break;
+            case 'assignedLocation': 
+                setlocationAssigned(value)
+                handleClearError(field)
+                break;
+            case 'role': 
+                setRole(value)
+                handleClearError(field)
+                break;
+            default: 
+                setFirstName('')
+        }
+    }
 
     const onSubmit = () => {
         // create new instance of location for sending
@@ -46,51 +86,84 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
                             <Form.Label>First Name <b className='text-danger'>*</b></Form.Label>
                             <Form.Control 
                                 type="text" 
-                                onChange={e => setFirstName(e.target.value)}
+                                onChange={e => handleinput('firstName', e.target.value)}
                                 required
+                            />
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="firstName"
+                                replaceControl="First name"
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Middle Name</Form.Label>
                             <Form.Control 
                                 type="text" 
-                                onChange={e => setMiddleName(e.target.value)}
+                                onChange={e => handleinput('middleName',e.target.value)}
+                            />
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="middleName"
+                                replaceControl="Middle name"
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Last Name <b className='text-danger'>*</b></Form.Label>
                             <Form.Control 
                                 type="text" 
-                                onChange={e => setLastName(e.target.value)}
+                                onChange={e => handleinput('lastName',e.target.value)}
                                 required
+                            />
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="lastName"
+                                replaceControl="Last name"
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Suffix</Form.Label>
                             <Form.Control 
                                 type="text" 
-                                onChange={e => setSuffix(e.target.value)}
+                                onChange={e => handleinput('suffix',e.target.value)}
+                            />
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="suffix"
+                                replaceControl="Suffix"
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Username <b className='text-danger'>*</b></Form.Label>
                             <Form.Control 
                                 type="text" 
-                                onChange={e => setAdminUsername(e.target.value)}
+                                onChange={e => handleinput('username',e.target.value)}
                                 required
+                            />
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="username"
+                                replaceControl="Username"
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Email <b className='text-danger'>*</b></Form.Label>
                             <Form.Control 
                                 type="text" 
-                                onChange={e => setEmail(e.target.value)}
+                                onChange={e => handleinput('email',e.target.value)}
                                 required
+                            />
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="email"
+                                replaceControl="Email"
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicPassword">
                             <Form.Label>Location Assigned <b className='text-danger'>*</b></Form.Label>
-                            <Form.Select aria-label="Location List" onChange={e => setlocationAssigned(e.target.value)}>
+                            <Form.Select 
+                                aria-label="Location List" 
+                                onChange={e => handleinput('assignedLocation',e.target.value)}
+                            >
                                 <option selected disabled>Choose a location</option>
                                 {
                                     locations?.map((location, i) => {
@@ -98,10 +171,18 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
                                     })
                                 }
                             </Form.Select>
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="location"
+                                replaceControl="Location"
+                            />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Role <b className='text-danger'>*</b></Form.Label>
-                            <Form.Select aria-label="Roles List" onChange={e => setRole(e.target.value)}>
+                            <Form.Select 
+                                aria-label="Roles List" 
+                                onChange={e => handleinput('role',e.target.value)}
+                            >
                                 <option selected disabled>Choose a Role</option>
                                 {
                                     roles?.map((role, i) => {
@@ -109,6 +190,11 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
                                     })
                                 }
                             </Form.Select>
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="role"
+                                replaceControl="Role"
+                            />
                         </Form.Group>
                         <button className='primaryBlockBtn' onClick={() => onSubmit()}>Add Admin</button>
                     </>
