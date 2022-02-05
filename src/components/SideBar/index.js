@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '../../media/logo-Blue.png'
 import './sideBar.css'
 // import icon/s
-import { FaChartBar, FaMapMarkerAlt, FaAlignJustify, FaUserFriends } from "react-icons/fa";
+import { FaChartBar, FaMapMarkerAlt, FaAlignJustify, FaUserFriends, FaIdBadge } from "react-icons/fa";
 import { MdPhonelinkSetup } from "react-icons/md"
 import {BsPhoneFill} from "react-icons/bs"
 
@@ -12,7 +12,10 @@ const Sidebar = () => {
         <div className='sideBarContainer'>
             <div className='companyGrp'>
                 <img src={logo} alt='logo' height={45} className='companyLogo'/>
-                <h4 className='companyName'>JuanBreath</h4>
+                <div className='TitleCont'>
+                    <h4 className='companyName'>JuanBreath</h4> 
+                    <p className='companyName2'>ADMIN</p>
+                </div>
             </div>
             <li className='sideBarItems'>
                 <a href='/dashboard' className='sideBarItem'>
@@ -31,6 +34,10 @@ const Sidebar = () => {
                 <a  href='/admin-management' className='sideBarItem'>
                     <FaUserFriends className='mr-10'/>
                     Admin Management
+                </a>
+                <a  href='/roles-and-permissions' className='sideBarItem'>
+                    <FaIdBadge className='mr-10'/>
+                    Roles &amp; Permissions
                 </a>
                 <a  href='#' className='sideBarItem'>
                     {/* <MdPhonelinkSetup className='mr-10'/> */}
