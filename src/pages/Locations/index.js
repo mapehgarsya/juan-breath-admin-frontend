@@ -20,7 +20,7 @@ import DeleteLocationModal from './utilities/DeleteLocationModal.js';
 
 
 const Locations = () => {
-
+    // location default state
     const [locations, setLocations] = useState([]);
     const [hasErrors, setHasErrors] = useState(false);
     const [showToast, setShowToast] = useState(false);
@@ -30,6 +30,7 @@ const Locations = () => {
     const [dataToBeDeleted, setDataToBeDeleted] = useState('');
     const [toastStatue, setToastStatus] = useState('');
     const [toastMessage, setToastMessage] = useState('');
+
 
     // Edit Modal Declarations
     const [showEditModal, setShowEditModal] = useState(false);
@@ -71,7 +72,7 @@ const Locations = () => {
             setLocations([]);
         }
     }
-
+    // send the data to the backend to be created
     const _postOneLocation = async (data) => {
         try {
             const result = await postOneLocation(data);
