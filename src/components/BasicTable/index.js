@@ -54,7 +54,7 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                 </tr>
                                             }
 
-                                            if(cell.column.Header === "Faculty in Charge") {
+                                            if(cell.column.Header === "Faculty Name") {
                                                 return <tr>
                                                     <td>{cell.row.original.firstName + " " + cell.row.original.middleName?.toUpperCase() + ". " + cell.row.original.lastName}</td>
                                                 </tr>

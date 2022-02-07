@@ -63,8 +63,16 @@ export const AdminsCOLUMN = [
         accessor: 'username'
     },
     {
-        Header: 'Faculty in Charge',
+        Header: 'Faculty Name',
         accessor: ''
+    },
+    {
+        Header: 'Email',
+        accessor: 'email'
+    },
+    {
+        Header: 'Role',
+        accessor: 'role'
     },
     {
         Header: 'Location Assigned',
