@@ -147,6 +147,9 @@ const AdminManagement = () => {
             }
         } catch (error) {
             setShowToast(!showToast);
+            if(error.response?.status === 400) {
+                setErrorMsg(error.response?.data.message.split('.'))
+            }
             setToastMessage("Something went wrong.");
             setToastStatus('Danger');
         }
@@ -213,6 +216,7 @@ const AdminManagement = () => {
             </div>
             <EditAdminModal 
                 showFunction = {showEditModal}
+                errorMsg={errorMsg}
                 onHideFunction = {handleCloseShowEditModal}
                 dataEditMethod={handleDataEdit}
                 submitEditMethod={_putOneAdmin}

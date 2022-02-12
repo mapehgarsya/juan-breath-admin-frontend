@@ -1,9 +1,8 @@
 import React from 'react';
 import { Modal, Form, Col, Row } from 'react-bootstrap'
+import { FormError } from '../../../components/ErrorDisplay/FormError';
 
-
-const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, locations, submitEditMethod, data}) => {
-    console.log(data)
+const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, errorMsg, locations, submitEditMethod, data}) => {
     return (
         <>
             <Modal show={showFunction} size="lg" onHide={onHideFunction}>
@@ -22,6 +21,11 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                         onChange={e => dataEditMethod(e.target.value, 'firstName')}
                                         required
                                     />
+                                    <FormError
+                                        errorMessages={errorMsg}
+                                        field="lastName"
+                                        replaceControl="Last name"
+                                    />
                                 </Form.Group>
                             </Col>
                             <Col>
@@ -31,6 +35,11 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                         type="text" 
                                         value={data?.middleName}
                                         onChange={e => dataEditMethod(e.target.value, 'middleName')}
+                                    />
+                                    <FormError
+                                        errorMessages={errorMsg}
+                                        field="middleName"
+                                        replaceControl="Middle name"
                                     />
                                 </Form.Group>
                             </Col>
@@ -43,6 +52,11 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                         onChange={e => dataEditMethod(e.target.value, 'lastName')}
                                         required
                                     />
+                                    <FormError
+                                        errorMessages={errorMsg}
+                                        field="lastName"
+                                        replaceControl="Last name"
+                                    />
                                 </Form.Group>
                             </Col>
                             <Col lg={'auto'}>
@@ -52,6 +66,11 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                         type="text"
                                         value={data?.suffix}
                                         onChange={e => dataEditMethod(e.target.value, 'suffix')}
+                                    />
+                                    <FormError
+                                        errorMessages={errorMsg}
+                                        field="suffix"
+                                        replaceControl="Suffix"
                                     />
                                 </Form.Group>
                             </Col>
@@ -64,6 +83,11 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                 onChange={e => dataEditMethod(e.target.value, 'username')}
                                 required
                             />
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="username"
+                                replaceControl="Username"
+                            />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Email <b className='text-danger'>*</b></Form.Label>
@@ -72,6 +96,11 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                 value={data?.email}
                                 onChange={e => dataEditMethod(e.target.value, 'email')}
                                 required
+                            />
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="email"
+                                replaceControl="Email"
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicPassword">
@@ -84,6 +113,11 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                     })
                                 }
                             </Form.Select>
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="locationASsigned"
+                                replaceControl="Location Assigned"
+                            />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Role <b className='text-danger'>*</b></Form.Label>
@@ -95,6 +129,11 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                     })
                                 }
                             </Form.Select>
+                            <FormError
+                                errorMessages={errorMsg}
+                                field="role"
+                                replaceControl="Role"
+                            />
                         </Form.Group>
                         <div className='full-page-modal-save-button'>
                             <button className='primaryBlockBtn' onClick={() => submitEditMethod()}>Update Account Changes</button>
