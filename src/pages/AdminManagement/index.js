@@ -16,6 +16,7 @@ import { getAllAdmins } from "../../services/admins/get";
 import { getAllLocations } from '../../services/locations/get';
 import { getAllRoles } from "../../services/roles/get";
 import { deleteOneAdmin } from "../../services/admins/delete"
+import { putOneAdmin } from '../../services/admins/put';
 import { postOneAdmin } from "../../services/admins/post";
 
 
@@ -121,6 +122,36 @@ const AdminManagement = () => {
         setErrorMsg([...errorMsg])
     }
     
+    // this will handle the editing section of the admin
+    const _putOneAdmin = async () => {
+        try {
+            const newLocation = {
+                firstName: dataToBeEdit.firstName,
+                middleName: dataToBeEdit.middleName,
+                lastName: dataToBeEdit.lastName,
+                suffix: dataToBeEdit.suffix,
+                username: dataToBeEdit.username,
+                email: dataToBeEdit.email,
+                locationAssigned: dataToBeEdit.locationAssigned,
+                role: dataToBeEdit.role
+            }
+            const result = await putOneAdmin(newLocation, editId);
+            if(result.data.success) {
+                // removed the edited data from the set
+                const filterdData = admins.filter((admin) => { return admin._id !== editId })
+                setAdmins([...filterdData, result.data.data]);
+                setShowToast(!showToast);
+                setShowEditModal(!showEditModal);
+                setToastMessage("Admin account has been updated successfully.");
+                setToastStatus('Success');
+            }
+        } catch (error) {
+            setShowToast(!showToast);
+            setToastMessage("Something went wrong.");
+            setToastStatus('Danger');
+        }
+    }
+
     // this will handle the deleting section of the admin
     const _deleteOneAdmin = async () => {    
         try {
@@ -160,8 +191,8 @@ const AdminManagement = () => {
                 <AddAdminModal 
                     show={showAddModal}
                     errorMsg={errorMsg}
-                    handleClose={() => setShowAddModal(!showAddModal)}
-                    handleShow={() => setShowAddModal(!showAddModal)}
+                    handleClose={() => { setShowAddModal(!showAddModal); setErrorMsg([]) }}
+                    handleShow={() => { setShowAddModal(!showAddModal); setErrorMsg([]) }}
                     roles={roles}
                     locations={locations}
                     method={_postOneAdmin}
@@ -184,6 +215,7 @@ const AdminManagement = () => {
                 showFunction = {showEditModal}
                 onHideFunction = {handleCloseShowEditModal}
                 dataEditMethod={handleDataEdit}
+                submitEditMethod={_putOneAdmin}
                 roles={roles}
                 locations={locations}
                 data={dataToBeEdit}

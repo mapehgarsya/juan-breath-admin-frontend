@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Form, Col, Row } from 'react-bootstrap'
 
 
-const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, locations, data}) => {
+const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, locations, submitEditMethod, data}) => {
     console.log(data)
     return (
         <>
@@ -19,6 +19,7 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                     <Form.Control 
                                         type="text" 
                                         value={data?.firstName}
+                                        onChange={e => dataEditMethod(e.target.value, 'firstName')}
                                         required
                                     />
                                 </Form.Group>
@@ -29,6 +30,7 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                     <Form.Control 
                                         type="text" 
                                         value={data?.middleName}
+                                        onChange={e => dataEditMethod(e.target.value, 'middleName')}
                                     />
                                 </Form.Group>
                             </Col>
@@ -38,6 +40,7 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                     <Form.Control 
                                         type="text"
                                         value={data?.lastName}
+                                        onChange={e => dataEditMethod(e.target.value, 'lastName')}
                                         required
                                     />
                                 </Form.Group>
@@ -48,6 +51,7 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                                     <Form.Control 
                                         type="text"
                                         value={data?.suffix}
+                                        onChange={e => dataEditMethod(e.target.value, 'suffix')}
                                     />
                                 </Form.Group>
                             </Col>
@@ -57,6 +61,7 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                             <Form.Control 
                                 type="text"
                                 value={data?.username}
+                                onChange={e => dataEditMethod(e.target.value, 'username')}
                                 required
                             />
                         </Form.Group>
@@ -65,12 +70,13 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                             <Form.Control 
                                 type="email"
                                 value={data?.email}
+                                onChange={e => dataEditMethod(e.target.value, 'email')}
                                 required
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicPassword">
                             <Form.Label>Location Assigned <b className='text-danger'>*</b></Form.Label>
-                            <Form.Select aria-label="Default select example">
+                            <Form.Select aria-label="Default select example" onChange={e => dataEditMethod(e.target.value, 'locationAssigned')}>
                                 <option selected disabled>{data?.locationAssigned}</option>
                                 {
                                     locations?.map((location, i) => {
@@ -81,7 +87,7 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Role <b className='text-danger'>*</b></Form.Label>
-                            <Form.Select aria-label="Default select example">
+                            <Form.Select aria-label="Default select example" onChange={e => dataEditMethod(e.target.value, 'role')}>
                                 <option selected disabled>{data?.role}</option>
                                 {
                                     roles?.map((role, i) => {
@@ -91,7 +97,7 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, lo
                             </Form.Select>
                         </Form.Group>
                         <div className='full-page-modal-save-button'>
-                            <button className='primaryBlockBtn'>Update Account Changes</button>
+                            <button className='primaryBlockBtn' onClick={() => submitEditMethod()}>Update Account Changes</button>
                         </div>
                     </div>
                 </Modal.Body>

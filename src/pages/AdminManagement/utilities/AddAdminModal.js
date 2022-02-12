@@ -167,7 +167,7 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
                             />
                         </Form.Group>
                         <Form.Group className="mb-2" controlId="formBasicPassword">
-                            <Form.Label>Location Assigned <b className='text-danger'>*</b></Form.Label>
+                            <Form.Label>Location Assigned</Form.Label>
                             <Form.Select 
                                 aria-label="Location List" 
                                 onChange={e => handleinput('assignedLocation',e.target.value)}
@@ -181,7 +181,7 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
                             </Form.Select>
                             <FormError
                                 errorMessages={errorMsg}
-                                field="location"
+                                field="locationAssigned"
                                 replaceControl="Location"
                             />
                         </Form.Group>
