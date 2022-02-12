@@ -77,7 +77,7 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
                     <Modal.Title className='addModalTitle wide-modal-title'>Create a new Administrator Account</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className='content-center-modal'>
+                    <div >
                         <p className='form-notice'> This form will let you add a new admin to the system.Please fill in the details for the new admin.</p>
                         <p className='form-notice'>The account's password will be sent directly to the email address provided.</p>
                         <Row className='mt-4'>

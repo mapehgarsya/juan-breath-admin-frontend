@@ -10,11 +10,11 @@ const EditLocationModal = ({ showFunction, onHideFunction, data, dataEditMethod,
     return (
         <>
             <Modal show={showFunction} onHide={onHideFunction}>
-                <Modal.Header closeButton >
-                    <Modal.Title className='editModalTitle'>Edit a Location</Modal.Title>
+                <Modal.Header className='modal-header-bg' closeButton >
+                    <Modal.Title className='editModalTitle wide-modal-title'>Update Location</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <>
+                    <div className='content-center-modal'>
                         <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Name <b className='text-danger'>*</b></Form.Label>
                             <Form.Control 
@@ -43,8 +43,10 @@ const EditLocationModal = ({ showFunction, onHideFunction, data, dataEditMethod,
                                 required
                             />
                         </Form.Group>
-                        <button className='primaryBlockBtn' onClick={() => submitEditMethod()}>Save Changes</button>
-                    </>
+                        <div className='full-page-modal-save-button'>
+                            <button className='primaryBlockBtn' onClick={() => submitEditMethod()}>Update Changes</button>
+                        </div>
+                    </div>
                 </Modal.Body>
                 
             </Modal>

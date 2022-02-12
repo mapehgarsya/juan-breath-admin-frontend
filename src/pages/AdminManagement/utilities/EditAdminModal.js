@@ -136,7 +136,7 @@ const EditAdminModal = ({showFunction, onHideFunction, dataEditMethod, roles, er
                             />
                         </Form.Group>
                         <div className='full-page-modal-save-button'>
-                            <button className='primaryBlockBtn' onClick={() => submitEditMethod()}>Update Account Changes</button>
+                            <button className='primaryBlockBtn' onClick={() => submitEditMethod()}>Update Changes</button>
                         </div>
                     </div>
                 </Modal.Body>
