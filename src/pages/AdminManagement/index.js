@@ -110,6 +110,7 @@ const AdminManagement = () => {
     // modify the selected item
     const handleDataEdit = (value, field) => {
         setDataToBeEdit({...dataToBeEdit, [field]: value })
+        handleClearError(field)
     }
 
     // this function will remove the error messages displayed on the form
