@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 // import package/s
-import { Modal, Form } from 'react-bootstrap'
+import { Modal, Form, Row, Col } from 'react-bootstrap'
 import { FormError } from '../../../components/ErrorDisplay/FormError';
 
 const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show, errorMsg, handleClearError }) => {
@@ -72,66 +72,74 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
     return (
         <>
             <button className='primaryBtn' onClick={handleShow}>Add Admin</button>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton >
-                    <Modal.Title className='addModalTitle'>Add an Admin</Modal.Title>
+            <Modal show={show} size="lg" onHide={handleClose}>
+                <Modal.Header className='modal-header-bg' closeButton>
+                    <Modal.Title className='addModalTitle wide-modal-title'>Create a new administrator account</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <>
-                        <Form.Text>
-                            This form will let you add a new admin to the system.
-                            Please fill in the details for the new admin.
-                        </Form.Text>
-                        <Form.Group className="mb-2 mt-2" controlId="formBasicEmail">
-                            <Form.Label>First Name <b className='text-danger'>*</b></Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                onChange={e => handleinput('firstName', e.target.value)}
-                                required
-                            />
-                            <FormError
-                                errorMessages={errorMsg}
-                                field="firstName"
-                                replaceControl="First name"
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-2" controlId="formBasicEmail">
-                            <Form.Label>Middle Name</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                onChange={e => handleinput('middleName',e.target.value)}
-                            />
-                            <FormError
-                                errorMessages={errorMsg}
-                                field="middleName"
-                                replaceControl="Middle name"
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-2" controlId="formBasicEmail">
-                            <Form.Label>Last Name <b className='text-danger'>*</b></Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                onChange={e => handleinput('lastName',e.target.value)}
-                                required
-                            />
-                            <FormError
-                                errorMessages={errorMsg}
-                                field="lastName"
-                                replaceControl="Last name"
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-2" controlId="formBasicEmail">
-                            <Form.Label>Suffix</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                onChange={e => handleinput('suffix',e.target.value)}
-                            />
-                            <FormError
-                                errorMessages={errorMsg}
-                                field="suffix"
-                                replaceControl="Suffix"
-                            />
-                        </Form.Group>
+                    <div className='content-center-modal'>
+                        <p className='form-notice'> This form will let you add a new admin to the system.Please fill in the details for the new admin.</p>
+                        <p className='form-notice'>The account's password will be sent directly to the email address provided.</p>
+                        <Row className='mt-4'>
+                            <Col>
+                                <Form.Group className="mb-2" controlId="formBasicEmail">
+                                    <Form.Label>First Name <b className='text-danger'>*</b></Form.Label>
+                                    <Form.Control 
+                                        type="text" 
+                                        onChange={e => handleinput('firstName', e.target.value)}
+                                        required
+                                    />
+                                    <FormError
+                                        errorMessages={errorMsg}
+                                        field="firstName"
+                                        replaceControl="First name"
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group className="mb-2" controlId="formBasicEmail">
+                                    <Form.Label>Middle Name</Form.Label>
+                                    <Form.Control 
+                                        type="text" 
+                                        onChange={e => handleinput('middleName',e.target.value)}
+                                    />
+                                    <FormError
+                                        errorMessages={errorMsg}
+                                        field="middleName"
+                                        replaceControl="Middle name"
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group className="mb-2" controlId="formBasicEmail">
+                                    <Form.Label>Last Name <b className='text-danger'>*</b></Form.Label>
+                                    <Form.Control 
+                                        type="text" 
+                                        onChange={e => handleinput('lastName',e.target.value)}
+                                        required
+                                    />
+                                    <FormError
+                                        errorMessages={errorMsg}
+                                        field="lastName"
+                                        replaceControl="Last name"
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col lg={'auto'}>
+                                <Form.Group className="mb-2 small-input" controlId="formBasicEmail">
+                                    <Form.Label>Suffix</Form.Label>
+                                    <Form.Control 
+                                        type="text" 
+                                        onChange={e => handleinput('suffix',e.target.value)}
+                                    />
+                                    <FormError
+                                        errorMessages={errorMsg}
+                                        field="suffix"
+                                        replaceControl="Suffix"
+                                    />
+                                </Form.Group>
+                            </Col>
+                        </Row>
                         <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Username <b className='text-danger'>*</b></Form.Label>
                             <Form.Control 
@@ -196,8 +204,10 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
                                 replaceControl="Role"
                             />
                         </Form.Group>
-                        <button className='primaryBlockBtn' onClick={() => onSubmit()}>Add Admin</button>
-                    </>
+                        <div className='full-page-modal-save-button'>
+                            <button className='primaryBlockBtn' onClick={() => onSubmit()}>Create account</button>
+                        </div>
+                    </div>
                 </Modal.Body>
                 
             </Modal>

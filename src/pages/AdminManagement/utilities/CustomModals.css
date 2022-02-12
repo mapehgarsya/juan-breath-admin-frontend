@@ -4,6 +4,29 @@
 }
 
 .editModalTitle, .addModalTitle {
-    color: var(--primary);
+    color: white;
     font-weight: 700;
+}
+.modal-header-bg{
+    background-color: var(--primary);
+}
+.content-center-modal {
+    padding: 0 1%;
+}
+
+.form-notice {
+    font-size: 13px;
+    color: rgb(97, 95, 95);
+    margin-bottom: 0;
+}
+
+.wide-modal-title {
+    padding-left: 1%;
+}
+
+.small-input{
+    width: 100px;
+}
+.full-page-modal-save-button {
+    width: 200px;
 }
