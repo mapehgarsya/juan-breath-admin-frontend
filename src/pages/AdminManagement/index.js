@@ -30,14 +30,21 @@ const AdminManagement = () => {
     const [toastMessage, setToastMessage] = useState('');
     const [deleteId, setDeleteId] = useState('');
     const [dataToBeDeleted, setDataToBeDeleted] = useState('');
-
+    const [dataToBeEdit, setDataToBeEdit] = useState({ firstName: "", middleName: "", lastName: "", suffix: "", username: "", email: "", locationAssigned: "", role: "" });
+    const [editId, setEditId] = useState('');
     // add modal declaration
     const [showAddModal, setShowAddModal] = useState(false)
 
     // Edit modal declarations
     const [showEditModal, setShowEditModal] = useState(false);
     const handleCloseShowEditModal = () => setShowEditModal(false);
-    const handleShowEditModal = () => setShowEditModal(true);
+    const handleShowEditModal = (id) => {
+        setShowEditModal(true);
+        setDeleteId(id)
+        // filter the data requested for editing
+        const filterdData = admins.filter((admin) => { return admin._id === id });  
+        setDataToBeEdit(filterdData[0])
+    }
 
     //Delete Modal Declarations
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -171,7 +178,7 @@ const AdminManagement = () => {
             <EditAdminModal 
                 showFunction = {showEditModal}
                 onHideFunction = {handleCloseShowEditModal}
-                data = {admins}
+                data={dataToBeEdit}
             />
             <DeleteAdminModal
                 showFunction = {showDeleteModal}

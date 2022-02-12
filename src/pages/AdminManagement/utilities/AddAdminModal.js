@@ -74,7 +74,7 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
             <button className='primaryBtn' onClick={handleShow}>Create Account</button>
             <Modal show={show} size="lg" onHide={handleClose}>
                 <Modal.Header className='modal-header-bg' closeButton>
-                    <Modal.Title className='addModalTitle wide-modal-title'>Create a New Administrator Account</Modal.Title>
+                    <Modal.Title className='addModalTitle wide-modal-title'>Create a new Administrator Account</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='content-center-modal'>
@@ -205,7 +205,7 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
                             />
                         </Form.Group>
                         <div className='full-page-modal-save-button'>
-                            <button className='primaryBlockBtn' onClick={() => onSubmit()}>Create account</button>
+                            <button className='primaryBlockBtn' onClick={() => onSubmit()}>Create Account</button>
                         </div>
                     </div>
                 </Modal.Body>

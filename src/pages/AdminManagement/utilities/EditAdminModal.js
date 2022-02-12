@@ -3,6 +3,7 @@ import { Modal, Form, Col, Row } from 'react-bootstrap'
 
 
 const EditAdminModal = ({showFunction, onHideFunction, data}) => {
+    console.log(data)
     return (
         <>
             <Modal show={showFunction} size="lg" onHide={onHideFunction}>
@@ -76,7 +77,7 @@ const EditAdminModal = ({showFunction, onHideFunction, data}) => {
                             </Form.Select>
                         </Form.Group>
                         <div className='full-page-modal-save-button'>
-                            <button className='primaryBlockBtn'>Update changes</button>
+                            <button className='primaryBlockBtn'>Update Account Changes</button>
                         </div>
                     </div>
                 </Modal.Body>

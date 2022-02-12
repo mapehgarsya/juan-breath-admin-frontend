@@ -43,7 +43,7 @@ const Locations = () => {
     const handleShowDeleteModal = (id) => {
         setShowDeleteModal(true)
         setDeleteId(id)
-        // filter the data requested for editing
+        // filter the data requested for deleting
         const filterdData = locations.filter((location) => { return location._id === id })  
         setDataToBeDeleted(filterdData[0]?.name)
     }
