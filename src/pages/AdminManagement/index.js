@@ -40,7 +40,7 @@ const AdminManagement = () => {
     const handleCloseShowEditModal = () => setShowEditModal(false);
     const handleShowEditModal = (id) => {
         setShowEditModal(true);
-        setDeleteId(id)
+        setEditId(id)
         // filter the data requested for editing
         const filterdData = admins.filter((admin) => { return admin._id === id });  
         setDataToBeEdit(filterdData[0])
@@ -104,6 +104,11 @@ const AdminManagement = () => {
             setToastMessage("Something went wrong.");
             setToastStatus('Danger');
         }
+    }
+
+    // modify the selected item
+    const handleDataEdit = (value, field) => {
+        setDataToBeEdit({...dataToBeEdit, [field]: value })
     }
 
     // this function will remove the error messages displayed on the form
@@ -178,6 +183,9 @@ const AdminManagement = () => {
             <EditAdminModal 
                 showFunction = {showEditModal}
                 onHideFunction = {handleCloseShowEditModal}
+                dataEditMethod={handleDataEdit}
+                roles={roles}
+                locations={locations}
                 data={dataToBeEdit}
             />
             <DeleteAdminModal
