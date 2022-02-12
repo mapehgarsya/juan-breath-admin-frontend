@@ -1,43 +1,48 @@
 import React from 'react';
-import { Modal, Form } from 'react-bootstrap'
+import { Modal, Form, Col, Row } from 'react-bootstrap'
 
 
 const EditAdminModal = ({showFunction, onHideFunction, data}) => {
     return (
         <>
-            <Modal show={showFunction} onHide={onHideFunction}>
-                <Modal.Header closeButton >
-                    <Modal.Title className='editModalTitle'>Edit an Admin</Modal.Title>
+            <Modal show={showFunction} size="lg" onHide={onHideFunction}>
+                <Modal.Header className='modal-header-bg' closeButton >
+                    <Modal.Title className='editModalTitle wide-modal-title'>Update Administrator's Account</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <>
-
-                        <Form.Group className="mb-2" controlId="formBasicEmail">
-                            <Form.Label>First Name <b className='text-danger'>*</b></Form.Label>
-                            <Form.Control 
-                            type="text" 
-                            required
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-2" controlId="formBasicEmail">
-                            <Form.Label>Middle Name</Form.Label>
-                            <Form.Control 
-                            type="text" 
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-2" controlId="formBasicEmail">
-                            <Form.Label>Last Name <b className='text-danger'>*</b></Form.Label>
-                            <Form.Control 
-                            type="text"
-                            required
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-2" controlId="formBasicEmail">
-                            <Form.Label>Suffix</Form.Label>
-                            <Form.Control 
-                            type="text"
-                            />
-                        </Form.Group>
+                    <div className='content-center-modal'>
+                        <Row className='mt-4'>
+                            <Col>
+                            <Form.Group className="mb-2" controlId="formBasicEmail">
+                                <Form.Label>First Name <b className='text-danger'>*</b></Form.Label>
+                                <Form.Control 
+                                type="text" 
+                                required
+                                />
+                            </Form.Group></Col>
+                            <Col>
+                            <Form.Group className="mb-2" controlId="formBasicEmail">
+                                <Form.Label>Middle Name</Form.Label>
+                                <Form.Control 
+                                type="text" 
+                                />
+                            </Form.Group></Col>
+                            <Col>
+                            <Form.Group className="mb-2" controlId="formBasicEmail">
+                                <Form.Label>Last Name <b className='text-danger'>*</b></Form.Label>
+                                <Form.Control 
+                                type="text"
+                                required
+                                />
+                            </Form.Group></Col>
+                            <Col lg={'auto'}>
+                            <Form.Group className="mb-2 small-input" controlId="formBasicEmail">
+                                <Form.Label>Suffix</Form.Label>
+                                <Form.Control 
+                                type="text"
+                                />
+                            </Form.Group></Col>
+                        </Row>
                         <Form.Group className="mb-2" controlId="formBasicEmail">
                             <Form.Label>Username <b className='text-danger'>*</b></Form.Label>
                             <Form.Control 
@@ -70,8 +75,10 @@ const EditAdminModal = ({showFunction, onHideFunction, data}) => {
                                 <option value="3">Role 3</option>
                             </Form.Select>
                         </Form.Group>
-                        <button className='primaryBlockBtn'>Save Changes</button>
-                    </>
+                        <div className='full-page-modal-save-button'>
+                            <button className='primaryBlockBtn'>Update changes</button>
+                        </div>
+                    </div>
                 </Modal.Body>
                 
             </Modal>

@@ -71,10 +71,10 @@ const AddAdminModal = ({ method, roles, locations, handleClose, handleShow, show
 
     return (
         <>
-            <button className='primaryBtn' onClick={handleShow}>Add Admin</button>
+            <button className='primaryBtn' onClick={handleShow}>Create Account</button>
             <Modal show={show} size="lg" onHide={handleClose}>
                 <Modal.Header className='modal-header-bg' closeButton>
-                    <Modal.Title className='addModalTitle wide-modal-title'>Create a new administrator account</Modal.Title>
+                    <Modal.Title className='addModalTitle wide-modal-title'>Create a New Administrator Account</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='content-center-modal'>
