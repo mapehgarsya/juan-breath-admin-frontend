@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 // import package/s
 import Helmet from 'react-helmet';
+import QRCode from 'qrcode';
 // component/s
 import HomeContainer from '../../components/HomeContainer/index.js';
 import BasicTable from '../../components/BasicTable'
@@ -13,6 +14,7 @@ import { postOneLocation } from '../../services/locations/post.js';
 import { putOneLocation } from "../../services/locations/put"
 import { deleteOneLocations } from '../../services/locations/delete.js';
 // modals
+import QRCodeGeneratorModal from './utilities/QRCodeGenerator.js';
 import AddLocationModal from './utilities/AddLocationModal.js';
 import EditLocationModal from './utilities/EditLocationModal.js';
 import DeleteLocationModal from './utilities/DeleteLocationModal.js';
@@ -40,6 +42,11 @@ const Locations = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const handleCloseShowDeleteModal = () => setShowDeleteModal(false);
 
+    //Delete Modal Declarations
+    const [showQRModal, setShowQRModal] = useState(false);
+    const [QRCodelocationName, setQRCodeLocationName] = useState('');
+    const handleCloseShowQRModal = () => setShowQRModal(false);
+
     const handleShowDeleteModal = (id) => {
         setShowDeleteModal(true)
         setDeleteId(id)
@@ -60,6 +67,18 @@ const Locations = () => {
     // modify the selected item
     const handleDataEdit = (value, field) => {
         setDataToBeEdit({...dataToBeEdit, [field]: value })
+    }
+    // qr code Modal Functions
+    const handleShowQRCodeModal = (id) => {
+        setShowQRModal(true);
+
+        // filter the data requested for editing
+        const filterdData = locations.filter((location) => { return location._id === id }) 
+        QRCode.toDataURL(filterdData[0].name).then((data) => {
+            setQRCodeLocationName(data);
+        })
+
+        setDataToBeEdit(filterdData[0])
     }
 
     const _getAllLocation = async () => {
@@ -121,7 +140,7 @@ const Locations = () => {
                 const filterdData = locations.filter((location) => { return location._id !== deleteId })  
                 setLocations([...filterdData]);
                 setShowToast(!showToast);
-                 setShowDeleteModal(!showDeleteModal)
+                setShowDeleteModal(!showDeleteModal)
                 setToastMessage("Location has been deleted successfully.");
                 setToastStatus('Success');
             }
@@ -157,6 +176,7 @@ const Locations = () => {
                     hasDelete={true}
                     hasEdit={true}
                     hasQR={true}
+                    qrModalFunction={handleShowQRCodeModal}
                     editModalFunction={handleShowEditModal}
                     deleteModalFunction={handleShowDeleteModal}
                 />
@@ -170,6 +190,14 @@ const Locations = () => {
                 showFunction = {showEditModal}
                 onHideFunction = {handleCloseShowEditModal}
                 data={dataToBeEdit}
+                dataEditMethod = {handleDataEdit}
+                submitEditMethod={_putOneLocation}
+            />
+            <QRCodeGeneratorModal
+                showFunction = {showQRModal}
+                onHideFunction = {handleCloseShowQRModal}
+                data={dataToBeEdit}
+                qrCodelocationName={QRCodelocationName}
                 dataEditMethod = {handleDataEdit}
                 submitEditMethod={_putOneLocation}
             />

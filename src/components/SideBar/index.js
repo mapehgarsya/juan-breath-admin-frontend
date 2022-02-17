@@ -3,7 +3,6 @@ import logo from '../../media/logo-Blue.png'
 import './sideBar.css'
 // import icon/s
 import { FaChartBar, FaMapMarkerAlt, FaAlignJustify, FaUserFriends, FaIdBadge } from "react-icons/fa";
-import { MdPhonelinkSetup } from "react-icons/md"
 import {BsPhoneFill} from "react-icons/bs"
 
 const Sidebar = () => {

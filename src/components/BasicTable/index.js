@@ -4,7 +4,7 @@ import { useTable, useSortBy } from 'react-table'
 import { FaPen, FaTrash, FaQrcode, FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 
-function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editModalFunction, deleteModalFunction}) {
+function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editModalFunction, deleteModalFunction, qrModalFunction}) {
 
     const columns = useMemo(() => columnHeads, [columnHeads])
     const data = useMemo(() => tableData, [tableData])
@@ -83,7 +83,7 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                 return <td className='iconBtnWrapper'>
                                                     <button className='iconBtn mr-10' title="QR Code">
                                                         <FaQrcode 
-                                                            
+                                                             onClick={() => qrModalFunction(cell.row.original?._id)}
                                                         />
                                                     </button>
                                                     <button className='iconBtn mr-10' title="Edit">

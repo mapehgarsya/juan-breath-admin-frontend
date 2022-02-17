@@ -13,7 +13,45 @@
 .content-center-modal {
     padding: 0 1%;
 }
+.item-center-modal {
+    padding:3% 31%;
+    
+}
+.qr-code-title {
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+}
+.qr-code-title h3 {
+   color: white;
+}
+.qr-code-content-contianer {
+    padding: 0 23%;
+}
+.qr-container {
+    text-align: center;
+    justify-content: center;
+    background-color: var(--primary);
+}
+.qr-code-title h5 {
+   color: var(--accent);
+}
+.qr-code-title h1 {
+   color: white;
+}
+.qr-content {
+    margin-top: 10px;
+    background-color: var(--accent);
+}
+.qr-content p {
+    color: white;
+}
 
+.line {
+    width: 200px;
+    height: 1px;
+    background-color: white;
+}
 .form-notice {
     font-size: 13px;
     color: rgb(97, 95, 95);
