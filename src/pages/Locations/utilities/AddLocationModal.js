@@ -32,11 +32,11 @@ const AddLocationModal = ({ method }) => {
       <button className='primaryBtn' onClick={handleShow}>Add Location</button>
 
       <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton >
-              <Modal.Title className='addModalTitle'>Add a Location</Modal.Title>
+          <Modal.Header className='modal-header-bg' closeButton >
+              <Modal.Title className='addModalTitle wide-modal-title'>Create Location</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <>
+              <div className='content-center-modal'>
                   <Form.Text>
                       This form will let you add a new location to the system.
                       Please fill in the details for the new location.
@@ -69,8 +69,10 @@ const AddLocationModal = ({ method }) => {
                       required
                     />
                   </Form.Group>
-                  <button className='primaryBlockBtn' onClick={() => onSubmit()}>Add Location</button>
-              </>
+                  <div className='full-page-modal-save-button'>
+                    <button className='primaryBlockBtn' onClick={() => onSubmit()}>Create Location</button>
+                  </div>
+              </div>
           </Modal.Body>
           
       </Modal>
