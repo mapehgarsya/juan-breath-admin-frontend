@@ -8,18 +8,19 @@ import logo from '../../media/logo-White.png'
 // import package/s
 import { useForm } from 'react-hook-form'
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
-
+import Spinner from 'react-bootstrap/Spinner'
 
 const Login = () => {
     
     const { register, handleSubmit, formState: {errors} } = useForm(); 
     const [viewPassword, setViewPassword] = useState(false)   
     const [validationError, setErrors] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
     // this will provide the users current page location
     const onSubmit = async (usersCredentials) => {
         try {
+            setIsSubmitting(!isSubmitting)
             const { data } = await loginAdmin(usersCredentials);
-            
             // check if ther are response from the data
             if(data.success) {
                 // set the generated token to the local storage
@@ -34,11 +35,11 @@ const Login = () => {
                  */
 
                 window.location.href = "/dashboard"
-
             }
 
         } catch (error) {
             if(error.response?.status === 400) {
+                setIsSubmitting(false)
                 setErrors(error.response.data?.message)
             }
         }
@@ -85,7 +86,15 @@ const Login = () => {
                             </div>
                             <p className='inputErrorMessage'>{(errors.password?.type === 'required' && "Password is required.") || validationError}</p>
                         </div>
-                        <button type='submit' className='primaryBlockBtn'>Sign In</button>
+                        <button type='submit' className='primaryBlockBtn'>
+                            {
+                                isSubmitting ? 
+                                    <Spinner animation="border" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </Spinner>
+                                :   "Sign In"
+                            }
+                        </button>
                     </form>
                 </div>
             </div>

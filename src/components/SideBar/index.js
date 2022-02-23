@@ -34,6 +34,10 @@ const Sidebar = () => {
                     <FaUserFriends className='mr-10'/>
                     Admin Management
                 </a>
+                <a  href='/user-management' className='sideBarItem'>
+                    <FaUserFriends className='mr-10'/>
+                    User Management
+                </a>
                 <a  href='/roles-and-permissions' className='sideBarItem'>
                     <FaIdBadge className='mr-10'/>
                     Roles &amp; Permissions
