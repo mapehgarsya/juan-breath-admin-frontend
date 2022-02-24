@@ -17,32 +17,32 @@ const Sidebar = () => {
                 </div>
             </div>
             <li className='sideBarItems'>
-                <a href='/dashboard' className='sideBarItem'>
+                <a href='/dashboard' className={`sideBarItem ${window.location.pathname === '/dashboard' && 'active'}`}>
                     
                     <FaChartBar className='mr-10' height={50}/>
                     Dashboard
                 </a>
-                <a  href='/locations' className='sideBarItem'>
+                <a  href='/locations' className={`sideBarItem ${window.location.pathname === '/locations' && 'active'}`}>
                     <FaMapMarkerAlt className='mr-10'/>
                     Locations
                 </a>
-                <a  href='/contact-tracing-logs' className='sideBarItem'>
+                <a  href='/contact-tracing-logs' className={`sideBarItem ${window.location.pathname === '/contact-tracing-logs' && 'active'}`}>
                     <FaAlignJustify className='mr-10'/>
                     Contact Tracing Logs
                 </a>
-                <a  href='/admin-management' className='sideBarItem'>
+                <a  href='/admin-management' className={`sideBarItem ${window.location.pathname === '/admin-management' && 'active'}`}>
                     <FaUserFriends className='mr-10'/>
                     Admin Management
                 </a>
-                <a  href='/user-management' className='sideBarItem'>
+                <a  href='/user-management' className={`sideBarItem ${window.location.pathname === '/user-management' && 'active'}`}>
                     <FaUserFriends className='mr-10'/>
                     User Management
                 </a>
-                <a  href='/roles-and-permissions' className='sideBarItem'>
+                <a  href='/roles-and-permissions' className={`sideBarItem ${window.location.pathname === '/roles-and-permissions' && 'active'}`}>
                     <FaIdBadge className='mr-10'/>
                     Roles &amp; Permissions
                 </a>
-                <a  href='#' className='sideBarItem'>
+                <a  href='/admin-app' className={`sideBarItem ${window.location.pathname === '/admin-app' && 'active'}`}>
                     {/* <MdPhonelinkSetup className='mr-10'/> */}
                     <BsPhoneFill className='mr-10'/>
                     Admin App

@@ -46,7 +46,7 @@
     align-items: center;
     margin-bottom: 4vh;
 }
-.sideBarItem:active, .sideBarItem:hover {
+.sideBarItem:active, .sideBarItem:hover, .active {
     color: var(--primary) !important;
 }
 .dot {

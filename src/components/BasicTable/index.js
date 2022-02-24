@@ -69,11 +69,13 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                 return <td className='iconBtnWrapper'>
                                                     <button className='iconBtn mr-10' title="Edit">
                                                         <FaPen 
+                                                            color="#2a749f"
                                                             onClick={() => editModalFunction(cell.row.original?._id)}
                                                         />
                                                     </button>
                                                     <button className='iconBtn' title="Delete">
                                                         <FaTrash 
+                                                            color='red'
                                                             onClick={() => deleteModalFunction(cell.row.original?._id)}
                                                         />
                                                     </button>
@@ -83,16 +85,19 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                 return <td className='iconBtnWrapper'>
                                                     <button className='iconBtn mr-10' title="QR Code">
                                                         <FaQrcode 
-                                                             onClick={() => qrModalFunction(cell.row.original?._id)}
+                                                            color="black"
+                                                            onClick={() => qrModalFunction(cell.row.original?._id)}
                                                         />
                                                     </button>
                                                     <button className='iconBtn mr-10' title="Edit">
                                                         <FaPen 
+                                                            color="#2a749f"
                                                             onClick={() => editModalFunction(cell.row.original?._id)}
                                                         />
                                                     </button>
                                                     <button className='iconBtn' title="Delete">
                                                         <FaTrash 
+                                                            color='red'
                                                             onClick={() => deleteModalFunction(cell.row.original?._id)}
                                                         />
                                                     </button>
