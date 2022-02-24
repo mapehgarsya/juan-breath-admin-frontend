@@ -32,7 +32,7 @@ export const PositiveLogsCOLUMN = [
     },
     {
         Header: 'Name',
-        accessor: 'name'
+        accessor: ''
     },
     {
         Header: 'Contact Number',
@@ -44,7 +44,7 @@ export const PositiveLogsCOLUMN = [
     },
     {
         Header: 'Health Status',
-        accessor: 'status'
+        accessor: 'healthStatus'
     },
     {
         Header: 'Date',

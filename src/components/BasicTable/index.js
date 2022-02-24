@@ -88,10 +88,8 @@ function BasicTable ({
                                                 </tr>
                                             }
 
-                                            if(cell.column.Header === "Faculty Name") {
-                                                return <tr>
-                                                    <td>{cell.row.original.firstName + " " + cell.row.original.middleName?.toUpperCase() + ". " + cell.row.original.lastName}</td>
-                                                </tr>
+                                            if(cell.column.Header === "Faculty Name" || cell.column.Header === "Name") {
+                                                return <td>{cell.row.original.firstName + " " + cell.row.original.middleName?.toUpperCase() + " " + cell.row.original.lastName}</td>
                                             }
 
                                             if(cell.column.Header === "Users Contact No.") {
