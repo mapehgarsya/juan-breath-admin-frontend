@@ -1,10 +1,23 @@
 import React, { useMemo } from 'react'
 // import package/s
 import { useTable, useSortBy } from 'react-table'
-import { FaPen, FaTrash, FaQrcode, FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { FaPen, FaTrash, FaQrcode, FaArrowDown, FaArrowUp, FaEye } from "react-icons/fa";
 import Spinner from 'react-bootstrap/Spinner'
 import Badge from 'react-bootstrap/Badge'
-function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, isFetching, editModalFunction, deleteModalFunction, qrModalFunction}) {
+function BasicTable ({ 
+    columnHeads, 
+    tableData, 
+    hasTracing, 
+    hasDelete, 
+    hasEdit, 
+    hasQR, 
+    isFetching, 
+    editModalFunction, 
+    deleteModalFunction, 
+    qrModalFunction,
+    tracerModalFunction 
+
+}) {
 
     const columns = useMemo(() => columnHeads, [columnHeads])
     const data = useMemo(() => tableData, [tableData])
@@ -114,6 +127,14 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, isFetch
                                             
                                             if(cell.column.Header === "Date Created" || cell.column.Header === "Date") {
                                                 return <td>{cell.row.original.createdAt?.split('T')[0]}</td>   
+                                            }
+
+                                            if(hasTracing && cell.column.Header==='Actions') {
+                                                return <td className='iconBtnWrapper'>
+                                                    <button className='primaryBtn mt-0 mb-0' title="Delete" onClick={() => tracerModalFunction(cell.row.original?.mobileNumber)}>
+                                                       <FaEye/> Trace Contacts
+                                                    </button>
+                                                </td>
                                             }
 
                                             // note you can merge this line of code even further

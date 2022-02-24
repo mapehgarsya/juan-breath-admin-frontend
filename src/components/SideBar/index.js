@@ -26,11 +26,11 @@ const Sidebar = () => {
                     <FaMapMarkerAlt className='mr-10'/>
                     Locations
                 </a>
-                <a  href='/visitation-logs' className={`sideBarItem ${window.location.pathname === '/contact-tracing-logs' && 'active'}`}>
+                <a  href='/visitation-logs' className={`sideBarItem ${window.location.pathname === '/visitation-logs' && 'active'}`}>
                     <FaAlignJustify className='mr-10'/>
                     Visitation Logs
                 </a>
-                <a  href='/positive-tracing-logs' className={`sideBarItem ${window.location.pathname === '/contact-tracing-logs' && 'active'}`}>
+                <a  href='/positive-tracing-logs' className={`sideBarItem ${window.location.pathname === '/positive-tracing-logs' && 'active'}`}>
                     <FaPlus className='mr-10'/>
                     Positive Update Logs
                 </a>
@@ -49,7 +49,7 @@ const Sidebar = () => {
                 <a  href='/admin-app' className={`sideBarItem ${window.location.pathname === '/admin-app' && 'active'}`}>
                     {/* <MdPhonelinkSetup className='mr-10'/> */}
                     <BsPhoneFill className='mr-10'/>
-                    Admin App
+                    Download App
                 </a>
             </li>
         </div>

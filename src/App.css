@@ -267,7 +267,28 @@ a:hover {
 }
 
 .permission-container {
-  display: flex;
-  max-width: 500px;
+  max-width: 800px;
   height: 100%;
+}
+
+.badge{
+   font-size: 15px;
+   margin-right: 5px;
+   margin-top: 5px;
+}
+
+.modal-title {
+  color: white;
+  margin-left: 10px;
+}
+.report-container {
+  margin: 10px;
+  padding: 20px;
+}
+.form-inline-display {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+.custom-width {
+  width: 350px;
 }

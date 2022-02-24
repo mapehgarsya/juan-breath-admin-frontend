@@ -11,6 +11,7 @@ import ContactTracingLogs from './pages/ContactTracingLogs';
 import AdminManagement from './pages/AdminManagement';
 import RolesAndPermissions from './pages/RolesAndPermissions';
 import UserManagement from './pages/UserManagement';
+import PositiveTracingLogs from './pages/PositiveUpdateLogs';
 
 //utilities
 import jwt_decode from 'jwt-decode';
@@ -75,6 +76,14 @@ function App() {
             element={
               <RequireAuth>
                 <ContactTracingLogs/>
+              </RequireAuth>
+            } 
+          />
+          <Route 
+            path="/positive-tracing-logs" 
+            element={
+              <RequireAuth>
+                <PositiveTracingLogs/>
               </RequireAuth>
             } 
           />

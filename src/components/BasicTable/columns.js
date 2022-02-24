@@ -25,6 +25,37 @@ export const LogsCOLUMN = [
     }
 ]
 
+export const PositiveLogsCOLUMN = [
+    {
+        Header: 'No.',
+        accessor: 'no'
+    },
+    {
+        Header: 'Name',
+        accessor: 'name'
+    },
+    {
+        Header: 'Contact Number',
+        accessor: 'mobileNumber'
+    },
+    {
+        Header: 'Affiliation',
+        accessor: 'userType'
+    },
+    {
+        Header: 'Health Status',
+        accessor: 'status'
+    },
+    {
+        Header: 'Date',
+        accessor: 'date'
+    },
+    {
+        Header: 'Actions',
+        accessor: ''
+    }
+]
+
 export const LocationsCOLUMN = [
     {
         Header: 'No.',
