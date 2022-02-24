@@ -10,6 +10,7 @@ import Locations from './pages/Locations';
 import ContactTracingLogs from './pages/ContactTracingLogs';
 import AdminManagement from './pages/AdminManagement';
 import RolesAndPermissions from './pages/RolesAndPermissions';
+import UserManagement from './pages/UserManagement';
 
 //utilities
 import jwt_decode from 'jwt-decode';
@@ -70,10 +71,18 @@ function App() {
             } 
           />
           <Route 
-            path="/contact-tracing-logs" 
+            path="/visitation-logs" 
             element={
               <RequireAuth>
                 <ContactTracingLogs/>
+              </RequireAuth>
+            } 
+          />
+          <Route 
+            path="/user-management" 
+            element={
+              <RequireAuth>
+                <UserManagement/>
               </RequireAuth>
             } 
           />

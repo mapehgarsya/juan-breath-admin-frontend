@@ -2,8 +2,8 @@ import React from 'react'
 import logo from '../../media/logo-Blue.png'
 import './sideBar.css'
 // import icon/s
-import { FaChartBar, FaMapMarkerAlt, FaAlignJustify, FaUserFriends, FaIdBadge } from "react-icons/fa";
-import {BsPhoneFill} from "react-icons/bs"
+import { FaChartBar, FaMapMarkerAlt, FaAlignJustify, FaUserFriends, FaIdBadge, FaPlus } from "react-icons/fa";
+import { BsPhoneFill } from "react-icons/bs"
 
 const Sidebar = () => {
     // figure out how to change color of the link of an active page
@@ -26,9 +26,13 @@ const Sidebar = () => {
                     <FaMapMarkerAlt className='mr-10'/>
                     Locations
                 </a>
-                <a  href='/contact-tracing-logs' className={`sideBarItem ${window.location.pathname === '/contact-tracing-logs' && 'active'}`}>
+                <a  href='/visitation-logs' className={`sideBarItem ${window.location.pathname === '/contact-tracing-logs' && 'active'}`}>
                     <FaAlignJustify className='mr-10'/>
-                    Contact Tracing Logs
+                    Visitation Logs
+                </a>
+                <a  href='/positive-tracing-logs' className={`sideBarItem ${window.location.pathname === '/contact-tracing-logs' && 'active'}`}>
+                    <FaPlus className='mr-10'/>
+                    Positive Update Logs
                 </a>
                 <a  href='/admin-management' className={`sideBarItem ${window.location.pathname === '/admin-management' && 'active'}`}>
                     <FaUserFriends className='mr-10'/>

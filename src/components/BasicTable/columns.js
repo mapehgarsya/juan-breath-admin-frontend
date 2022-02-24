@@ -84,6 +84,33 @@ export const AdminsCOLUMN = [
     }
 ]
 
+export const UsersCOLUMN = [
+    {
+        Header: 'No.',
+        accessor: ''
+    },
+    {
+        Header: 'Contact Number',
+        accessor: 'mobileNumber'
+    },
+    {
+        Header: 'Type',
+        accessor: 'userType'
+    },
+    {
+        Header: 'Health Status',
+        accessor: 'userHealthStatus'
+    },
+    {
+        Header: 'Registration Date',
+        accessor: ''
+    },
+    {
+        Header: 'Actions',
+        accessor: 'none'
+    }
+]
+
 export const RolesAndPermissionsCOLUMNS = [
     {
         Header: 'No.',

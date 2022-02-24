@@ -31,10 +31,10 @@ const ContactTracingLogs = () => {
         <HomeContainer>
             {/* Helmet for page's title*/}
             <Helmet>
-                <title>JuanBreath | Contact Tracing Logs</title>
+                <title>JuanBreath | Visitation Logs</title>
             </Helmet>
             
-            <h1 className='contentTitle pb-10'>Contact Tracing Logs</h1>
+            <h1 className='contentTitle pb-10'>Visitation Logs</h1>
             <div className='contentDiv'>
                 <p className='tableCaption'>This table contains visitation logs within 31 days that will be used for contact tracing purposes. No contact information from the users will be collected on the system unless they are stated as positive of COVID-19.</p>
                 <div className='filterandReportGrp'>

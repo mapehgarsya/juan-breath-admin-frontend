@@ -85,6 +85,10 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                 return <td>{convertTo112HourFormat(cell.row.original.time)}</td>
                                             }
 
+                                            if(cell.column.Header === "Registration Date") {
+                                                return <td>{cell.row.original.createdAt.split('T')[0]}</td>
+                                            }
+
                                             if(cell.column.Header === "Action") {
                                                 return <td className={cell.row.original.action === "Scanned the QR Code" ? 'entry' : 'exit' } >{cell.row.original.action}</td>
                                             }
