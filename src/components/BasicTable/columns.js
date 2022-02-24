@@ -118,11 +118,18 @@ export const RolesAndPermissionsCOLUMNS = [
     },
     {
         Header: 'Role',
-        accessor: 'role'
+        accessor: 'name'
+    },
+    {
+        Header: 'Description',
+        accessor: 'description'
     },
     {
         Header: 'Permissions',
-        accessor: 'permissions'
+        accessor: ''
     },
-    
+    {
+        Header: 'Actions',
+        accessor: 'none'
+    }
 ]

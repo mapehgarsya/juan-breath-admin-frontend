@@ -12,12 +12,13 @@ import { getAllVisitationLogs } from '../../services/contact-logs/get'
 const ContactTracingLogs = () => {
 
     const [contactLogs, setContactLogs] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
 
     const _getAllVisitationLogs = async () => {
         try {
             const visitationLogs = await getAllVisitationLogs();
-            console.log(visitationLogs.data.data)
             setContactLogs(visitationLogs.data?.data);
+            setIsFetching(false);
         } catch (error) { 
             setContactLogs([]);
         }
@@ -36,7 +37,7 @@ const ContactTracingLogs = () => {
             
             <h1 className='contentTitle pb-10'>Visitation Logs</h1>
             <div className='contentDiv'>
-                <p className='tableCaption'>This table contains visitation logs within 31 days that will be used for contact tracing purposes. No contact information from the users will be collected on the system unless they are stated as positive of COVID-19.</p>
+                <p className='tableCaption'>This table contains visitation logs within 31 days that will be used for contact tracing purposes. No personal information from the users will be collected on the system unless they are stated as positive of COVID-19.</p>
                 <div className='filterandReportGrp'>
                     <div className='filterInputWrapper mb-10'>
                         <select className='inputStyle2 mr-10'>
@@ -99,6 +100,7 @@ const ContactTracingLogs = () => {
                     hasDelete={false}
                     hasEdit={false}
                     hasQR={false}
+                    isFetching={isFetching}
                 />
             </div>
         </HomeContainer>

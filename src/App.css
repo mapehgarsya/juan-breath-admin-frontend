@@ -265,3 +265,9 @@ a:hover {
   color: var(--red) !important;
   font-weight: 600;
 }
+
+.permission-container {
+  display: flex;
+  max-width: 500px;
+  height: 100%;
+}

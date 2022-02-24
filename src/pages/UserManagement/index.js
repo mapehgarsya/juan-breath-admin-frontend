@@ -11,12 +11,14 @@ import { getAllUsers } from "../../services/users/get";
 const UserManagement = () => {
 
     const [users, setUsers] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
 
     // get all users accounts
     const _getAllAdmins = async () => {
         try {
             const admins = await getAllUsers();
             setUsers(admins.data?.data);
+            setIsFetching(false);
         } catch (error) {
             setUsers([]);
         }
@@ -42,6 +44,7 @@ const UserManagement = () => {
                     hasDelete={true}
                     hasEdit={true}
                     hasQR={false}
+                    isFetching={isFetching}
                 />
             </div>       
         </HomeContainer>

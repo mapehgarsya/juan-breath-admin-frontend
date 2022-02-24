@@ -33,6 +33,7 @@ const AdminManagement = () => {
     const [dataToBeDeleted, setDataToBeDeleted] = useState('');
     const [dataToBeEdit, setDataToBeEdit] = useState({ firstName: "", middleName: "", lastName: "", suffix: "", username: "", email: "", locationAssigned: "", role: "" });
     const [editId, setEditId] = useState('');
+    const [isFetching, setIsFetching] = useState(true);
     // add modal declaration
     const [showAddModal, setShowAddModal] = useState(false)
 
@@ -64,6 +65,7 @@ const AdminManagement = () => {
         try {
             const admins = await getAllAdmins();
             setAdmins(admins.data?.data);
+            setIsFetching(false);
         } catch (error) {
             setAdmins([]);
         }
@@ -213,6 +215,7 @@ const AdminManagement = () => {
                     hasQR={false}
                     editModalFunction={handleShowEditModal}
                     deleteModalFunction={handleShowDeleteModal}
+                    isFetching={isFetching}
                 />
             </div>
             <EditAdminModal 

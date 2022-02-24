@@ -2,9 +2,9 @@ import React, { useMemo } from 'react'
 // import package/s
 import { useTable, useSortBy } from 'react-table'
 import { FaPen, FaTrash, FaQrcode, FaArrowDown, FaArrowUp } from "react-icons/fa";
-
-
-function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editModalFunction, deleteModalFunction, qrModalFunction}) {
+import Spinner from 'react-bootstrap/Spinner'
+import Badge from 'react-bootstrap/Badge'
+function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, isFetching, editModalFunction, deleteModalFunction, qrModalFunction}) {
 
     const columns = useMemo(() => columnHeads, [columnHeads])
     const data = useMemo(() => tableData, [tableData])
@@ -38,7 +38,15 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
     return (
         <div className='customTableDiv'>
             {
-                <table className='tableStyle' {...getTableProps()}>
+                isFetching && 
+                    <tr className='d-flex justify-content-center w-100 mt-3 mb-3'>
+                        <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    </tr>
+            }
+            {
+                !isFetching && (<table className='tableStyle' {...getTableProps()}>
                     <thead>
                         {headerGroups.map((headerGroup) => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -91,6 +99,17 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
 
                                             if(cell.column.Header === "Action") {
                                                 return <td className={cell.row.original.action === "Scanned the QR Code" ? 'entry' : 'exit' } >{cell.row.original.action}</td>
+                                            }
+
+                                            if(cell.column.Header === "Permissions") {
+                                                return <td><div className='permission-container'>
+                                                    {
+                                                        cell.row.original.permissions.map((data) => {
+                                                            return <Badge>{data.name}</Badge>
+                                                        })
+                                                    }
+                                                    </div>
+                                                </td>
                                             }
                                             
                                             if(cell.column.Header === "Date Created" || cell.column.Header === "Date") {
@@ -149,7 +168,7 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                             tableData.length === 0 && <tr><td>No data to be displayed at the moment</td></tr>
                         }
                     </tbody>
-                </table>
+                </table>)
             }
         </div>
         

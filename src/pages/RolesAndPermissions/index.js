@@ -6,11 +6,29 @@ import HomeContainer from '../../components/HomeContainer';
 import BasicTable from '../../components/BasicTable';
 // import table data
 import { RolesAndPermissionsCOLUMNS } from '../../components/BasicTable/columns';
-import roles from '../../json/roles-mock-data.json'
+import { getAllRoles } from '../../services/roles/get';
 
 const RolesAndPermissions = () => {
 
-    const [hasErrors, setHasErrors] = useState(false);
+    const [roles, setRoles] = useState([]);
+    const [isFetching, setIsFetching] = useState(true);
+
+    // get all users accounts
+    const _getAllAdmins = async () => {
+        try {
+            const roles = await getAllRoles();
+            setRoles(roles.data?.data);
+            setIsFetching(false);
+            console.log(roles.data.data)
+        } catch (error) {
+            setRoles([]);
+        }
+    }
+
+    // this function will auto run on mount
+    useEffect(() => {
+        _getAllAdmins()
+    }, []);
 
     return (
         <HomeContainer>
@@ -26,17 +44,13 @@ const RolesAndPermissions = () => {
             </div>
             <div className='contentDiv'>
                 <p className='tableCaption'>This table shows the list of roles and permissions for the admins that are in the system.</p>
-
                 <BasicTable
                     columnHeads = {RolesAndPermissionsCOLUMNS}
                     tableData = {roles}
-                    // hasDelete={true}
-                    // hasEdit={true}
-                    // hasQR={false}
+                    isFetching={isFetching}
+                    hasDelete={true}
+                    hasEdit={true}
                 />
-                {
-                    hasErrors && <div>Something went wrong</div>
-                }
             </div>
         </HomeContainer>
     );

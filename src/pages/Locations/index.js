@@ -32,6 +32,7 @@ const Locations = () => {
     const [dataToBeDeleted, setDataToBeDeleted] = useState('');
     const [toastStatue, setToastStatus] = useState('');
     const [toastMessage, setToastMessage] = useState('');
+    const [isFetching, setIsFetching] = useState(true);
 
 
     // Edit Modal Declarations
@@ -85,7 +86,7 @@ const Locations = () => {
         try {
             const locations = await getAllLocations();
             setLocations(locations.data?.data);
-            
+            setIsFetching(false);
         } catch (error) {
             setHasErrors(true);
             setLocations([]);
@@ -179,6 +180,7 @@ const Locations = () => {
                     qrModalFunction={handleShowQRCodeModal}
                     editModalFunction={handleShowEditModal}
                     deleteModalFunction={handleShowDeleteModal}
+                    isFetching={isFetching}
                 />
                 
                 {/* error cather ui */}
