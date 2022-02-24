@@ -22,6 +22,19 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
         prepareRow
     } = tableInstance
 
+    const convertTo112HourFormat = time => {
+        // Check correct time format and split into components
+        time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+        if (time.length > 1) {
+        // If time format correct
+        time = time.slice(1); // Remove full string match value
+        time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+        time[0] = +time[0] % 12 || 12; // Adjust hours
+        }
+        return time.join('');
+    };
+
     return (
         <div className='customTableDiv'>
             {
@@ -60,10 +73,26 @@ function BasicTable ({columnHeads, tableData, hasDelete, hasEdit, hasQR, editMod
                                                 </tr>
                                             }
 
-                                            if(cell.column.Header === "Date Created" || cell.column.Header === "Date") {
-                                                return <td>{cell.row.original.createdAt?.split('T')[0]}</td>
-                                                
+                                            if(cell.column.Header === "Users Contact No.") {
+                                                return <td>{cell.row.original.userId.mobileNumber}</td>
                                             }
+
+                                            if(cell.column.Header === "Date") {
+                                                return <td>{cell.row.original.date}</td>
+                                            }
+
+                                            if(cell.column.Header === "Time") {
+                                                return <td>{convertTo112HourFormat(cell.row.original.time)}</td>
+                                            }
+
+                                            if(cell.column.Header === "Action") {
+                                                return <td className={cell.row.original.action === "Scanned the QR Code" ? 'entry' : 'exit' } >{cell.row.original.action}</td>
+                                            }
+                                            
+                                            if(cell.column.Header === "Date Created" || cell.column.Header === "Date") {
+                                                return <td>{cell.row.original.createdAt?.split('T')[0]}</td>   
+                                            }
+
                                             // note you can merge this line of code even further
                                             if (cell.column.Header==='Actions' && hasEdit && hasDelete && !hasQR) {
                                                 return <td className='iconBtnWrapper'>

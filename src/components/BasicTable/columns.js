@@ -4,16 +4,16 @@ export const LogsCOLUMN = [
         accessor: 'no'
     },
     {
-        Header: 'User ID',
-        accessor: 'userId'
+        Header: 'Users Contact No.',
+        accessor: ''
     },
     {
         Header: 'Location',
         accessor: 'location'
     },
     {
-        Header: 'Officer in Charge',
-        accessor: 'officerInCharge'
+        Header: 'Action',
+        accessor: ''
     },
     {
         Header: 'Date',
@@ -21,7 +21,7 @@ export const LogsCOLUMN = [
     },
     {
         Header: 'Time',
-        accessor: 'time'
+        accessor: ''
     }
 ]
 

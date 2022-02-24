@@ -1,20 +1,31 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import './contactTracingLogs.css'
-import Sidebar from '../../components/SideBar'
-import HomeNav from '../../components/HomeNav'
 // import package/s
 import Helmet from 'react-helmet'
 // import table Data
-import data from '../../json/contact-tracing-logs-mockup-data.json'
 import { LogsCOLUMN } from '../../components/BasicTable/columns'
 // component/s
 import BasicTable from '../../components/BasicTable'
 import HomeContainer from '../../components/HomeContainer'
-
+import { getAllVisitationLogs } from '../../services/contact-logs/get'
 
 const ContactTracingLogs = () => {
 
-    const [contactLogs, setContactLogs] = useState(data)
+    const [contactLogs, setContactLogs] = useState([]);
+
+    const _getAllVisitationLogs = async () => {
+        try {
+            const visitationLogs = await getAllVisitationLogs();
+            console.log(visitationLogs.data.data)
+            setContactLogs(visitationLogs.data?.data);
+        } catch (error) { 
+            setContactLogs([]);
+        }
+    }
+
+    useEffect(() => {
+        _getAllVisitationLogs();
+    }, []);
 
     return (
         <HomeContainer>
@@ -84,7 +95,7 @@ const ContactTracingLogs = () => {
                 </div>
                 <BasicTable 
                     columnHeads = {LogsCOLUMN}
-                    tableData = {data}
+                    tableData = {contactLogs}
                     hasDelete={false}
                     hasEdit={false}
                     hasQR={false}

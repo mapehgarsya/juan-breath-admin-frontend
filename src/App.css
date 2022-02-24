@@ -257,3 +257,11 @@ a:hover {
   font-size: 12px;
   color: var(--red);
 }
+.entry {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+.exit {
+  color: var(--red) !important;
+  font-weight: 600;
+}
