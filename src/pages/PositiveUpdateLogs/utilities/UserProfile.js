@@ -50,7 +50,7 @@ const PositiveUserProfile = ({ data }) => {
                             <Form.Label>Department </Form.Label>
                             <Form.Control 
                                 type="text"
-                                value={data.userType}  
+                                value={data.collegeDepartment}  
                                 required
                             />
                         </div>

@@ -104,6 +104,10 @@ function BasicTable ({
                                                 return <td>{convertTo112HourFormat(cell.row.original.time)}</td>
                                             }
 
+                                            if(cell.column.Header === "Close Contact Number") {
+                                                return <td>{cell.row.original.userId.mobileNumber}</td>
+                                            }
+
                                             if(cell.column.Header === "Registration Date") {
                                                 return <td>{cell.row.original.createdAt.split('T')[0]}</td>
                                             }

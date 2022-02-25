@@ -62,7 +62,7 @@ export const LocationsCOLUMN = [
         accessor: 'no'
     },
     {
-        Header: 'Name',
+        Header: 'Location Name',
         accessor: 'name'
     },
     {
@@ -161,6 +161,56 @@ export const RolesAndPermissionsCOLUMNS = [
     },
     {
         Header: 'Actions',
+        accessor: 'none'
+    }
+]
+
+export const CloseContactCOLUMNS = [
+    {
+        Header: 'No.',
+        accessor: ''
+    },
+    {
+        Header: 'Close Contact Number',
+        accessor: ''
+    },
+    {
+        Header: 'Location',
+        accessor: 'location'
+    },
+    {
+        Header: 'Action',
+        accessor: 'action'
+    },
+    {
+        Header: 'Date',
+        accessor: ''
+    },
+    {
+        Header: 'Time',
+        accessor: 'none'
+    }
+]
+
+export const VisitationHistroyCOLUMNS = [
+    {
+        Header: 'No.',
+        accessor: ''
+    },
+    {
+        Header: 'Location',
+        accessor: 'location'
+    },
+    {
+        Header: 'Action',
+        accessor: 'action'
+    },
+    {
+        Header: 'Date',
+        accessor: ''
+    },
+    {
+        Header: 'Time',
         accessor: 'none'
     }
 ]

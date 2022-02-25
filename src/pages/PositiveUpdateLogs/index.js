@@ -8,7 +8,7 @@ import { PositiveLogsCOLUMN } from '../../components/BasicTable/columns'
 import BasicTable from '../../components/BasicTable'
 import HomeContainer from '../../components/HomeContainer'
 // apis
-import { getAllPositiveLogs } from '../../services/positive-update-logs/get'
+import { getAllPositiveLogs, getAllCloseContact, getAllInfectedVisitationHistroy } from '../../services/positive-update-logs/get'
 import CloseContactTracerModal from './utilities/TracerModal';
 
 const PositiveTracingLogs = () => {
@@ -17,6 +17,8 @@ const PositiveTracingLogs = () => {
     const [showTracerModal, setShowTracerModal] = useState(false);
     const [isFetching, setIsFetching] = useState(true);
     const [dataToBeView, setDataToBeView] = useState({});
+    const [closeContactData, setCloseContactData] = useState([])
+    const [VisitationHistoryData, setVisitationHistoryData] = useState([])
 
     const _getAllVisitationLogs = async () => {
         try {
@@ -29,11 +31,22 @@ const PositiveTracingLogs = () => {
     }
 
     // qr code Modal Functions
-    const handleContactTracing = (id) => {
+    const handleContactTracing = async (id) => {
+        console.log(id)
         setShowTracerModal(true);
-        // filter the data requested for editing
-        const filterdData = positiveLogs.filter((positive) => { return positive.mobileNumber === id })  
-        setDataToBeView(filterdData[0])
+        try {
+            const closeContacts = await getAllCloseContact(id);
+            const visitationHistroy = await getAllInfectedVisitationHistroy(id);
+            const filteredCloseContacts = closeContacts.data.data.filter((positive) => { return positive.userId.mobileNumber === id })
+            setCloseContactData(filteredCloseContacts);
+            setVisitationHistoryData(visitationHistroy.data?.data)
+            // filter the data requested for editing
+            const filterdData = positiveLogs.filter((positive) => { return positive.mobileNumber === id })  
+            setDataToBeView(filterdData[0])
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 
 
@@ -99,6 +112,8 @@ const PositiveTracingLogs = () => {
             </div>
             <CloseContactTracerModal
                 data={dataToBeView}
+                closeContactData={closeContactData}
+                visitationHistroyData={VisitationHistoryData}
                 showFunction = {showTracerModal}
                 onHideFunction = {() => setShowTracerModal(!showTracerModal)}
             />

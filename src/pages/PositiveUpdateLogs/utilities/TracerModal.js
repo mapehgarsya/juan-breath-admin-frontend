@@ -7,8 +7,9 @@ import Tab from 'react-bootstrap/Tab'
 // components
 import PositiveUserProfile from './UserProfile'
 import CloseContactTable from './CloseContactTable'
+import VisitationHistoryTable from './VisitationHistoryTable'
 
-const CloseContactTracerModal = ({ showFunction, onHideFunction, data }) => {
+const CloseContactTracerModal = ({ showFunction, onHideFunction, data, closeContactData, visitationHistroyData }) => {
 
     return (
         <>
@@ -24,8 +25,15 @@ const CloseContactTracerModal = ({ showFunction, onHideFunction, data }) => {
                                     data={data}
                                 />
                             </Tab>
-                            <Tab eventKey="profile" title="Close Contacts">
-                                <CloseContactTable/>
+                            <Tab eventKey="visitation-history" title="Visitation History">
+                                <VisitationHistoryTable
+                                    data={visitationHistroyData}
+                                />
+                            </Tab>
+                            <Tab eventKey="close-contact" title="Close Contacts">
+                                <CloseContactTable
+                                    data={closeContactData}
+                                />
                             </Tab>
                         </Tabs>
                     </div>
