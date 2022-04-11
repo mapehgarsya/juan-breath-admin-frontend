@@ -1,0 +1,19 @@
+[
+    {
+        "no": 1,
+        "name": "CEA Admin",
+        "username": "ceaadmin111",
+        "password": "ceapupmanila123",
+        "locationAssigned": "College of Engineering and Architecture",
+        "faculty": "Juan Dela Cruz Jr."
+    },
+    {
+        "no": 2,
+        "name": "PUP Main Admin",
+        "username": "pupmainadmin111",
+        "password": "pupmainmanila123",
+        "locationAssigned": "Polytechnic University of the Philippines - Main",
+        "faculty": "Juan Dela Cruz Jr."
+    }
+
+]

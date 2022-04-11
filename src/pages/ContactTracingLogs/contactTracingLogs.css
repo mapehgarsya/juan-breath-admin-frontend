@@ -1,0 +1,19 @@
+.filterandReportGrp {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    flex-grow: 1;
+    width: 100%;
+}
+.filterInputWrapper {
+    display: flex;
+    width: 80%;
+    min-width: 100px;
+}
+.genReportBtn {
+    margin-top: 2.5px;
+}
+
+@media (max-width: 800px) {
+
+}

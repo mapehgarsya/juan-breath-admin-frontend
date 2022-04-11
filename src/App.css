@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+* {
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Variable colors */
+:root {
+  --primary: #2a749f !important;
+  --secondary: #edf5fa !important;
+  --accent: #30b8a6 !important;
+  --blackTextColor: #2b2b2b;
+  --inputBG: #dadada;
+  --placeholderText: #707070;
+  --white: #ffffff;
+  --red: #ad2828;
+}
+/* Home Common Parts Custom Style */
+.customContainer {
+  width:100%;
+  height:100vh;
+  margin: 0 !important; 
+  padding: 0 !important;
+  background-color: #eaeaea;
+  display: flex;
+}
+.homeWrapper {
+  width:100vw;
+  height:100vh;
+  display: flex;
+  flex-direction: row;
+}
+.navAndContentDiv {
+  width: 100%;
+  height: 100%;
+  /* when content overflows */
+  overflow: auto;
+}
+.contentWrapper {
+  width: 100%;
+  min-width: 500px; /* so that data UI in tables won't clash with each other*/
+  padding: 30px;
+  padding-right: 5%;
+}
+/* Titles in pages with a button in the same div */
+.titleAndButtonDiv {
+  display: flex;
+  justify-content: space-between;
+  width: auto; /*to match the min-width of the table*/
+}
+/* Content Title per page in the pages*/
+.contentTitle {
+  color: var(--primary);
+  width: auto;  /*to match the min-width of the table*/
+}
+.contentDiv {
+  width: 100%;
+}
+
+/* CUSTOM STYLES CSS */
+/* INPUT Custom Style */
+.inputStyle {
+  height: 30px;
+  width: 100%;
+
+  padding: 0 8px;
+  margin: 5px 0;
+  background-color: var(--inputBG);
+
+  border: none;
+  border-radius: 5px;
+}
+.inputStyle2 {
+  display: flex;
+  height: 30px;
+  width: fit-content;
+  min-width: 100px;
+  padding: 0 8px;
+  margin: 5px 0;
+  background-color: var(--inputBG);
+
+  border: none;
+  border-radius: 5px;
+}
+input:focus {
+  outline: none !important;
+  border: 1.5px solid var(--primary);
+}
+.inputErrorMessage {
+  font-size: 10px;
+  color: var(--red);
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.checkboxStyle {
+  background-color: var(--inputBG);
+}
+
+/* BUTTON Custom Style */
+/* Block Buttons Style */
+.primaryBlockBtn {
+  height: 46px;
+  width: 100%;
+
+  margin: 10px 0;
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: 600;
+
+  border: none;
+  border-radius: 5px;
+}
+/* Buttons Style */
+.primaryBtn {
+  height: 40px;
+  width: fit-content;
+
+  margin: 10px 0;
+  background-color: var(--primary);
+  color: var(--white);
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 5px;
+}
+.secondaryBtn {
+  height: 40px;
+  width: fit-content;
+
+  margin: 10px 0;
+  background-color: var(--secondary);
+  color: var(--primary);
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 5px;
+}
+.warningBtn {
+  height: 40px;
+  width: fit-content;
+
+  margin: 10px 0;
+  background-color: var(--red);
+  color: var(--white);
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 5px;
+}
+
+/* ICON Buttons Style */
+.iconBtnWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+.iconBtn {
+  padding: 3px 0;
+  color: var(--blackTextColor);
+  background-color: var(--white);
+  padding: 4px 4px 2px 4px;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* TABLE Custom Style */
+.customTableDiv {
+  padding: 10px;
+  background-color: var(--white);
+  border-radius: 5px;
+}
+.tableStyle {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px !important;
+  
+  background-color: var(--white);
+  font-size: 13px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.tableStyle, .tableStyle tr th, .tableStyle tr td {
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.tableStyle caption, .tableCaption {
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+.tableStyle thead tr th {
+  color: var(--primary);
+  text-align: left;
+  padding-bottom: 5px;
+}
+.tableStyle tbody tr td {
+  color: var(--blackTextColor);
+  padding: 5px 0;
+}
+
+
+/* Spacing Classes*/
+.mt-15 {
+  margin-top: 15px;
+}
+.mt-10 {
+  margin-top: 10px;
+} 
+.mr-10 {
+  margin-right: 10px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-5 {
+  margin-bottom: 5px;
+}
+.ml-5 {
+  margin-left: 5px;
+}
+.pr-5 {
+  padding-right: 5px;
+}
+.pb-10 {
+  padding-bottom: 10px;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* hovering over links override */
+a:hover {
+  color: var(--primary);
+}
+
+/* toast custom spacing */
+.toast-custom-spacing {
+  margin-bottom: 20px;
+  right: 1.2em !important;
+}
+
+/* form error display */
+.form-error-display {
+  margin-bottom: 0!important;
+  font-size: 12px;
+  color: var(--red);
+}
+.entry {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+.exit {
+  color: var(--red) !important;
+  font-weight: 600;
+}
+
+.permission-container {
+  max-width: 800px;
+  height: 100%;
+}
+
+.badge{
+   font-size: 15px;
+   margin-right: 5px;
+   margin-top: 5px;
+}
+
+.modal-title {
+  color: white;
+  margin-left: 10px;
+}
+.report-container {
+  margin: 10px;
+  padding: 20px;
+}
+.form-inline-display {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+.custom-width {
+  width: 350px;
+}

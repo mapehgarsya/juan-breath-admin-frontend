@@ -1,0 +1,59 @@
+.sideBarContainer {
+    height: 100%;
+    width: 20%;
+    min-width: 240px;
+    max-width: 250px;
+    background-color: var(--white);
+    box-shadow:  0 0 5px rgba(0, 0, 0, 0.16);
+    padding: 10px 25px;
+}
+
+.companyGrp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--inputBG);
+}
+.companyLogo {
+    margin-right: 10px;
+}
+.companyName {
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.companyName2 {
+    color: var(--primary);
+    font-size: .7rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.sideBarItems {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.sideBarItem {
+    text-decoration: none !important;
+    color: var(--placeholderText);
+    font-weight: 600;
+
+    
+    display: flex;
+    align-items: center;
+    margin-bottom: 4vh;
+}
+.sideBarItem:active, .sideBarItem:hover, .active {
+    color: var(--primary) !important;
+}
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: var(--placeholderText);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
