@@ -86,6 +86,9 @@ const Login = () => {
                             </div>
                             <p className='inputErrorMessage'>{(errors.password?.type === 'required' && "Password is required.") || validationError}</p>
                         </div>
+                        <div className='mb-10'>
+                            <a className='forgotPassLink' href='forgot-password'>Forgot Password?</a>
+                        </div>
                         <button type='submit' className='primaryBlockBtn'>
                             {
                                 isSubmitting ? 

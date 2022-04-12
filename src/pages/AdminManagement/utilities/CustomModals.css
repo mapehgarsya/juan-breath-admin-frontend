@@ -23,7 +23,7 @@
     text-align: center;
 }
 .qr-code-title h3 {
-   color: white;
+    color: white;
 }
 .qr-code-content-contianer {
     padding: 0 23%;
@@ -34,10 +34,10 @@
     background-color: var(--primary);
 }
 .qr-code-title h5 {
-   color: var(--accent);
+    color: var(--accent);
 }
 .qr-code-title h1 {
-   color: white;
+    color: white;
 }
 .qr-content {
     margin-top: 10px;
