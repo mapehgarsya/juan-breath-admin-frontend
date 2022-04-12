@@ -13,7 +13,7 @@ const logout = () => {
     window.location.href ="/"
 }
 
-const HomeNav = () => {
+const HomeNav = ({ showResetPasswordModal }) => {
 
     const [fullName, setUserFullName] = useState('');
 
@@ -38,7 +38,7 @@ const HomeNav = () => {
                 <Nav className='align-left'>
                     <NavDropdown title={fullName} className="homeNavGreeting" id="basic-nav-dropdown">
                         <NavDropdown.Item href="/profile"><FaUserCircle/> Profile</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3"><FaCogs/> Reset Password</NavDropdown.Item>
+                        <NavDropdown.Item href="#" onClick={showResetPasswordModal}><FaCogs/> Reset Password</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="#" onClick={() => logout()}><FaSignOutAlt/> Sign Out</NavDropdown.Item>
                     </NavDropdown>
