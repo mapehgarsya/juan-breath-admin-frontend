@@ -11,7 +11,8 @@ const ResetPassword = ({
     confirmNewPassword, 
     setCurrentPassword, 
     setNewPassword, 
-    setConfirmNewPassword 
+    setConfirmNewPassword,
+    handleConfirmCurrentPassword 
 }) => {
     return (
         <>
@@ -33,14 +34,14 @@ const ResetPassword = ({
                                     />
                                     <FormError
                                         errorMessages={errorMsg}
-                                        field="lastName"
+                                        field="password"
                                         replaceControl="Last name"
                                     />
                                 </Form.Group>
                             </Col>
                         </Row>
                         <div className='full-page-modal-save-button'>
-                            <button className='primaryBlockBtn' onClick={() => {}}>Proceed</button>
+                            <button className='primaryBlockBtn' onClick={() => handleConfirmCurrentPassword()}>Proceed</button>
                         </div>
                     </div>
                 </Modal.Body>
