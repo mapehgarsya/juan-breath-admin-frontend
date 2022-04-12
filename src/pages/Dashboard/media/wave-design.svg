@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="350" height="152.005" viewBox="0 0 350 152.005">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: rgba(255,255,255,0.3);
+      }
+    </style>
+  </defs>
+  <g id="Design" transform="translate(0 0)">
+    <path id="Intersection_2" data-name="Intersection 2" class="cls-1" d="M0,105.728v-52.3s16.418,37.2,103.137,38.3S199.615.889,233.339.008c20.167-.527,35.266,26.843,54.905,54.086s33.563,42.259,44.138,41.987S350,83.99,350,83.99v21.738Z" transform="translate(0 46.272)"/>
+    <path id="Intersection_1" data-name="Intersection 1" class="cls-1" d="M0,151.672V128.079s126.37,34.123,187.611,0S258.323-1.839,298.251.027s51.731,127.148,51.731,127.148v24.83Z"/>
+  </g>
+</svg>

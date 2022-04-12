@@ -133,7 +133,7 @@ function BasicTable ({
 
                                             if(hasTracing && cell.column.Header==='Actions') {
                                                 return <td className='iconBtnWrapper'>
-                                                    <button className='primaryBtn mt-0 mb-0' title="Delete" onClick={() => tracerModalFunction(cell.row.original?.mobileNumber)}>
+                                                    <button className='accentBtn mt-0 mb-0' title="Delete" onClick={() => tracerModalFunction(cell.row.original?.mobileNumber)}>
                                                        <FaEye/> Trace Contacts
                                                     </button>
                                                 </td>

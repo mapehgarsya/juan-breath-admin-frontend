@@ -3,20 +3,58 @@
     flex-direction: row;
 }
 
-.box, .box-summary {
+.box, .box1, .box-summary {
     flex-grow: 1;
     width: 100%;
     height: 170px;
     margin-right: 10px;
     border-radius: 5px;
-    background-color: #30b8a6;
     box-shadow: 0 10px 10px rgba(66, 185, 194, 0.2);
+}
+
+.box1 {
+    padding: 15px;
+    background-image: url(./media/wave-design.svg), linear-gradient(var(--accent), #2e9b8c);
+    background-position: center calc(100% - 0.0001px);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+.box {
+    padding: 15px;
+    background-image: url(./media/wave-design2.svg), linear-gradient(var(--white), #b3e7df);
+    background-position: center calc(100% - 0.0001px);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@media screen and (max-width: 870px) {
+    .sum-boxes {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .box1 {
+        margin-bottom: 10px;
+        background-image: linear-gradient(var(--accent), #2e9b8c);
+    }
+    .box {
+        margin-bottom: 10px;
+        background-image: linear-gradient(var(--white), #b3e7df);
+    }
 }
 
 .box-summary {
     background-color: white;
     box-shadow: none;
     height: 100%;
+    margin-bottom: 10px;
+}
+@media screen and (max-width: 960px) {
+    .sum-tables {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .box-body-header {
@@ -31,40 +69,71 @@
 .bg-accent {
     background-color: var(--placeholderText) !important;
 }
+.textColor {
+    color: var(--blackTextColor);
+}
 
-.box-body-header, p h3 {
+.box-body-header h4 {
     margin-bottom: 0;
     color: white;
 }
+
+.box-body-header p {
+    margin-bottom: 5px;
+    color: var(--inputBG);
+}
+
+
 
 .box:nth-child(4), .box-summary:nth-child(2){
     margin-right: 0px;
 }
 
-.box-top-heading {
-    margin-left: 20px;
-    margin-top: 20px;
-    font-size: 20px;
+/* BOX1 CSS TEXT */
+.box1-top-heading {
+    font-size: 18px;
     font-weight: 700;
     margin-bottom: 0;
     color: white;
 }
 
-.box-middle-heading {
+.box1-middle-heading {
     font-size: 35px;
-    font-weight: 800;
-    margin-left: 20px;
+    font-weight: normal;
     margin-top: 10px;
     color: white;
 }
 
-.box-bottom-heading {
-    margin-right: 20px;
+.box1-bottom-heading {
     margin-bottom: 0 !important;
     font-size: 18px;
     font-weight: 600;
     color: white;
 }
+
+/* BOX CSS TEXT */
+.box-top-heading {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0;
+    color: var(--blackTextColor);
+}
+
+.box-middle-heading {
+    font-size: 35px;
+    font-weight: normal;
+    margin-top: 10px;
+    color: var(--blackTextColor);
+}
+
+.box-bottom-heading {
+    margin-bottom: 0 !important;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--blackTextColor);
+}
+
+
 .item-count-container {
     display: flex;
     justify-content: space-around;
@@ -82,4 +151,5 @@
 
 .bold {
     font-size: 20px;
+    font-weight: 900;
 }
