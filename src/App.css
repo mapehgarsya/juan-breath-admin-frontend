@@ -235,9 +235,18 @@ input:focus {
   padding-bottom: 10px;
 }
 
+/* Flex Classes */
 .flex-end {
   display: flex;
   justify-content: flex-end;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
 }
 
 /* hovering over links override */
@@ -272,9 +281,9 @@ a:hover {
 }
 
 .badge{
-   font-size: 15px;
-   margin-right: 5px;
-   margin-top: 5px;
+  font-size: 15px;
+  margin-right: 5px;
+  margin-top: 5px;
 }
 
 .modal-title {

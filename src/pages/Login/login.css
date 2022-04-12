@@ -2,7 +2,7 @@ html, body {
     margin:0;
     height:100%;
     width: 100%;
-  }
+}
 
 .logincontainer {
     width:100%;
@@ -18,7 +18,7 @@ html, body {
     display: flex;
     flex-direction: row;
     height: 90px;
-    padding: 20px 10%;
+    padding: 20px 5%;
     background-color: #2a749f;
 }
 .loginNavTitleCont {
@@ -43,7 +43,7 @@ html, body {
     align-content: center;
     
 }
-.loginForm {
+.loginForm, .forgotPassForm {
     display: flex;
     flex-direction: column;
 
@@ -86,3 +86,26 @@ html, body {
     border: none;
     cursor: pointer;
 }
+
+/* In Login Page */
+.forgotPassLink {
+    color: var(--accent);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* In Forgot Pass Page */
+.signInLinkDiv {
+    display: flex;
+    align-self: center;
+}
+.signInLink {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 20px;
+}
+
+.signInLink:hover {
+    color: var(--inputBG);
+}
+

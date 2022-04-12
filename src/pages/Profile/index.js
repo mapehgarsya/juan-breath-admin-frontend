@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import jwtDecode from 'jwt-decode';
+// component/s
 import HomeContainer from '../../components/HomeContainer';
+// import package/s
+import Helmet from 'react-helmet';
 import { Form, Col, Row } from 'react-bootstrap'
 import { FormError } from '../../components/ErrorDisplay/FormError';
 import { getOneAdmin } from '../../services/admins/get';
@@ -116,7 +119,10 @@ const ProfilePage = () => {
 
     return (
         <HomeContainer>
-            <p>My Profile</p>
+            <Helmet>
+            <title>JuanBreath | Admin Profile</title>
+            </Helmet>
+            <h1 className='contentTitle'>My Profile</h1>
             <div className='content-center-modal'>
                 <Row className='mt-4'>
                     <Col>
