@@ -113,7 +113,7 @@ input:focus {
   border-radius: 5px;
 }
 /* Buttons Style */
-.primaryBtn {
+.primaryBtn, .secondaryBtn, .accentBtn {
   height: 40px;
   width: fit-content;
 
@@ -128,20 +128,14 @@ input:focus {
   border-radius: 5px;
 }
 .secondaryBtn {
-  height: 40px;
-  width: fit-content;
 
-  margin: 10px 0;
   background-color: var(--secondary);
   color: var(--primary);
-  padding-left: 10px;
-  padding-right: 10px;
-  font-weight: 600;
-
-  border: none;
-  border-radius: 5px;
 }
-.accentBtn
+.accentBtn {
+  background-color: var(--accent);
+  color: var(--white);
+}
 
 .warningBtn {
   height: 40px;
