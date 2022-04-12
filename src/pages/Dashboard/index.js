@@ -1,4 +1,5 @@
 import React from 'react'
+// css
 import './dashboard.css'
 // import package/s
 import Helmet from 'react-helmet'
@@ -15,12 +16,12 @@ const Dashboard = () => {
             
             <h1 className='contentTitle'>Dashboard</h1>
             <p className='tableCaption'>Shows the over all covid count cases in the country and the accumulated count from the system's database.</p>
-            <div className='count-container'>
-                <div className='box'>
-                    <p className='box-top-heading'>Total App Users</p>
-                    <p className='box-middle-heading'>5,345</p>
+            <div className='count-container sum-boxes'>
+                <div className='box1'>
+                    <p className='box1-top-heading'>Total App Users</p>
+                    <p className='box1-middle-heading'>5,345</p>
                     <div className='d-flex justify-content-end'>
-                        <p className='box-bottom-heading'>+ 1,230 Today</p>
+                        <p className='box1-bottom-heading'>+ 1,230 Today</p>
                     </div>
                 </div>
                 <div className='box'>
@@ -45,15 +46,15 @@ const Dashboard = () => {
                     </div>
                 </div>  
             </div>
-            <div className='count-container mt-3'>
+            <div className='count-container sum-tables mt-3'>
                 <div className='box-summary'>
                     <div className='box-body-header bg-primary'>
-                        <h3>CUMULATIVE SUMMARY SINCE 06 FEBRUARY 2022</h3>
+                        <h4>CUMULATIVE SUMMARY SINCE 06 FEBRUARY 2022</h4>
                         <p>Shows cumulative totals since the first day of JuanBreath.</p>
                     </div>
                     <div className='item-count-container'>
                         <div className='count-box'>
-                            <p className='bg-grey'>Students Isolated</p>
+                            <p className='textColor'>Students Isolated</p>
                             <p className='bold'>134</p>
                         </div>
                         <div className='count-box'>
@@ -88,7 +89,7 @@ const Dashboard = () => {
                             <p className='bold'>2</p>
                         </div>
                     </div>
-                     <hr/>
+                    <hr/>
                     <div className='item-count-container'>
                         <div className='count-box'>
                             <p>Workers Isolated</p>
@@ -107,7 +108,7 @@ const Dashboard = () => {
                             <p className='bold'>1</p>
                         </div>
                     </div>
-                     <hr/>
+                    <hr/>
                     <div className='item-count-container'>
                         <div className='count-box'>
                             <p>Visitors Isolated</p>
@@ -130,12 +131,12 @@ const Dashboard = () => {
                 <div className='box-summary'>
                     <div className='box-summary'>
                     <div className='box-body-header bg-accent'>
-                        <h3>WEEKLY SUMMARY: FEBRUARY 20-26 2022</h3>
+                        <h4>WEEKLY SUMMARY: FEBRUARY 20-26 2022</h4>
                         <p>Shows cumulative totals per week</p>
                     </div>
                     <div className='item-count-container'>
                         <div className='count-box'>
-                            <p className='bg-grey'>Students Isolated</p>
+                            <p className='textColor'>Students Isolated</p>
                             <p className='bold'>9</p>
                         </div>
                         <div className='count-box'>
@@ -170,7 +171,7 @@ const Dashboard = () => {
                             <p className='bold'>1</p>
                         </div>
                     </div>
-                     <hr/>
+                    <hr/>
                     <div className='item-count-container'>
                         <div className='count-box'>
                             <p>Workers Isolated</p>
@@ -189,7 +190,7 @@ const Dashboard = () => {
                             <p className='bold'>1</p>
                         </div>
                     </div>
-                     <hr/>
+                    <hr/>
                     <div className='item-count-container'>
                         <div className='count-box'>
                             <p>Visitors Isolated</p>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;700;900&display=swap');
 * {
   margin: 0; 
   padding: 0;
@@ -41,8 +41,7 @@
 .contentWrapper {
   width: 100%;
   min-width: 500px; /* so that data UI in tables won't clash with each other*/
-  padding: 30px;
-  padding-right: 5%;
+  padding: 30px 5%;
 }
 /* Titles in pages with a button in the same div */
 .titleAndButtonDiv {
@@ -142,6 +141,8 @@ input:focus {
   border: none;
   border-radius: 5px;
 }
+.accentBtn
+
 .warningBtn {
   height: 40px;
   width: fit-content;
@@ -177,6 +178,7 @@ input:focus {
   padding: 10px;
   background-color: var(--white);
   border-radius: 5px;
+  min-width: 500px;
 }
 .tableStyle {
   width: 100%;
@@ -187,6 +189,8 @@ input:focus {
   font-size: 13px;
   box-sizing: border-box;
   border-radius: 5px;
+
+  overflow: auto !important;
 }
 
 .tableStyle, .tableStyle tr th, .tableStyle tr td {
