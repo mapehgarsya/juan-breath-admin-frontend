@@ -5,6 +5,8 @@ import Sidebar from '../SideBar';
 import ResetPassword from '../../pages/Login/utils/ResetPassword';
 // services
 import { loginAdmin } from '../../services/auth/login';
+import { resetPassword } from '../../services/auth/resetpassword';
+import ToastNotification from '../Toast';
 
 export default function HomeContainer (props) {
   // set up password and new password variables
@@ -16,11 +18,23 @@ export default function HomeContainer (props) {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // toast notification
+  const [showToast, setShowToast] = useState(false);
+  const [toastStatue, setToastStatus] = useState('');
+  const [toastMessage, setToastMessage] = useState('');
 
   // modal show and hide
-  const handleCloseShowResetModal = () => setShowResetModal(false);
+  const handleCloseShowResetModal = () => {
+    setShowResetModal(false);
+    setNewPassword('')
+    setConfirmNewPassword('')
+    setCurrentPassword('')
+    setErrorMsg([])
+    setIsSubmitting(false)
+    setShowNextStep(false);
+  }
 
-  // add reset method
+  // confirm current password 
   const handleConfirmCurrentPassword = async () => {
     setIsSubmitting(!isSubmitting)
     try {
@@ -29,6 +43,27 @@ export default function HomeContainer (props) {
         setShowNextStep(!showNextStep)
         setErrorMsg([]);
         setIsSubmitting(false)
+      }
+    } catch (error) {
+      setIsSubmitting(false)
+      if(error.response?.status === 400) {
+        setErrorMsg([error.response.data?.message])
+      }
+    }
+  }
+
+  // reset method endpoint
+  const resetPasswordFunction = async () => {
+    setIsSubmitting(!isSubmitting)
+    try {
+      const data = await resetPassword({ username: userName, password: currentPassword, newPassword: newPassword, confirmNewPassword: confirmNewPassword });
+      if(data.data.success) {
+        handleCloseShowResetModal()
+        setErrorMsg([]);
+        setIsSubmitting(false);
+        setShowToast(!showToast);
+        setToastMessage("Admin account has been deleted successfully.");
+        setToastStatus('Success');
       }
     } catch (error) {
       setIsSubmitting(false)
@@ -79,7 +114,14 @@ export default function HomeContainer (props) {
           setNewPassword={setNewPassword}
           setConfirmNewPassword={setConfirmNewPassword}
           isSubmitting={isSubmitting}
+          resetPasswordFunction={resetPasswordFunction}
         />
+        <ToastNotification
+          showToast={showToast}
+          setShowToast={setShowToast}
+          message={toastMessage}
+          status={toastStatue}
+        /> 
     </div>
   )
 }

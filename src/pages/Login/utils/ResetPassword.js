@@ -15,7 +15,8 @@ const ResetPassword = ({
     setConfirmNewPassword,
     showNextStep,
     handleConfirmCurrentPassword,
-    isSubmitting 
+    isSubmitting,
+    resetPasswordFunction 
 }) => {
     return (
         <>
@@ -91,7 +92,7 @@ const ResetPassword = ({
                             }</button>
                             }
                             {
-                                showNextStep && <button className='primaryBlockBtn' onClick={() => handleConfirmCurrentPassword()}>{
+                                showNextStep && <button className='primaryBlockBtn' onClick={() => resetPasswordFunction()}>{
                                 isSubmitting ? 
                                     <Spinner animation="border" role="status">
                                         <span className="visually-hidden">Loading...</span>
