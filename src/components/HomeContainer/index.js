@@ -9,24 +9,32 @@ import { loginAdmin } from '../../services/auth/login';
 export default function HomeContainer (props) {
   // set up password and new password variables
   const [userName, setUserName] = useState('');
+  const [showNextStep, setShowNextStep] = useState(false);
   const [showResetModal, setShowResetModal] = useState(false);
   const [errorMsg, setErrorMsg] = useState([])
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // modal show and hide
   const handleCloseShowResetModal = () => setShowResetModal(false);
 
   // add reset method
   const handleConfirmCurrentPassword = async () => {
+    setIsSubmitting(!isSubmitting)
     try {
       const { data } = await loginAdmin({ username: userName, password: currentPassword });
-      console.log(data)
+      if(data.success) {
+        setShowNextStep(!showNextStep)
+        setErrorMsg([]);
+        setIsSubmitting(false)
+      }
     } catch (error) {
-        if(error.response?.status === 400) {
-            setErrorMsg([error.response.data?.message])
-        }
+      setIsSubmitting(false)
+      if(error.response?.status === 400) {
+        setErrorMsg([error.response.data?.message])
+      }
     }
   }
 
@@ -37,7 +45,7 @@ export default function HomeContainer (props) {
       const decodedToken = token ? jwtDecode(token) : null
       
       if(decodedToken) {
-          setUserName(decodedToken.userName)
+        setUserName(decodedToken.username)
       }
     } catch (error) {
         setUserName('JuanBreath Admin')   
@@ -47,9 +55,6 @@ export default function HomeContainer (props) {
   // add toast notif
   return (
     <div className='customContainer '>
-      {
-        console.log(errorMsg)
-      }
         <div className='homeWrapper'>
             <Sidebar />
             <div className='navAndContentDiv'>
@@ -63,6 +68,7 @@ export default function HomeContainer (props) {
         </div>
         <ResetPassword
           showFunction = {showResetModal}
+          showNextStep={showNextStep}
           errorMsg={errorMsg}
           onHideFunction = {handleCloseShowResetModal}
           handleConfirmCurrentPassword={handleConfirmCurrentPassword}
@@ -72,6 +78,7 @@ export default function HomeContainer (props) {
           setCurrentPassword={setCurrentPassword}
           setNewPassword={setNewPassword}
           setConfirmNewPassword={setConfirmNewPassword}
+          isSubmitting={isSubmitting}
         />
     </div>
   )

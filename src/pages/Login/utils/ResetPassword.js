@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Form, Col, Row } from 'react-bootstrap'
 import { FormError } from '../../../components/ErrorDisplay/FormError';
+import Spinner from 'react-bootstrap/Spinner'
 
 const ResetPassword = ({ 
     showFunction, 
@@ -12,7 +13,9 @@ const ResetPassword = ({
     setCurrentPassword, 
     setNewPassword, 
     setConfirmNewPassword,
-    handleConfirmCurrentPassword 
+    showNextStep,
+    handleConfirmCurrentPassword,
+    isSubmitting 
 }) => {
     return (
         <>
@@ -22,26 +25,80 @@ const ResetPassword = ({
                 </Modal.Header>
                 <Modal.Body>
                     <div className='content-center-modal'>
-                        <Row className='mt-4'>
+                        {
+                            !showNextStep && 
+                            <Row className='mt-4'>
+                                <Col>
+                                    <Form.Group className="mb-2" controlId="formBasicEmail">
+                                        <Form.Label>Enter Current Password <b className='text-danger'>*</b></Form.Label>
+                                        <Form.Control 
+                                            type="password" 
+                                            value={currentPassword}
+                                            onChange={e => setCurrentPassword(e.target.value)}
+                                            required
+                                        />
+                                        <FormError
+                                            errorMessages={errorMsg}
+                                            field="password"
+                                            replaceControl="Password"
+                                        />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                        }
+                        {
+                            showNextStep &&  <Row className='mt-4'>
                             <Col>
                                 <Form.Group className="mb-2" controlId="formBasicEmail">
-                                    <Form.Label>Please Confirm Current Password <b className='text-danger'>*</b></Form.Label>
+                                    <Form.Label>Enter New Password <b className='text-danger'>*</b></Form.Label>
                                     <Form.Control 
                                         type="password" 
-                                        value={currentPassword}
-                                        onChange={e => setCurrentPassword(e.target.value)}
+                                        value={newPassword}
+                                        onChange={e => setNewPassword(e.target.value)}
                                         required
                                     />
                                     <FormError
                                         errorMessages={errorMsg}
                                         field="password"
-                                        replaceControl="Last name"
+                                        replaceControl="New Password"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-2" controlId="formBasicEmail">
+                                    <Form.Label>Confirm New Password <b className='text-danger'>*</b></Form.Label>
+                                    <Form.Control 
+                                        type="password" 
+                                        value={confirmNewPassword}
+                                        onChange={e => setConfirmNewPassword(e.target.value)}
+                                        required
+                                    />
+                                    <FormError
+                                        errorMessages={errorMsg}
+                                        field="password"
+                                        replaceControl="New Password"
                                     />
                                 </Form.Group>
                             </Col>
                         </Row>
+                        }
                         <div className='full-page-modal-save-button'>
-                            <button className='primaryBlockBtn' onClick={() => handleConfirmCurrentPassword()}>Proceed</button>
+                            {
+                                !showNextStep && <button className='primaryBlockBtn' onClick={() => handleConfirmCurrentPassword()}>{
+                                isSubmitting ? 
+                                    <Spinner animation="border" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </Spinner>
+                                :   "Proceed"
+                            }</button>
+                            }
+                            {
+                                showNextStep && <button className='primaryBlockBtn' onClick={() => handleConfirmCurrentPassword()}>{
+                                isSubmitting ? 
+                                    <Spinner animation="border" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </Spinner>
+                                :   "Update Password"
+                            }</button>
+                            }
                         </div>
                     </div>
                 </Modal.Body>
