@@ -60,7 +60,7 @@ const ResetPassword = ({
                                     />
                                     <FormError
                                         errorMessages={errorMsg}
-                                        field="password"
+                                        field="newPassword"
                                         replaceControl="New Password"
                                     />
                                 </Form.Group>
@@ -74,8 +74,8 @@ const ResetPassword = ({
                                     />
                                     <FormError
                                         errorMessages={errorMsg}
-                                        field="password"
-                                        replaceControl="New Password"
+                                        field="confirmNewPassword"
+                                        replaceControl="Confirmation Password"
                                     />
                                 </Form.Group>
                             </Col>
@@ -92,7 +92,7 @@ const ResetPassword = ({
                             }</button>
                             }
                             {
-                                showNextStep && <button className='primaryBlockBtn' onClick={() => resetPasswordFunction()}>{
+                                showNextStep && <button  className='primaryBlockBtn' onClick={() => resetPasswordFunction()} >{
                                 isSubmitting ? 
                                     <Spinner animation="border" role="status">
                                         <span className="visually-hidden">Loading...</span>

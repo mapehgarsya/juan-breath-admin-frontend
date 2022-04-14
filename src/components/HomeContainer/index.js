@@ -68,7 +68,7 @@ export default function HomeContainer (props) {
     } catch (error) {
       setIsSubmitting(false)
       if(error.response?.status === 400) {
-        setErrorMsg([error.response.data?.message])
+        setErrorMsg(error.response.data?.message.split('.'))
       }
     }
   }
