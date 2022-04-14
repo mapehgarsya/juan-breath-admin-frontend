@@ -39,11 +39,15 @@ const ForgotPassword = () => {
                         className='inputStyle'
                         placeholder='Email Address'
                         autoFocus
+                        required
                     />
+                    <p className='inputErrorMessage'>Error message example.</p>
                 </div>
-                <button type='submit' className='primaryBlockBtn'>
-                    Continue
-                </button>
+                <a href='forgot-password-notification'>
+                  <button type='submit' className='primaryBlockBtn'>
+                      Continue
+                  </button>
+                </a>
             </div>
         </div>
     </div>

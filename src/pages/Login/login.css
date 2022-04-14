@@ -43,19 +43,20 @@ html, body {
     align-content: center;
     
 }
-.loginForm, .forgotPassForm {
+.loginForm, .forgotPassForm, .forgotPassNotifForm {
     display: flex;
     flex-direction: column;
 
     height: auto;
     width: 400px;
     padding: 30px;
-    margin: 5% 0;
+    margin: 5% 15px 15px 15px;
 
     background-color: #ffffff;
     box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
     border-radius: 5px;
 }
+
 .loginFormTitle {
     color: #2a749f;
     margin-bottom: 15px;
@@ -109,3 +110,32 @@ html, body {
     color: var(--inputBG);
 }
 
+/* In forgot Pass Notif Page */
+.forgotPassNotifForm {
+    width: 700px;
+    min-width: 400px;
+    flex-direction: row;
+    margin: 5% 10px 10px 10px;
+
+    padding: 20px;
+}
+
+.fpNotifText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fpNotifText h4{
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.mailArtDiv {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
