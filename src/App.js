@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 // Login Page
 import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword';
+import ForgotPasswordNotification from './pages/ForgotPassword/utilities/ForgotPasswordNotification';
 // Pages inside Main Admin
 import Dashboard from './pages/Dashboard';
 import Locations from './pages/Locations';
@@ -13,7 +15,6 @@ import RolesAndPermissions from './pages/RolesAndPermissions';
 import UserManagement from './pages/UserManagement';
 import PositiveTracingLogs from './pages/PositiveUpdateLogs';
 import ProfilePage from './pages/Profile';
-import ForgotPassword from './pages/ForgotPassword';
 
 //utilities
 import jwt_decode from 'jwt-decode';
@@ -58,6 +59,7 @@ function App() {
 
           {/* Reset Password */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path='/forgot-password-notification' element={<ForgotPasswordNotification />} />
 
           {/* Main Admin Pages */}
           <Route 
