@@ -44,6 +44,9 @@ function RequireAuth({ children }) {
 }
 
 function App() {
+  
+  const shortLiveKey = localStorage.getItem('shortlivekey')
+
   return (
     <div>
       {/* Helmet for page's title*/}
@@ -59,7 +62,7 @@ function App() {
 
           {/* Reset Password */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path='/forgot-password-notification' element={<ForgotPasswordNotification />} />
+          <Route path={`${shortLiveKey}/forgot-password-notification`} element={<ForgotPasswordNotification />} />
 
           {/* Main Admin Pages */}
           <Route 

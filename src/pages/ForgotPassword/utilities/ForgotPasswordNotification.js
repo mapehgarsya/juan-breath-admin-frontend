@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 // import css
 import '../../Login/login.css'
 // import media
@@ -8,6 +8,11 @@ import mailArt from '../../../media/mail-sent-rafiki.png'
 import { Helmet } from 'react-helmet'
 
 const ForgotPasswordNotification = () => {
+
+    useEffect(() => {
+        localStorage.removeItem('shortlivekey');
+    },[])
+
   return (
     <div className='logincontainer'>
         <Helmet>
