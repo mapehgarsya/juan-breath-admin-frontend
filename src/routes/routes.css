@@ -1,0 +1,19 @@
+.page-not-found-cont {
+    background-color: var(--white);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-art {
+    height: 60%;
+}
+
+.page-not-found-cont h2 {
+    color: var(--primary);
+}
+
+
