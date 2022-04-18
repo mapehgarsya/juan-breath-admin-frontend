@@ -135,10 +135,6 @@ export const UsersCOLUMN = [
     {
         Header: 'Registration Date',
         accessor: ''
-    },
-    {
-        Header: 'Actions',
-        accessor: 'none'
     }
 ]
 
