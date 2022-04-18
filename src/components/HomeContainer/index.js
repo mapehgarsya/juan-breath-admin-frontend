@@ -62,7 +62,7 @@ export default function HomeContainer (props) {
         setErrorMsg([]);
         setIsSubmitting(false);
         setShowToast(!showToast);
-        setToastMessage("Admin account has been deleted successfully.");
+        setToastMessage("Admin password has been updated successfully.");
         setToastStatus('Success');
       }
     } catch (error) {

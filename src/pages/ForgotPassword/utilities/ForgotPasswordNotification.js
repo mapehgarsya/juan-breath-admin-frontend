@@ -27,7 +27,7 @@ const ForgotPasswordNotification = () => {
                 </div>
             </div>
             <div className='signInLinkDiv'>
-                <a href='login' className='signInLink'>Sign In</a>
+                <a href='/login' className='signInLink'>Sign In</a>
             </div>
         </div>
         <div className='wrapper'>
