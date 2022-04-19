@@ -10,3 +10,8 @@ export const getAllAdmins = () => {
 export const getOneAdmin = (id) => {
   return axios.get(`${baseUrl}/admins/${id}`);
 };
+
+// get all statistics
+export const getAllStatistics = () => {
+  return axios.get(`${baseUrl}/statistics/all`);
+};

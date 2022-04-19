@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 // css
 import './dashboard.css'
 // import package/s
 import Helmet from 'react-helmet'
 // component/s
 import HomeContainer from '../../components/HomeContainer'
+import { getAllStatistics } from "../../services/admins/get";
 
 const Dashboard = () => {
+
+    const [totalUserCount, setTotalUserCounte] = useState(0);
+    const [totalActiveCases, setTotalActiveCases] = useState(0);
+    const [totalRecoveredCases, setTotalRecoveredCases] = useState(0);
+    const [totalCloseContactCases, setTotalCloseContactCases] = useState(0);
+
+    const statisticsData = async () => {
+        try {
+            const data = await getAllStatistics();
+            const consolidated = data.data;
+            if(consolidated.success){
+                setTotalUserCounte(consolidated.totalUserCount);
+                setTotalActiveCases(consolidated.totalActiveCases);
+                setTotalRecoveredCases(consolidated.totalRecoveredCases);
+                setTotalCloseContactCases(consolidated.totalCloseContactCases);
+            }
+        } catch (error) {
+            
+        }
+    }
+
+    useEffect(() => {
+        statisticsData();
+    }, []);
+
     return (
         <HomeContainer>
             {/* Helmet for page's title*/}
@@ -19,30 +45,30 @@ const Dashboard = () => {
             <div className='count-container sum-boxes'>
                 <div className='box1'>
                     <p className='box1-top-heading'>Total App Users</p>
-                    <p className='box1-middle-heading'>5,345</p>
+                    <p className='box1-middle-heading'>{totalUserCount}</p>
                     <div className='d-flex justify-content-end'>
-                        <p className='box1-bottom-heading'>+ 1,230 Today</p>
+                        <p className='box1-bottom-heading'>+ 0 Today</p>
                     </div>
                 </div>
                 <div className='box'>
                     <p className='box-top-heading'>Total Active Cases</p>
-                    <p className='box-middle-heading'>31</p>
+                    <p className='box-middle-heading'>{totalActiveCases}</p>
                     <div className='d-flex justify-content-end'>
-                        <p className='box-bottom-heading'>+ 2 Today</p>
+                        <p className='box-bottom-heading'>+ 0 Today</p>
                     </div>
                 </div>
                 <div className='box'>
                     <p className='box-top-heading'>Total Recovered</p>
-                    <p className='box-middle-heading'>173</p>
+                    <p className='box-middle-heading'>{totalRecoveredCases}</p>
                     <div className='d-flex justify-content-end'>
-                        <p className='box-bottom-heading'>+ 24 Today</p>
+                        <p className='box-bottom-heading'>+ 0 Today</p>
                     </div>
                 </div>
                 <div className='box'>
                     <p className='box-top-heading'>Total Close Contact</p>
-                    <p className='box-middle-heading'>3</p>
+                    <p className='box-middle-heading'>{totalCloseContactCases}</p>
                     <div className='d-flex justify-content-end'>
-                        <p className='box-bottom-heading'>+ 1 Today</p>
+                        <p className='box-bottom-heading'>+ 0 Today</p>
                     </div>
                 </div>  
             </div>
