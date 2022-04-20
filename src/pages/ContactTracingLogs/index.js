@@ -63,7 +63,7 @@ const ContactTracingLogs = () => {
                             }
                         </select>
                         <input type="date" className='inputStyle2 mr-10'/>
-                        <select className='inputStyle2 mr-10'>
+                        {/* <select className='inputStyle2 mr-10'>
                             <option>Time</option>
                             <option>4:00 AM</option>
                             <option>5:00 AM</option>
@@ -84,7 +84,7 @@ const ContactTracingLogs = () => {
                             <option>8:00 PM</option>
                             <option>9:00 PM</option>
                             <option>10:00 PM</option>
-                        </select>
+                        </select> */}
                     </div>
                     {/* Generate Report Button */}
                     <button className='primaryBtn genReportBtn'>Generate Report</button>

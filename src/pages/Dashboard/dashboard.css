@@ -3,6 +3,7 @@
     flex-direction: row;
 }
 
+/* Upper Boxes */
 .box, .box1, .box-summary {
     flex-grow: 1;
     width: 100%;
@@ -24,6 +25,7 @@
 
 .box {
     padding: 15px;
+
     background-image: url(./media/wave-design2.svg), linear-gradient(var(--white), #b3e7df);
     background-position: center calc(100% - 0.0001px);
     background-repeat: no-repeat;
@@ -48,6 +50,7 @@
     }
 }
 
+/* Summary Tables */
 .box-summary {
     background-color: white;
     box-shadow: none;
@@ -66,13 +69,7 @@
     padding: 2%;
     border-radius: 5px 5px 0 0;
 }
-.bg-primary {
-    background-color: var(--primary) !important;
-}
 
-.bg-accent {
-    background-color: var(--placeholderText) !important;
-}
 .textColor {
     color: var(--blackTextColor);
 }

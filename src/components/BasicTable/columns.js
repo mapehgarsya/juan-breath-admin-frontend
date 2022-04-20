@@ -9,7 +9,8 @@ export const LogsCOLUMN = [
     },
     {
         Header: 'Location',
-        accessor: 'location'
+        accessor: 'location',
+
     },
     {
         Header: 'Action',
