@@ -90,9 +90,7 @@ function BasicTable ({
                                     <tr {...row.getRowProps()}>
                                         {row.cells.map((cell) => {
                                             if(cell.column.Header === "No.") {
-                                                return <tr>
-                                                    <td>{i + 1}</td>
-                                                </tr>
+                                                return <td>{i + 1}</td>
                                             }
 
                                             if(cell.column.Header === "Faculty Name" || cell.column.Header === "Name") {
