@@ -17,6 +17,15 @@
   --white: #ffffff;
   --red: #ad2828;
 }
+
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-accent {
+  background-color: var(--placeholderText) !important;
+}
+
 /* Home Common Parts Custom Style */
 .customContainer {
   width:100%;
@@ -187,10 +196,6 @@ input:focus {
   overflow: auto !important;
 }
 
-.tableStyle, .tableStyle tr th, .tableStyle tr td {
-  border: 1px solid rgb(255, 255, 255);
-}
-
 .tableStyle caption, .tableCaption {
   text-align: left;
   margin-bottom: 10px;
@@ -204,7 +209,14 @@ input:focus {
 .tableStyle tbody tr td {
   color: var(--blackTextColor);
   padding: 5px 0;
+
 }
+
+/* For center alignment vertically of the No. Column */
+/* .tableStyle tbody tr td:nth-child(1) {
+  display: flex;
+  align-self: center;
+} */
 
 
 /* Spacing Classes*/

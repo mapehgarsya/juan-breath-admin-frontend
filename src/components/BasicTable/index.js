@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react'
+// import css
+import './permissionsStyle.css'
 // import package/s
-import { useTable, useSortBy } from 'react-table'
+import { useTable, useSortBy, useFilters } from 'react-table'
 import { FaPen, FaTrash, FaQrcode, FaArrowDown, FaArrowUp, FaEye } from "react-icons/fa";
 import Spinner from 'react-bootstrap/Spinner'
 import Badge from 'react-bootstrap/Badge'
@@ -25,7 +27,10 @@ function BasicTable ({
     const tableInstance = useTable({
         columns,
         data
-    }, useSortBy)
+    },
+    // useFilters,
+    useSortBy
+)
 
     const { 
         getTableProps, 
@@ -69,6 +74,8 @@ function BasicTable ({
                                         <span>
                                             {column.isSorted ? (column.isSortedDesc ? <FaArrowDown className='ml-5'/> : <FaArrowUp className='ml-5'/>) : ''}
                                         </span>
+                                        {/* Column Filter */}
+                                        {/* <div>{column.canFilter ? column.render(Filter) : null}</div> */}
                                     </th>
                                 ))}
                             </tr>
@@ -119,12 +126,12 @@ function BasicTable ({
                                             if(cell.column.Header === "Action") {
                                                 return <td className={cell.row.original.action === "Scanned the QR Code" ? 'entry' : 'exit' } >{cell.row.original.action}</td>
                                             }
-
+                                            //Permissions
                                             if(cell.column.Header === "Permissions") {
                                                 return <td><div className='permission-container'>
                                                     {
                                                         cell.row.original.permissions.map((data) => {
-                                                            return <Badge>{data.name}</Badge>
+                                                            return <Badge className={data.name.split(":")[0]}>{data.name}</Badge>
                                                         })
                                                     }
                                                     </div>
@@ -138,7 +145,7 @@ function BasicTable ({
                                             if(hasTracing && cell.column.Header==='Actions') {
                                                 return <td className='iconBtnWrapper'>
                                                     <button className='accentBtn mt-0 mb-0' title="Delete" onClick={() => tracerModalFunction(cell.row.original?.mobileNumber)}>
-                                                       <FaEye/> Trace Contacts
+                                                        <FaEye/> Trace Contacts
                                                     </button>
                                                 </td>
                                             }
