@@ -1,0 +1,105 @@
+.deleteModalTitle, .deleteLocationName {
+    color: var(--red);
+    font-weight: 700;
+}
+
+.editModalTitle, .addModalTitle {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.wide-modal-title {
+    padding-left: 1%;
+}
+
+.full-page-modal-save-button {
+    width: auto;
+}
+
+/* Location QR Modal */
+.modal-header-bg{
+    background-color: var(--primary);
+}
+.content-center-modal {
+    padding: 0 1%;
+}
+.item-center-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Location QR Code */
+.qr-container {
+    width: 40%;
+    max-width: 600px;
+    min-width: 300px;
+    aspect-ratio: 7.5 / 10; /* please test if working */
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    background-color: var(--primary);
+}
+.qr-texts {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.qr-code-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+.qr-code-title h2 {
+    color: white;
+    margin-bottom: 0;
+}
+
+
+
+.line {
+    width: 70%;
+    max-width: 200px;
+    min-width: 200;
+    height: 1px;
+    background-color: white;
+    margin: 5px 0;
+}
+.qr-code-title h4 {
+    color: var(--accent);
+}
+
+.qr-code-title h1 { /* For the name of the Location*/
+    color: white;
+}
+
+.qr-code-content-container {
+    width: 100%;
+    height: auto;
+}
+
+.qr-content {
+    margin-top: 20px;
+    margin: 0 auto;
+    padding: 3% 0;
+
+    width: 80%;
+    aspect-ratio: 1 / 1;
+
+    background-color: var(--accent);
+}
+
+.QRImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 94%;
+    aspect-ratio: 1 / 1;
+}

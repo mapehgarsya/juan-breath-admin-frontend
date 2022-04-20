@@ -100,6 +100,10 @@ function BasicTable ({
                                                 return <td>{cell.row.original.date}</td>
                                             }
 
+                                            if(cell.column.Header === "Role Name") {
+                                                return <td><b>{cell.row.original.name.toUpperCase()}</b></td>
+                                            }
+
                                             if(cell.column.Header === "Time") {
                                                 return <td>{convertTo112HourFormat(cell.row.original.time)}</td>
                                             }
