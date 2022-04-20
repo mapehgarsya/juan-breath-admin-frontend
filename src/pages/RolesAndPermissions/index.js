@@ -6,23 +6,39 @@ import HomeContainer from '../../components/HomeContainer';
 import BasicTable from '../../components/BasicTable';
 // import table data
 import { RolesAndPermissionsCOLUMNS } from '../../components/BasicTable/columns';
-import { getAllRoles } from '../../services/roles/get';
 // utilities
 import AddRoleModal from './utilities/AddRoles';
 import ToastNotification from '../../components/Toast';
 // services
+import { getAllPermissions } from '../../services/permissions/get';
+import { getAllRoles } from '../../services/roles/get';
 import { postOneRole } from '../../services/roles/post';
 
 const RolesAndPermissions = () => {
 
     const [roles, setRoles] = useState([]);
+    const [permissions, setAllPermissions] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
     const [showToast, setShowToast] = useState(false);
     const [toastStatue, setToastStatus] = useState('');
     const [toastMessage, setToastMessage] = useState('');
 
+    const modules = [
+        "Admin",
+        "Location",
+        "Permissions",
+        "Auth",
+        "Role",
+        "Contact-Tracing-Logs",
+        "Dashboard",
+        "Admin-Application-Download",
+        "Visitation-History",
+        "Users",
+        "Statistics"
+    ];
+
     // get all users accounts
-    const _getAllAdmins = async () => {
+    const _getAllRoles = async () => {
         try {
             const roles = await getAllRoles();
             setRoles(roles.data?.data);
@@ -32,9 +48,21 @@ const RolesAndPermissions = () => {
         }
     }
 
+    // get all users accounts
+    const _getAllPermissions = async () => {
+        try {
+            const permissions = await getAllPermissions();
+            setAllPermissions(permissions.data?.data);
+            setIsFetching(false);
+        } catch (error) {
+            setRoles([]);
+        }
+    }
+
     // this function will auto run on mount
     useEffect(() => {
-        _getAllAdmins()
+        _getAllRoles();
+        _getAllPermissions();
     }, []);
 
     // send the data to the backend to be created
@@ -62,6 +90,8 @@ const RolesAndPermissions = () => {
                 <h1 className='contentTitle'>Roles And Permissions</h1>
                 <AddRoleModal 
                     method={_postOneLocation}
+                    permissions={permissions}
+                    modules={modules}
                 />
             </div>
             <div className='contentDiv'>
