@@ -192,8 +192,6 @@ input:focus {
   font-size: 13px;
   box-sizing: border-box;
   border-radius: 5px;
-
-  overflow: auto !important;
 }
 
 .tableStyle caption, .tableCaption {
@@ -208,15 +206,15 @@ input:focus {
 }
 .tableStyle tbody tr td {
   color: var(--blackTextColor);
-  padding: 5px 0;
-
+  padding: 5px;
 }
 
 /* For center alignment vertically of the No. Column */
-/* .tableStyle tbody tr td:nth-child(1) {
-  display: flex;
-  align-self: center;
-} */
+.tableStyle tbody tr td:first-child {
+  text-align: left;
+  vertical-align: middle !important;
+
+}
 
 
 /* Spacing Classes*/
