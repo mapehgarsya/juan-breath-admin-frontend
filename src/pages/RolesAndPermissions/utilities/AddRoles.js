@@ -25,7 +25,8 @@ const AddRoleModal = ({ method, permissions, modules }) => {
         }
         // pass the data to the method provided
         method(locationSchema);
-
+        setCurrentPermissions([]);
+        setCustomPermissions([]);
         // close the modal
         setShow(false);
     }
