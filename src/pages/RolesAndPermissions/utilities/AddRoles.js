@@ -8,6 +8,7 @@ const AddRoleModal = ({ method, permissions, modules }) => {
     
     const [name, setLocationName] = useState('');
     const [description, setLocationAddress] = useState('');
+    const [currentPermissions, setCurrentPermissions] = useState([]);
     const [customPermissions, setCustomPermissions] = useState([]);
     const [show, setShow] = useState(false);
 
@@ -27,6 +28,38 @@ const AddRoleModal = ({ method, permissions, modules }) => {
 
         // close the modal
         setShow(false);
+    }
+
+    const selectPermissions = (data) => {
+        const permissionsID = [];
+        if(currentPermissions.length > 0) {
+            for(let j = 0; j < currentPermissions.length; j++) {
+                if(currentPermissions[j].permissionName === data) {
+                    console.log()
+                    setCurrentPermissions(currentPermissions.filter((removalPerm) => { return removalPerm.permissionName !== data}));
+                    setCustomPermissions(customPermissions.filter((d) => { return !currentPermissions[j].permissionsID.includes(d)}));
+                } 
+                else {
+                    const filterPermission = permissions.filter((permission) => { return permission.name.split(':')[0] === data })
+
+                    for(let i = 0; i < filterPermission.length; i++) {
+                        permissionsID.push(filterPermission[i]._id)
+                    }
+                    setCurrentPermissions([...currentPermissions, { permissionName: data, permissionsID: permissionsID }])
+                    setCustomPermissions([...customPermissions, ...permissionsID])
+                }
+            }
+        } 
+        else {
+            const filterPermission = permissions.filter((permission) => { return permission.name.split(':')[0] === data })
+
+            for(let i = 0; i < filterPermission.length; i++) {
+                permissionsID.push(filterPermission[i]._id)
+            }
+            setCurrentPermissions([...currentPermissions, { permissionName: data, permissionsID: permissionsID }])
+            setCustomPermissions([...customPermissions, ...permissionsID])
+        }
+        
     }
 
     return (
@@ -62,7 +95,6 @@ const AddRoleModal = ({ method, permissions, modules }) => {
                                 required
                             />
                         </Form.Group>
-
                         {
                             modules.map((module, i) => {
                                 return(
@@ -72,7 +104,7 @@ const AddRoleModal = ({ method, permissions, modules }) => {
                                             <Form.Check 
                                                 type="checkbox"
                                                 label={module} 
-                                                onClick={() => alert('test')} 
+                                                onClick={() => selectPermissions(module)} 
                                             />
                                         </h4>
                                         <hr/>
@@ -84,8 +116,9 @@ const AddRoleModal = ({ method, permissions, modules }) => {
                                                         return <div>
                                                             <Form.Check 
                                                                 type="checkbox"
+                                                                checked={customPermissions.includes(permission._id)}
                                                                 label={permission.name} 
-                                                                onClick={() => alert('test')} 
+                                                                disabled 
                                                             />
                                                         </div>
                                                     }
