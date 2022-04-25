@@ -74,8 +74,6 @@ function BasicTable ({
                                         <span>
                                             {column.isSorted ? (column.isSortedDesc ? <FaArrowDown className='ml-5'/> : <FaArrowUp className='ml-5'/>) : ''}
                                         </span>
-                                        {/* Column Filter */}
-                                        {/* <div>{column.canFilter ? column.render(Filter) : null}</div> */}
                                     </th>
                                 ))}
                             </tr>
