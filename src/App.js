@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'r
 import Helmet from 'react-helmet';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+// User Landing Page
+import UserHome from './pages/UserHome';
 // Login Page
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
@@ -56,6 +58,9 @@ function App() {
       {/* Routing */}
       <Router>
         <Routes>
+          {/* User Landing Page */}
+          <Route path="/mobile-app-download" element={<UserHome />} />
+
           {/* Login */}
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
