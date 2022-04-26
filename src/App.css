@@ -203,10 +203,12 @@ input:focus {
   color: var(--primary);
   text-align: left;
   padding-bottom: 5px;
+  padding-right: 10px;
 }
 .tableStyle tbody tr td {
   color: var(--blackTextColor);
   padding: 5px;
+  padding-right: 10px;
 }
 
 /* For center alignment vertically of the No. Column */

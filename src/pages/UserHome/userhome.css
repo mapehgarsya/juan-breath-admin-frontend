@@ -1,0 +1,102 @@
+.userHomeWrapper {
+    width: 100%;
+    height: 100vh;    
+    background-color: var(--primary);
+}
+.userHomeBody {
+
+    padding: 30px 8% 0px 8%;
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Open Sans', sans-serif !important;
+    
+}
+
+.appTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 40px;
+
+    color: var(--white);
+
+}
+.appTitle h3 {
+    margin-bottom: 0 !important;
+    display: flex;
+    justify-content: left;
+    text-align: center;
+
+    /* font-family: 'Open Sans', sans-serif !important; */
+    font-weight: 400;
+}
+
+.userHomeCont {
+    width: 100%;
+    margin-top: -50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userHomeTexts {
+    width: 50%;
+    margin-top: -50px;
+}
+
+.userHomeTexts h1 {
+    color: var(--white);
+    font-weight: 900;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+.userHomeTexts p {
+    color: var(--white);
+    font-size: 25px;
+}
+
+.userHomeIllustration {
+    background-image: url('../../media/QR-code-rafiki.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    aspect-ratio: 1 / 1;
+}
+
+
+/* Shape Divider */
+.custom-shape-divider-bottom-1650461962 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1650461962 svg {
+    position: relative;
+    display: block;
+    width: calc(164% + 1.3px);
+    height: 150px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1650461962 .shape-fill {
+    fill: #FFFFFF;
+}
+
+/* Footer */
+.userHomeFooter {
+    width: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
