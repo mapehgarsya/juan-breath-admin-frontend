@@ -46,7 +46,7 @@ const Login = () => {
 
     const downloadApp =  () => {
         axios({
-            url: "http://localhost:5000/api/app/download",
+            url: "https://juanbreath-server.herokuapp.com/api/app/download",
             method: "GET",
             responseType: "blob"
         }).then((res) => {
