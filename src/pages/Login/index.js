@@ -18,6 +18,10 @@ const Login = () => {
     const [viewPassword, setViewPassword] = useState(false)   
     const [validationError, setErrors] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isDownloading, setIsDownloading] = useState(false);
+    const [percentage, setPercentage] = useState(0);
+    const [progress, setProgress] = useState(null);
+
     // this will provide the users current page location
     const onSubmit = async (usersCredentials) => {
         try {
@@ -45,14 +49,23 @@ const Login = () => {
     }
 
     const downloadApp =  () => {
+        setIsDownloading(true)
+        let progress = 0;
         axios({
             url: "https://juanbreath-server.herokuapp.com/api/app/download",
+            onDownloadProgress(progressEvent){
+                progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+                setPercentage(progress);
+            },
             method: "GET",
             responseType: "blob"
         }).then((res) => {
+            setIsDownloading(false)
+            setProgress("Finished")
             FileDownload(res.data, "JuanBreath App.apk")
         }).catch((err) => {
             alert(err)
+            setIsDownloading(false)
         })
     }
 
@@ -65,7 +78,14 @@ const Login = () => {
                     <p className='loginNavTitle2'>ADMIN</p>
                 </div>
             </div>
-            <button onClick={() => downloadApp() }>Download JuanBreath Mobile Application</button>
+            {
+                !isDownloading && <button onClick={() => downloadApp() }>Download JuanBreath Mobile Application</button>
+            }
+            {
+                isDownloading && <><Spinner animation="border" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </Spinner><p>Download {percentage}%</p></>
+            }
             <div className='wrapper'>
                 <div className='loginForm'>
                     <h3 className='loginFormTitle'>SIGN IN</h3>
