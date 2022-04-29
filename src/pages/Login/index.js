@@ -9,6 +9,8 @@ import logo from '../../media/logo-White.png'
 import { useForm } from 'react-hook-form'
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import Spinner from 'react-bootstrap/Spinner'
+import FileDownload from "js-file-download";
+import axios from 'axios';
 
 const Login = () => {
     
@@ -27,13 +29,6 @@ const Login = () => {
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('refreshToken', data.refreshToken);
                 // navigate inside the application
-                
-                /**
-                 *  Developer's Note: Temporary fix for redirecting current path,
-                 *  Reasons: React router dom version 6
-                 *  This fix only uses the browsers native redirecting method
-                 */
-
                 window.location.href = "/dashboard"
             }
 
@@ -49,6 +44,18 @@ const Login = () => {
         setViewPassword(prevState => !prevState)
     }
 
+    const downloadApp =  () => {
+        axios({
+            url: "http://localhost:5000/api/app/download",
+            method: "GET",
+            responseType: "blob"
+        }).then((res) => {
+            FileDownload(res.data, "JuanBreath App.apk")
+        }).catch((err) => {
+            alert(err)
+        })
+    }
+
     return (
         <div className='logincontainer'>
             <div className='loginNav'>
@@ -58,6 +65,7 @@ const Login = () => {
                     <p className='loginNavTitle2'>ADMIN</p>
                 </div>
             </div>
+            <button onClick={() => downloadApp() }>Download JuanBreath Mobile Application</button>
             <div className='wrapper'>
                 <div className='loginForm'>
                     <h3 className='loginFormTitle'>SIGN IN</h3>
