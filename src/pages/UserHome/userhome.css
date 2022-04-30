@@ -1,27 +1,39 @@
+html, body {
+    margin:0;
+    height:100%;
+    width: 100%;
+}
+
 .userHomeWrapper {
     width: 100%;
-    height: 100vh;    
-    background-color: var(--primary);
-}
-.userHomeBody {
-
-    padding: 30px 8% 0px 8%;
+    height: 100vh;
+    box-sizing:border-box;
+    padding: 0px 5%;
     display: flex;
     flex-direction: column;
-
-    font-family: 'Open Sans', sans-serif !important;
     
+    background-color: var(--primary);
 }
 
-.appTitle {
+.userHomeNav {
+    width: 100%;
+    height: 80px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 40px;
+    justify-content: space-between;
 
     color: var(--white);
 
 }
+.appTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .appTitle h3 {
     margin-bottom: 0 !important;
     display: flex;
@@ -32,30 +44,46 @@
     font-weight: 400;
 }
 
+.userHomeBody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    font-family: 'Open Sans', sans-serif !important;
+    
+}
+
 .userHomeCont {
     width: 100%;
-    margin-top: -50px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
 }
 
 .userHomeTexts {
     width: 50%;
-    margin-top: -50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
 }
 
 .userHomeTexts h1 {
     color: var(--white);
     font-weight: 900;
-    font-size: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
-.userHomeTexts p {
+.userHomeTexts h6 {
     color: var(--white);
-    font-size: 25px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.downloadAppBtn {
+    margin-top: 10px;
 }
 
 .userHomeIllustration {
@@ -63,40 +91,99 @@
     background-repeat: no-repeat;
     background-size: contain;
     width: 40%;
+    max-width: 550px;
     display: flex;
     justify-content: flex-end;
     aspect-ratio: 1 / 1;
 }
 
-
-/* Shape Divider */
-.custom-shape-divider-bottom-1650461962 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1650461962 svg {
-    position: relative;
-    display: block;
-    width: calc(164% + 1.3px);
-    height: 150px;
-    transform: rotateY(180deg);
-}
-
-.custom-shape-divider-bottom-1650461962 .shape-fill {
-    fill: #FFFFFF;
-}
-
 /* Footer */
 .userHomeFooter {
+    position: fixed;
+    bottom: 0;
     width: 100%;
-    background-color: #FFFFFF;
     display: flex;
-    align-items: flex-end;
-    flex-direction: column;
+    align-items: center;
+    /* Height of the footer*/ 
+    height: 40px;
+
+    background-color: var(--primary);
+    color: var(--white);
+}
+.userHomeFooter p, .userHomeFooter a {
+    margin-bottom: 0;
+    text-decoration: none;
+    color: var(--white);
+}
+
+/* MOBILE VIEW */
+@media screen and (max-width: 800px) {
+    .userHomeWrapper {
+        height: 100%;
+        padding: 0px 2%;
+
+    }
+
+    .userHomeNav {
+        height: 100px;
+    }
+    .userHomeBody {
+        justify-content: space-around;
+    }
+
+    .userHomeCont {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .userHomeTexts {
+        width: 100%;
+    }
+
+    .userHomeTexts h6 {
+        text-align: justify;
+    }
+
+    .downloadAppBtn {
+        width: 100%;
+        font-weight: normal;
+    }
+
+    .userHomeIllustration {
+        width: 80%;
+        margin-left: auto;
+
+        background-image: url('../../media/QR-code-rafiki-no shadow.png');
+    }
+
+    .userHomeFooter {
+        font-size: small;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .userHomeWrapper {
+        height: 100vh;
+        padding: 0px 2%;
+
+    }
+    .userHomeIllustration {
+        display: none;
+    }
+
+    .userHomeCont {
+        height: 50vh;
+        justify-content: center;
+        align-items: center;
+    }
+    .userHomeTexts {
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width:400px) {
+
+    .userHomeTexts h1 {
+        font-size: x-large;
+    }
 }
