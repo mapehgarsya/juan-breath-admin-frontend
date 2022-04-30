@@ -59,10 +59,11 @@ function App() {
       <Router>
         <Routes>
           {/* User Landing Page */}
+          
+          <Route path="/" element={<UserHome />} />
           <Route path="/mobile-app-download" element={<UserHome />} />
 
           {/* Login */}
-          <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
 
           {/* Reset Password */}

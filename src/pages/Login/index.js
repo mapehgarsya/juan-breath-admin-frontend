@@ -65,7 +65,8 @@ const Login = () => {
                     <p className='loginNavTitle2'>ADMIN</p>
                 </div>
             </div>
-            <button onClick={() => downloadApp() }>Download JuanBreath Mobile Application</button>
+            {/* Delete this button once download fu */}
+            {/* <button onClick={() => downloadApp() }>Download JuanBreath Mobile Application</button> */}
             <div className='wrapper'>
                 <div className='loginForm'>
                     <h3 className='loginFormTitle'>SIGN IN</h3>
