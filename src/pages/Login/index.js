@@ -9,8 +9,6 @@ import logo from '../../media/logo-White.png'
 import { useForm } from 'react-hook-form'
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import Spinner from 'react-bootstrap/Spinner'
-import FileDownload from "js-file-download";
-import axios from 'axios';
 
 const Login = () => {
     
@@ -18,8 +16,6 @@ const Login = () => {
     const [viewPassword, setViewPassword] = useState(false)   
     const [validationError, setErrors] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isDownloading, setIsDownloading] = useState(false);
-    const [percentage, setPercentage] = useState(0);
 
     // this will provide the users current page location
     const onSubmit = async (usersCredentials) => {
@@ -47,26 +43,6 @@ const Login = () => {
         setViewPassword(prevState => !prevState)
     }
 
-    const downloadApp =  () => {
-        setIsDownloading(true)
-        let progress = 0;
-        axios({
-            url: "https://juanbreath-server.herokuapp.com/api/app/download",
-            onDownloadProgress(progressEvent){
-                progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
-                setPercentage(progress);
-            },
-            method: "GET",
-            responseType: "blob"
-        }).then((res) => {
-            setIsDownloading(false)
-            FileDownload(res.data, "JuanBreath App.apk")
-        }).catch((err) => {
-            alert(err)
-            setIsDownloading(false)
-        })
-    }
-
     return (
         <div className='logincontainer'>
             <div className='loginNav'>
@@ -76,18 +52,6 @@ const Login = () => {
                     <p className='loginNavTitle2'>ADMIN</p>
                 </div>
             </div>
-            {
-                !isDownloading && <button onClick={() => downloadApp() }>Download JuanBreath Mobile Application</button>
-            }
-            {
-                isDownloading && <>
-                    <Spinner animation="border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner><p>Download {percentage}%</p>
-                </>
-            }
-            {/* Delete this button once download fu */}
-            {/* <button onClick={() => downloadApp() }>Download JuanBreath Mobile Application</button> */}
             <div className='wrapper'>
                 <div className='loginForm'>
                     <h3 className='loginFormTitle'>SIGN IN</h3>
