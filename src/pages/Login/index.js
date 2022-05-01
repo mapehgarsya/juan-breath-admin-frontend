@@ -71,7 +71,7 @@ const Login = () => {
         <div className='logincontainer'>
             <div className='loginNav'>
                 <img src={logo} alt='logo' height={50} width={50}/>
-                <div className='loginNavTitleCont'>
+                <div className='loginNavTitleCont' onClick={() => { window.location.href = "/" }}>
                     <p className='loginNavTitle1'>JuanBreath</p> 
                     <p className='loginNavTitle2'>ADMIN</p>
                 </div>
@@ -80,10 +80,14 @@ const Login = () => {
                 !isDownloading && <button onClick={() => downloadApp() }>Download JuanBreath Mobile Application</button>
             }
             {
-                isDownloading && <><Spinner animation="border" role="status">
-                                        <span className="visually-hidden">Loading...</span>
-                                    </Spinner><p>Download {percentage}%</p></>
+                isDownloading && <>
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner><p>Download {percentage}%</p>
+                </>
             }
+            {/* Delete this button once download fu */}
+            {/* <button onClick={() => downloadApp() }>Download JuanBreath Mobile Application</button> */}
             <div className='wrapper'>
                 <div className='loginForm'>
                     <h3 className='loginFormTitle'>SIGN IN</h3>

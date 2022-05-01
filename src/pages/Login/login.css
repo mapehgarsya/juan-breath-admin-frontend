@@ -27,6 +27,9 @@ html, body {
     color: #ffffff;
     padding-left: 10px;
 }
+.loginNavTitleCont:hover {
+    cursor: pointer;
+}
 .loginNavTitle1 {
     font-size: 1.5rem;
     font-weight: 600;
