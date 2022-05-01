@@ -20,7 +20,6 @@ const Login = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isDownloading, setIsDownloading] = useState(false);
     const [percentage, setPercentage] = useState(0);
-    const [progress, setProgress] = useState(null);
 
     // this will provide the users current page location
     const onSubmit = async (usersCredentials) => {
@@ -61,7 +60,6 @@ const Login = () => {
             responseType: "blob"
         }).then((res) => {
             setIsDownloading(false)
-            setProgress("Finished")
             FileDownload(res.data, "JuanBreath App.apk")
         }).catch((err) => {
             alert(err)
