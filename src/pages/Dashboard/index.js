@@ -50,7 +50,7 @@ const Dashboard = () => {
             <Helmet>
                 <title>JuanBreath | Dashboard</title>
             </Helmet>
-            
+            <h1>Text</h1>
             <h1 className='contentTitle'>Dashboard</h1>
             <p className='tableCaption'>Shows the over all covid count cases in the country and the accumulated count from the system's database.</p>
             <div className='count-container sum-boxes'>
