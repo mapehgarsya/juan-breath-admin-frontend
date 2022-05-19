@@ -1,6 +1,7 @@
 .count-container {
     display: flex;
     flex-direction: row;
+    background-color: aliceblue;
 }
 
 /* Upper Boxes */
@@ -11,6 +12,16 @@
     margin-right: 10px;
     border-radius: 5px;
     box-shadow: 0 10px 10px rgba(66, 185, 194, 0.2);
+}
+.chartTitle {
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+.box-statistics {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0px 15px -10px rgba(0, 0, 0, 0.75);
+    background-color: white;
 }
 
 .box1 {

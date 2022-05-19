@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 // import css
 import './permissionsStyle.css'
 // import package/s
-import { useTable, useSortBy, useFilters } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
 import { FaPen, FaTrash, FaQrcode, FaArrowDown, FaArrowUp, FaEye } from "react-icons/fa";
 import Spinner from 'react-bootstrap/Spinner'
 import Badge from 'react-bootstrap/Badge'
@@ -113,6 +113,12 @@ function BasicTable ({
 
                                             if(cell.column.Header === "Close Contact Number") {
                                                 return <td>{cell.row.original.userId.mobileNumber}</td>
+                                            }
+                                            
+                                            if(cell.column.Header === "Health Status") {
+                                                return <td style={{ fontWeight: "bold", color: cell.row.original.userHealthStatus === "positive" ? "red" : "#30b8a6" }}>
+                                                    {cell.row.original.userHealthStatus}
+                                                </td>
                                             }
 
                                             if(cell.column.Header === "Registration Date") {
