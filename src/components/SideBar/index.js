@@ -75,11 +75,11 @@ const Sidebar = () => {
                     Roles &amp; Permissions
                 </a>
                 {
-                    !isDownloading && <a  href='#' onClick={() => { downloadApp()}} className={`sideBarItem`}>
+                    !isDownloading && <p onClick={() => { downloadApp()}} className={`sideBarItem`}>
                         {/* <MdPhonelinkSetup className='mr-10'/> */}
                         <BsPhoneFill className='mr-10'/>
                         Download App
-                    </a>
+                    </p>
                 }
                 {
                     isDownloading && <>
